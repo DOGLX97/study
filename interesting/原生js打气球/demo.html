@@ -68,15 +68,14 @@
             for(let i= 0,len=aBalloon.length;i<len;i++){
                 aBalloon[i].style.top=aBalloon[i].offsetTop-aBalloon[i].speed+"px";
                 aBalloon[i].onclick=function(){
-                    let clock=setInterval(function () {
+                    let boom=setInterval(function () {
                         aBalloon[i].style.width= aBalloon[i].offsetWidth-5+"px";
                         aBalloon[i].style.height= aBalloon[i].offsetHeight-5+"px";
                         if(aBalloon[i].offsetWidth<=50){
-                            clearInterval(clock);
+                            clearInterval(boom);
                             aBalloon[i].parentNode.removeChild(aBalloon[i]);
                         }
                     },1000/60);
-
                 };
             }
         }
