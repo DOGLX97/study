@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>林允儿轮播图</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        li{
+            list-style:none;
+        }
+        #container{
+            width:268px;
+            height:450px;
+            position:relative;
+            margin:120px auto;
+        }
+        #imgs img{
+            width:268px;
+            height:450px;
+            display: none;
+        }
+        #imgs .selected{
+            display: block;
+        }
+        #figure{
+            position: absolute;
+            right:0px;
+            bottom:5px;
+        }
+        #figure div,#direction div{
+            color: white;
+            background: #ff00ff;
+            width: 20px;
+            height: 20px;
+            float: left;
+            margin-right: 5px;
+            text-align:center;
+            line-height:20px;
+            cursor:pointer;
+        }
+        #direction{
+            position:absolute;
+            left:5px;
+            bottom:5px;
+        }
+        #figure .selected{
+            background: #7c736a;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="imgs">
+            <img src="img/IMG_8763.JPG" alt="" class="selected"/>
+            <img src="img/IMG_8764.JPG" alt=""/>
+            <img src="img/IMG_8765.JPG" alt=""/>
+            <img src="img/IMG_8766.JPG" alt=""/>
+        </div>
+        <div id="figure">
+            <div class="selected">1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div id="direction">
+            <div id="left">&lt;</div>
+            <div id="right">&gt;</div>
+        </div>
+    </div>
+    <script>
+        var oContainer=document.getElementById("container");
+        var oImgs=document.getElementById("imgs");
+        var aImg=oImgs.getElementsByTagName("img");
+        var oFigure=document.getElementById("figure");
+        var aDiv=oFigure.getElementsByTagName("div");
+//        var oDirection=document.getElementById("direction");
+        var oLeft=document.getElementById("left");
+        var oRight=document.getElementById("right");
+        var timer;
+        var nowIndex=0;
+        function changeImg(){
+            for (var i = 0; i < aDiv.length; i++) {
+                aDiv[i].className = "";
+                aImg[i].className = "";
+            }
+            aDiv[nowIndex].className = "selected";
+            aImg[nowIndex].className = "selected";
+        };
+        for(var i=0;i<aDiv.length;i++) {
+            aDiv[i].index = i;
+            aDiv[i].onclick = function () {
+                nowIndex = this.index;
+                changeImg();
+            };
+        }
+        oLeft.onclick=oRight.onclick=function(){
+            if(this==oLeft){
+                nowIndex--;
+                if(nowIndex==-1){
+                    nowIndex=aDiv.length-1;
+                }
+            }else{
+                nowIndex++;
+                if(nowIndex==aDiv.length){
+                    nowIndex=0;
+                }
+            }
+            changeImg();
+        }
+        play();
+        function play(){
+            timer=setInterval(function(){oRight.onclick();},1000);
+        }
+        oContainer.onmouseover=function(){
+            clearInterval(timer);
+        };
+        oContainer.onmouseout=function(){
+            play();
+        }
+
+
+    </script>
+</body>
+</html>

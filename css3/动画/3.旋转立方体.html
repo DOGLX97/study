@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000000;
+            perspective: 2000px;
+            perspective-origin: 50% -400px;
+        }
+        #container{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            /*background: #ff0000;*/
+            -webkit-animation: rotate 3s linear infinite;
+            -o-animation: rotate 3s linear infinite;
+            animation: rotate 3s linear infinite;
+        }
+        @keyframes rotate{
+            from{
+
+            }
+            to{
+                -webkit-transform: rotateY(360deg);
+                -moz-transform: rotateY(360deg);
+                -ms-transform: rotateY(360deg);
+                -o-transform: rotateY(360deg);
+                transform: rotateY(360deg);
+            }
+        }
+        #container div{
+            width: 200px;
+            height: 200px;
+            border: 5px solid #ffffff;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            background: #cccccc;
+            opacity: 0.4;
+            filter:alpha(opacity=40);
+            font-size: 40px;
+            text-align: center;
+            line-height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .one{
+            -webkit-transform: rotateY(180deg) translateZ(100px);
+            -moz-transform: rotateY(180deg) translateZ(100px);
+            -ms-transform: rotateY(180deg) translateZ(100px);
+            -o-transform: rotateY(180deg) translateZ(100px);
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        .two{
+            -webkit-transform: rotateX(90deg) translateZ(100px);
+            -moz-transform: rotateX(90deg) translateZ(100px);
+            -ms-transform: rotateX(90deg) translateZ(100px);
+            -o-transform: rotateX(90deg) translateZ(100px);
+            transform: rotateX(90deg) translateZ(100px);
+          }
+        .three{
+            -webkit-transform: rotateY(-90deg) translateZ(100px);
+            -moz-transform: rotateY(-90deg) translateZ(100px);
+            -ms-transform: rotateY(-90deg) translateZ(100px);
+            -o-transform: rotateY(-90deg) translateZ(100px);
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .four{
+            -webkit-transform: rotateY(90deg) translateZ(100px);
+            -moz-transform: rotateY(90deg) translateZ(100px);
+            -ms-transform: rotateY(90deg) translateZ(100px);
+            -o-transform: rotateY(90deg) translateZ(100px);
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        .five{
+            -webkit-transform: rotateX(90deg) translateZ(-100px);
+            -moz-transform: rotateX(90deg) translateZ(-100px);
+            -ms-transform: rotateX(90deg) translateZ(-100px);
+            -o-transform: rotateX(90deg) translateZ(-100px);
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+        .six{
+            -webkit-transform: translateZ(100px);
+            -moz-transform: translateZ(100px);
+            -ms-transform: translateZ(100px);
+            -o-transform: translateZ(100px);
+            transform: translateZ(100px);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="one">1</div>
+        <div class="two">2</div>
+        <div class="three">3</div>
+        <div class="four">4</div>
+        <div class="five">5</div>
+        <div class="six">6</div>
+    </div>
+</body>
+</html>

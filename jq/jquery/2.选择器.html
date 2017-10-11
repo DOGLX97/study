@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button id="btn">click</button>
+    <div class="aa">001</div>
+    <div class="aa">002</div>
+    <div class="aa">003</div>
+    <div class="aa">004</div>
+    <form action="xx.java/register">
+        用户名: <input type="text" name="username"/>
+    </form>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $('#btn').click(function(){
+            alert("snsd");
+        }).mouseover(function(){
+            this.style.background="pink";
+        }).mouseout(function(){
+            this.style.background="#cccccc";
+        }).css({
+            width:100,
+            height:"50px",
+            background:"#cccccc"
+        });
+
+        //原生
+//        document.getElementById("id");
+//        document.getElementsByTagName("div");
+//
+//        document.getElementsByClassName("aa");//兼容性问题
+//        document.getElementsByName("username");//兼容性问题
+        //css3
+//        var oBtn=document.querySelector("#btn");//兼容性问题
+//        console.log(oBtn);
+//        var aAa=document.querySelectorAll(".aa");//兼容性问题
+//        console.log(aAa);
+
+
+//        document.createElement("div");
+//        document.appendChild();
+//        document.removeChild();
+//        document.cloneNode();
+//        document.insertBefore(newNode,oldNode);
+
+
+
+        //原生对象 =》 jq对象  $()
+        //jq对象 => 原生对象   [0]   .get(0)
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        textarea{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <button id="up">up</button>
+        <button id="down">down</button>
+    </div>
+    <div id="text">
+        <textarea name="msg" id="msg" cols="30" rows="10">可以通过 cols 和 rows 属性来规
+            定 textarea 的尺寸，不过更好的办法是使用 CSS 的 height 和 width 属性可以通过
+            cols 和 rows 属性来规定 textarea 的尺寸，不过更好的办法是使用 CSS 的 height 和
+            width 属性可以通过 cols 和 rows 属性来规定 textarea 的尺
+            寸，不过更好的办法是使用 CSS 的 height 和 width 属性可以通过 cols 和 rows 属
+            性来规定 textarea 的尺寸，不过更好
+            的办法是使用 CSS 的 height 和 width 属性</textarea>
+    </div>
+    <script src="../jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+            var $msg=$("#msg");
+            $("#up").on("click",function(){
+                if(!$msg.is(":animated")){
+                    $msg.animate({
+                        scrollTop:"-=20"
+                    });
+                }
+            });
+            $("#down").on("click",function(){
+                if(!$msg.is(":animated")){
+                    $msg.animate({
+                        scrollTop:"+=20"
+                    });
+                }
+            })
+        });
+    </script>
+</body>
+</html>

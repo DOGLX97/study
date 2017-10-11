@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        #nav li{
+            float: left;
+            list-style: none;
+            margin: 10px;
+        }
+        #nav{
+            margin-bottom: 700px;
+        }
+        #div1{
+            height: 400px;
+            background: #ffff00;
+        }
+        #div2{
+            height: 400px;
+            background: #00ff00;
+        }
+        #div3{
+            height: 400px;
+            background: #0000ff;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav" class="clearfix">
+        <li><a href="#div1">link1</a></li>
+        <li><a href="#div2">link2</a></li>
+        <li><a href="#div3">link3</a></li>
+    </div>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#nav a").on("click", function () {
+                var href=$(this).attr("href");
+//                console.log($(href).offset().top);
+                $(document.body).animate({
+                    scrollTop:$(href).offset().top
+                },500);
+                history.pushState($(href).offset().top,"");
+                return false;
+            });
+            window.onpopstate= function (e) {
+                $(document.body).animate({
+                    scrollTop: e.state
+                },500);
+                console.log(e.state);//按返回时输出null
+            }
+        })
+    </script>
+</body>
+</html>

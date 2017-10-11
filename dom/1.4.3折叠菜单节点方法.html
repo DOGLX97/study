@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>折叠菜单3</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 200px;
+            border: 1px solid #000000;
+            text-align: center;
+            margin: 100px auto;
+        }
+        #container h3{
+            background: #000000;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+        .submenu{
+            display: none;
+        }
+        .submenu li{
+            cursor: pointer;
+        }
+        .submenu li:hover{
+            background: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <ul id="container">
+        <li class="first-menu">
+            <h3>管理层</h3>
+            <ul class="submenu">
+                <li>001</li>
+                <li>002</li>
+                <li>003</li>
+            </ul>
+        </li>
+        <li class="first-menu">
+            <h3>管理层</h3>
+            <ul class="submenu">
+                <li>001</li>
+                <li>002</li>
+                <li>003</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        var oContainer=document.getElementById("container");
+        var aH3=oContainer.getElementsByTagName("h3");
+        for(var i=0;i<aH3.length;i++){
+            aH3[i].index=i;
+            aH3[i].onclick=function(){
+                var subMenu=next(this);//找到aH3[i]的下一个兄弟（元素节点）赋给变量subMenu
+                if(subMenu.style.display=="block"){
+                    subMenu.style.display="none";
+                }else{
+                    subMenu.style.display="block";
+                }
+            };
+            aH3[i].onselectstart=function(){
+                return false; //阻止浏览器默认行为
+            };
+        }
+        //找下一个兄弟（元素节点）
+        function next(elem){
+            do{
+                elem=elem.nextSibling;
+            }while(elem&&elem.nodeType!=1);
+            return elem;
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>

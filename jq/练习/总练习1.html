@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>总练习,有改良版</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+        #backTop{
+            width: 50px;
+            height: 50px;
+            background:#000;
+            color:#fff;
+            font-size:12px;
+            text-align:center;
+            line-height:50px;
+            position: fixed;
+            bottom: 100px;
+            right: 0px;
+            cursor:pointer;
+        }
+        table{
+            border:2px solid #000000;
+            padding: 5px;
+        }
+        td{
+            width: 150px;
+            text-align: center;
+            padding:0;
+        }
+        td:hover{
+            background: #f0f;
+            color:#fff;
+        }
+        .editStyle{
+            border: 0;
+            padding: 4px;
+            margin-top:-1px;
+        }
+        .focus{
+            background: #f0f;
+        }
+    </style>
+</head>
+<body>
+<h1>选项卡</h1>
+    <div>
+        <form action="">
+            <input type="checkbox" name="team" value="IOI"/>IOI
+            <input type="checkbox" name="team" value="DIA"/>DIA
+            <input type="checkbox" name="team" value="PRISTIN"/>PRISTIN
+            <input type="checkbox" name="team" value="GUGUDAN"/>GUGUDAN
+            <input type="checkbox" name="team" value="MOMOLAND"/>MOMOLAND
+            <br/>
+            <input type="button" value="全选" id="checkAll"/>
+            <input type="button" value="全不选" id="checkNone"/>
+            <input type="button" value="反选" id="checkReverse"/>
+        </form>
+    </div>
+
+<h1>查询</h1>
+    <div>
+        <input type="text" id="search" placeholder="请输入查询组合"/>
+        <ul id="team-list">
+            <li><a href="#">IOI</a></li>
+            <li><a href="#">DIA</a></li>
+            <li><a href="#">PRISTIN</a></li>
+            <li><a href="#">GUGUDAN</a></li>
+            <li><a href="#">MOMOLAND</a></li>
+        </ul>
+    </div>
+
+<h1>回到顶部</h1>
+    <div id="backTop">
+        回到顶部
+    </div>
+
+<h1>表格变色</h1>
+    <div>
+        <table cellspacing="0">
+            <tr><th>team-table</th></tr>
+            <tr><td>IOI</td><td>11名</td></tr>
+            <tr><td>DIA</td><td>9名</td></tr>
+            <tr><td>PRISTIN</td><td>10名</td></tr>
+            <tr><td>GUGUDAN</td><td>9名</td></tr>
+            <tr><td>MOMOLAND</td><td>9名</td></tr>
+        </table>
+    </div>
+
+<h2>可编辑表格</h2>
+    <div>
+        <table cellspacing="0">
+            <tr><th>可编辑表格</th></tr>
+            <tr><td>1</td><td class="editable">IOI</td></tr>
+            <tr><td>2</td><td class="editable">DIA</td></tr>
+            <tr><td>3</td><td class="editable">PRISTIN</td></tr>
+            <tr><td>4</td><td class="editable">GUGUDAN</td></tr>
+            <tr><td>5</td><td class="editable">MOMOLAND</td></tr>
+        </table>
+    </div>
+
+<h1>伸缩</h1>
+    <div>
+        <table cellspacing="0" id="slide">
+            <tr><th>组合名</th><th>总人数</th></tr>
+            <tr><td>SNSD</td><td>9名</td></tr>
+            <tr><td>成员：</td><td>金泰妍，郑秀妍，黄美英，李顺圭，金孝渊，权侑莉，崔秀英，林允儿，徐珠贤</td></tr>
+            <tr><td>IOI</td><td>9名</td></tr>
+            <tr><td>成员：</td><td>全somi,金世正,磪有情,金请夏,金素慧，郑采妍，金度妍，周洁琼，姜美娜，林娜荣，俞琏静</td></tr>
+        </table>
+    </div>
+
+<h1>内容过滤</h1>
+    <div>
+        <input type="text" id="filter"/>
+        <ul id="content">
+            <li><a href="#">全somi</a></li>
+            <li><a href="#">金世正</a></li>
+            <li><a href="#">磪有情</a></li>
+            <li><a href="#">金请夏</a></li>
+            <li><a href="#">金素慧</a></li>
+            <li><a href="#">郑采妍</a></li>
+            <li><a href="#">金度妍</a></li>
+            <li><a href="#">周洁琼</a></li>
+            <li><a href="#">姜美娜</a></li>
+            <li><a href="#">林娜荣</a></li>
+            <li><a href="#">俞琏静</a></li>
+        </ul>
+    </div>
+
+<h1>文本框失去焦点</h1>
+
+    <form action="">
+        <fieldset>
+            <legend>个人基本信息</legend>
+            <div>
+                <label for="username">名称</label>
+                <input type="text" id="username" value="名称"/>
+            </div>
+            <div>
+                <label for="password">密码</label>
+                <input type="password" id="password" value=""/>
+            </div>
+            <div>
+                <label for="message">详细信息</label>
+                <textarea name="" id="message" cols="20" rows="3"></textarea>
+            </div>
+        </fieldset>
+    </form>
+
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+            var $team=$("[name=team]")
+            $("#checkAll").on("click", function () {
+                $team.prop("checked",true);
+            });
+            $("#checkNone").on("click", function () {
+                $team.prop("checked",false);
+            });
+            $("#checkReverse").on("click", function () {
+                $team.each(function () {
+                    this.checked=!this.checked;
+                });
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            $("#search").on("keyup", function () {
+//                console.log(this.value);
+//                console.log(typeof this.value);
+                if(this.value!=""){
+                    $("#team-list li").css({
+                        background:"transparent"
+                    });
+                    $("#team-list li:contains("+this.value.toLocaleUpperCase()+")").css({
+                        background:"#f0f"
+                    });
+                }else{
+                    $("#team-list li").css({
+                        background:"transparent"
+                    });
+                }
+            })
+        });
+    </script>
+    <script>
+        $(function () {
+            $("#backTop").on("click", function () {
+                var timer=setInterval(function () {
+                    var $target;
+                    if(document.documentElement.scrollTop){
+                        $target=$("html");
+                    }else{
+                        $target=$("body");
+                    }
+                    var iScrollTop=$target.scrollTop();
+                    if(iScrollTop<=0){
+                        clearInterval(timer);
+                    }else{
+                        $target.scrollTop(iScrollTop-=50);
+                    }
+                },100);
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            $("tr:odd").css("background","#0ff");
+        })
+    </script>
+    <script>
+        $(function(){
+            $(".editable").on("click", function () {
+                if($(this).has("input").length > 0){
+                    return false;
+                }
+                var $input=$("<input type='text' class='editStyle'/>").val(this.innerHTML);
+                $(this).empty().append($input);
+                $input.trigger("focus");  //一点击就能获取焦点
+            });
+        });
+    </script>
+    <script>
+        $(function(){
+            $("#slide tr:odd").each(function(){
+                this.bFlag=false;
+                $(this).on("click", function () {
+                    if(this.bFlag==false){
+                        $(this).next().stop().slideUp();
+                    }else{
+                        $(this).next().stop().slideDown();
+                    }
+                    this.bFlag=!this.bFlag;
+                });
+            });
+        })
+    </script>
+    <script>
+        $(function () {
+            $("#filter").on("keyup", function () {
+                $("#content li").hide();
+                $("#content li:contains("+this.value+")").show();
+            })
+        })
+    </script>
+    <script>
+        $(function () {
+            $(":input").focus(function () {
+                $(this).addClass("focus");
+                if($(this).val()==this.defaultValue){
+                    this.value="";
+                }
+            }).blur(function () {
+                $(this).removeClass("focus").val($(this).val()==""?this.defaultValue:$(this).val());
+            })
+        })
+    </script>
+</body>
+</html>

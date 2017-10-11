@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--5.编写一个非递归函数factorial(n)，计算12!-10!的结果。-->
+<script>
+    function factorial(n){
+        var sum=1;
+        for(var i=1;i<=n;i++){
+            sum=i*sum;
+        }
+        return sum;
+    }
+//    document.write(factorial(4)); 检验阶乘函数是否正确
+//    document.write(factorial(12)+"<br>");
+//    document.write(factorial(10)+"<br>");
+    document.write(factorial(12)-factorial(10));
+</script>
+</body>
+</html>

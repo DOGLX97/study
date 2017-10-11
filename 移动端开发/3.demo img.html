@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            border: 0;
+        }
+        h3{
+            width: 1200px;
+            height: 80px;
+            background: #ccc;
+            text-align: center;
+            line-height: 80px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            margin: 20px auto;
+
+        }
+        figure img{
+            display: block;
+            width: 1200px;
+            margin: 0 auto;
+        }
+        article{
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #left,#right{
+            height: 300px;
+            float: left;
+            display: table;
+        }
+        #left{
+            background: #00ff00;
+            width: 600px;
+            margin-right: 60px;
+        }
+        #right{
+            background: #ff0000;
+            width: 540px;
+        }
+        #left p,#right p{
+            display: table-cell;
+            vertical-align: middle;
+        }
+        @media(max-width: 1119px){
+            h3,figure,article{
+                width: 100%;
+            }
+            figure img{
+                width: 100%;
+                max-width: 100%;
+            }
+            #left{
+                width:50%;
+                margin-right: 5%;
+            }
+            #right{
+                width: 45%;
+            }
+        }
+        @media (max-width: 767px){
+            #left,#right{
+                width:100%;
+            }
+        }
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h3>页头</h3>
+    </header>
+    <nav>
+        <h3>页眉</h3>
+    </nav>
+    <figure>
+        <img src="img/01.jpg" alt=""/>
+    </figure>
+    <article class="clearfix">
+
+            <section id="left">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sem erat, egestas quis luctus ut, rhoncus
+                    vitae risus. Integer venenatis libero sit amet sapien dictum, quis bibendum mi volutpat. Cras pretium quam
+                    quis magna facilisis, eget feugiat nisi lacinia.</p>
+            </section>
+            <section id="right">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sem erat, egestas quis luctus ut, rhoncus
+                    vitae risus. Integer venenatis libero sit amet sapien dictum, quis bibendum mi volutpat. Cras pretium quam
+                    quis magna facilisis, eget feugiat nisi lacinia.</p>
+            </section>
+
+    </article>
+    <footer>
+        <h3>页脚</h3>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000000;
+            /*width: 600px;*/
+            /*margin: 70px auto;*/
+        }
+        #cvs{
+            background: #ffffff;
+            margin-left:100px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cvs" width="600" height="500"></canvas>
+    <script>
+        var oCvs=document.querySelector("#cvs");
+        var cxt=oCvs.getContext("2d");
+        oCvs.onmousedown= function (e) {
+            console.log(e.clientX);
+            cxt.beginPath();
+            cxt.moveTo((e.clientX-100),(e.clientY-100));//clientX 事件属性返回当事件被触发时鼠标指针向对于浏览器页面（或客户区,不是相对于文档）的水平坐标
+//            cxt.moveTo(window.pageXOffset,window.pageYOffset);//文档坐标
+            cxt.fillStyle="#ff0000";
+            oCvs.onmousemove= function (e) {
+                cxt.lineTo((e.clientX-100), (e.clientY-100));
+                cxt.stroke();
+            };
+            oCvs.onmouseup= function () {
+                oCvs.onmousemove=null;
+            };
+        };
+
+
+    </script>
+</body>
+</html>

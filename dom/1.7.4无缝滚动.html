@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 320px;
+            height: 200px;
+            border: 3px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            height: 100px;
+            width: 440px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #ul1 li{
+            width: 100px;
+            height: 100px;
+            color: #FFFFFF;
+            background: #000000;
+            cursor: pointer;
+            text-align: center;
+            line-height: 100px;
+            float: left;
+            margin-right: 10px;
+        }
+        #left,#right{
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            color: #FFFFFF;
+            background: #000000;
+            margin-right: 10px;
+            float: left;
+            cursor: pointer;
+        }
+        #arrows{
+            width: 120px;
+            position: absolute;
+            top: 150px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="ul1">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id="arrows">
+            <div id="left">&lt;</div>
+            <div id="right">&gt;</div>
+        </div>
+    </div>
+    <script>
+        (function(){
+            var oUl1=document.getElementById("ul1");
+            var oLeft=document.getElementById("left");
+            var oRight=document.getElementById("right");
+            var speed=5;
+            oUl1.innerHTML+=oUl1.innerHTML;
+            oUl1.style.width=oUl1.offsetWidth*2+"px";
+            setInterval(function(){
+                oUl1.style.left=oUl1.offsetLeft-speed+"px";
+                if(-oUl1.offsetLeft>=oUl1.offsetWidth/2){
+                    oUl1.style.left=0;
+                }
+                if(oUl1.offsetLeft>0){
+                    oUl1.style.left=-oUl1.offsetWidth/2+"px";
+                }
+            },50);
+            oLeft.onclick=oRight.onclick= function () {
+                if(this===left){
+                    speed=5;
+                }else{
+                    speed=-5;
+                }
+            }
+        })();
+
+    </script>
+</body>
+</html>

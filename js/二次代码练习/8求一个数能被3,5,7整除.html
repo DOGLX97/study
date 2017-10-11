@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--写一个判断某个非负整数是否能够同时被3,5,7整除的函数，
+然后在页面上输出1~1000之间所有能同时被3,5,7整除的整数，并要求每行显示6个这样的数。-->
+<script>
+    var iNum=parseInt(prompt());//string转化成number型
+    console.log(typeof iNum);
+    console.log(iNum);
+    function f(iNum) {
+        if ((iNum % 3 == 0) && (iNum % 5 == 0) && (iNum % 7 == 0)) {
+            document.write(iNum + "<br>");
+        } else {
+            document.write("不符合条件"+"<br>");
+        }
+    }
+    f(iNum);
+
+    var sum=0;
+    document.write("1-1000中符合条件的有:"+"<br>");
+    for(var i=1;i<=1000;i++){
+        if((i%3==0)&&(i%5==0)&&(i%7==0)){
+            sum++;
+            document.write(i+"&nbsp;")
+            if(sum%6==0) document.write("<br>");
+        }
+    }
+    document.write("<br>");
+    document.write("一个"+sum+"个");
+</script>
+</body>
+</html>

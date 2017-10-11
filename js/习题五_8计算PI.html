@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    8.编写函数，用下面的公式计算π的近似值。
+// 有个公式
+//    在页面上输出当n=100，500，1000，10000时π的近似值。
+    var iNum=prompt();
+//    document.write(PI(iNum));
+    function PI(n){
+        var i,plusminus=1,sum=0;
+        for(i=1;i<=n;i++)
+        {
+            sum += plusminus /(2*i - 1);
+            plusminus *= -1;
+        }
+        return 4*sum;
+    }
+    document.write(PI(iNum));//先定义再调用
+</script>
+</body>
+</html>

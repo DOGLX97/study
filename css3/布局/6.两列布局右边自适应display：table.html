@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>容器display: table; div1 固定宽度 display: table-cell; div2 不设置宽度 display: table-cell;</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            display: table;
+            width: 100%;
+            /*width：100%得加*/
+        }
+        #div1{
+            width: 400px;
+            height: 400px;
+            background: #ff00ff;
+            display: table-cell;
+        }
+        #div2{
+            height: 400px;
+            background: #0000ff;
+            display: table-cell;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="div1"></div>
+        <div id="div2"></div>
+    </div>
+</body>
+</html>

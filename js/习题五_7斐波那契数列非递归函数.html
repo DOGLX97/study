@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var n=prompt();
+    function fibonacci(n){
+        if(n<3){
+            return 1;
+        }else{
+            var f1=1,f2=1,i,temp;
+            for(i=3;i<=n;i++)
+            {
+                temp = f1+f2;
+                f1 = f2;
+                f2 = temp;
+            }
+            return f2;
+        }
+    }
+    document.write(fibonacci(n));
+</script>
+</body>
+</html>

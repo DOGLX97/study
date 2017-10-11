@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        textarea{
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <button id="big">放大</button>
+        <button id="small">缩小</button>
+    </div>
+    <div id="text">
+        <textarea name="msg" id="msg" cols="30" rows="10"></textarea>
+    </div>
+    <script src="../jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+            var $msg= $("#msg")
+//            $("#big").on("click",function(){
+//                $msg.height(function(){
+//                    return $msg.height()+50;
+//                });
+//            });
+//            $("#small").on("click",function(){
+//                $msg.height(function(){
+//                    return $msg.height()-50;
+//                });
+//            });
+            $("#big").on("click",function(){
+                if(!$msg.is(":animated")){
+                    if($msg.height()<400){
+                        $msg.animate({
+                            height:"+=50"
+                        },500);
+                    }
+                }
+            });
+            $("#small").on("click",function(){
+                if(!$msg.is(":animated")){
+                    if($msg.height()>50){
+                        $msg.animate({
+                            height:"-=50"
+                        },500);
+                    }
+                }
+            });
+
+
+
+
+        });
+    </script>
+</body>
+</html>

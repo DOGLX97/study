@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            perspective: 1000px;
+            perspective-origin: 50% -400px;
+            /*background: rgba(255,0,255,0.2);*/
+        }
+        #container{
+            width: 125px;
+            position: relative;
+            margin: 100px auto;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: all 1s linear;
+            -moz-transition: all 1s linear;
+            -ms-transition: all 1s linear;
+            -o-transition: all 1s linear;
+            transition: all 1s linear;
+        }
+        #container img{
+            width: 125px;
+            height: 125px;
+            position: absolute;
+            -webkit-transition: all 1s linear;
+            -moz-transition: all 1s linear;
+            -ms-transition: all 1s linear;
+            -o-transition: all 1s linear;
+            transition: all 1s linear;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        var oContainer=document.getElementById("container");
+        for(var i=0;i<9;i++){
+            var oImg=new Image();
+            var count=0;
+            oImg.onload= function () {
+                count++;
+                if(count==9){
+                    onloadSuccess();
+                }
+            };
+            oImg.src="imgs/"+(i+1)+".JPG";
+            oContainer.appendChild(oImg);
+        }
+        var num=0;
+        oContainer.onclick= function () {
+            num++;
+            oContainer.style.transform="rotateY("+num*40+"deg)";
+        };
+        function onloadSuccess(){
+            var aImg=oContainer.getElementsByTagName("img");
+            for(var i=0;i<aImg.length;i++){
+                aImg[i].style.transform="rotateY("+(i+1)*40+"deg) translateZ(300px)";
+                aImg[i].style.transitionDelay=i*200+"ms";
+            }
+        }
+    </script>
+</body>
+</html>

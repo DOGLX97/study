@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--7.斐波纳契（Fibonacci）数列的第一项是1，第二项是1，
+以后各项都是前两项的和。试用递归函数和非递归函数各编写一个程序，
+求斐波纳契数列第N项的值。-->
+<script>
+    var n=prompt();
+    function Fibonacci(n){
+        if(n<3) return 1;
+        return Fibonacci(n-1)+Fibonacci(n-2);
+    }
+    document.write(Fibonacci(n));
+</script>
+</body>
+</html>

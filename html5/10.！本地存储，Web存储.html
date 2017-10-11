@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var date=new Date();
+    date.setDate(date.getDate()-100);
+    document.cookie="name=zhangsan;expires="+date.toUTCString();
+
+    localStorage.username="lim";
+    localStorage.setItem("age",18);
+    console.log(localStorage.username);//lim
+    console.log(localStorage.getItem("age"));//18
+
+    sessionStorage.name="kim";
+    sessionStorage.setItem("age",27);
+    console.log(sessionStorage.getItem("name"));//kim
+    console.log(sessionStorage.age);//27
+</script>
+</body>
+</html>

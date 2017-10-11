@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .box{
+            width: 400px;
+            height: 400px;
+            margin: 100px auto;
+            border: 2px solid #000;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            border-radius: 50%;
+            position: relative;
+        }
+        .box li{
+            width: 3px;
+            height: 8px;
+            background: #000000;
+            -webkit-transform-origin: 0 200px;
+            position: absolute;
+            left: 200px;
+            top: 0;
+        }
+        .box ul li:nth-of-type(5n+1){
+            height: 12px;
+        }
+        #hour{
+            width: 4px;
+            height: 50px;
+            position: absolute;
+            left: 198px;
+            top:150px;
+            background-color: #000;
+            -webkit-transform-origin: bottom;
+        }
+        #min{
+            width: 2px;
+            height: 80px;
+            position: absolute;
+            left: 199px;
+            top:120px;
+            background-color: #000000;
+            -webkit-transform-origin: bottom;
+        }
+        #sec{
+            width: 2px;
+            height: 150px;
+            background: #ff0000;
+            position: absolute;
+            left: 199px;
+            top: 50px;
+            -webkit-transform-origin: bottom;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul id="timeList"></ul>
+        <div id="hour"></div>
+        <div id="min"></div>
+        <div id="sec"></div>
+    </div>
+    <script>
+        var oList=document.getElementById("timeList");
+        var oHour=document.getElementById("hour");
+        var oMin=document.getElementById("min");
+        var oSec=document.getElementById("sec");
+        var aLi="";
+        for(var i=0;i<60;i++){
+            aLi+="<li style='transform: rotate("+i*6+"deg)'></li>";
+        }
+        oList.innerHTML=aLi;
+        addTime();
+        setInterval(addTime,1000);
+        function addTime(){
+            var oDate=new Date();
+            var iSec=oDate.getSeconds();
+            var iMin=oDate.getMinutes()+iSec/60;
+            var iHour=(oDate.getHours()%12)+iMin/60;
+            oSec.style.webkitTransform="rotate("+iSec*360/60+"deg)";
+            oMin.style.webkitTransform="rotate("+iMin*360/60+"deg)";
+            oHour.style.webkitTransform="rotate("+iHour*360/12+"deg)";
+        }
+    </script>
+</body>
+</html>

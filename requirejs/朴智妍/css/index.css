@@ -1,0 +1,29 @@
+body{
+    background: #000;
+    position: relative;
+}
+#container{
+      position: absolute;
+      width: 600px;
+      height: 700px;
+      left:30%;
+      top: 10px;
+      -webkit-transform: translate(-50%);
+      -moz-transform: translate(-50%);
+      -ms-transform: translate(-50%);
+      -o-transform: translate(-50%);
+      transform: translate(-50%);
+}
+
+#container2{
+    position: absolute;
+    width: 600px;
+    height: 700px;
+    top: 110px;
+    left: 70%;
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    transform: translate(-50%);
+}

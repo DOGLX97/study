@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>五环</title>
+    <style>
+        body{
+            position: relative;
+        }
+        .circle,.circle::after{
+            width: 200px;
+            height: 200px;
+            border: 5px solid;
+            position: absolute;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+        }
+        .circle::after{
+            content: "";
+            left: -5px;
+            top: -5px;
+        }
+       .one{
+           border-color: #0000ff;
+        }
+       .circle.one::after{
+           border-color: #0000ff;
+           z-index: 1;
+           border-bottom-color: transparent;
+       }
+       .two{
+            border-color: #000;
+            left: 220px;
+        }
+       .circle.two::after{
+           border-color: #000;
+           z-index: 2;
+           border-left-color: transparent;
+       }
+        .three{
+            border-color: red;
+            left: 440px;
+        }
+        .circle.three::after{
+            border-color: red;
+            z-index: 3;
+            border-left-color: transparent;
+        }
+        .four{
+            border-color: #ffff00;
+            left: 110px;
+            top: 105px;
+        }
+        .circle.four::after{
+            border-color: #ffff00;
+        }
+        .five{
+            border-color: #00ff00;
+            left: 330px;
+            top: 105px;
+        }
+        .circle.five::after{
+            border-color: #00ff00;
+            z-index: 2;
+            border-top-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle one"></div>
+    <div class="circle two"></div>
+    <div class="circle three"></div>
+    <div class="circle four"></div>
+    <div class="circle five"></div>
+</body>
+</html>

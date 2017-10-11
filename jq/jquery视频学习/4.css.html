@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: #ff00ff;
+            padding: 10px;
+            border: 5px solid #000000;
+            margin: 10px;
+        }
+        .aa{
+           display: none;
+        }
+        .bb{
+            border: 5px solid #000000;
+        }
+        #div{
+            width: 800px;
+            height: 800px;
+            background: #cccccc;
+            position: relative;
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div">
+        <div id="div1"></div>
+    </div>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#div1').on('click', function () {
+//                $('#div1').css('background','#ff0000');
+//                alert($('#div1').css('background'));
+//                alert($('#div1').css('width'));
+//                $('#div1').css({
+//                    background:'#ff0000',
+//                    width:'400px'
+//                })
+//                $('#div1').addClass('aa');
+//                $('#div1').removeClass('aa');
+//                $('#div1').toggleClass('bb');
+
+                $('#div1').height('400');
+                $('#div1').width('400px');
+                console.log($('#div1').outerWidth());//430
+                console.log($('#div1').outerHeight(true));//450  包含外边距
+                console.log($('#div1').innerWidth());//420
+                console.log($('#div1').innerHeight());//420
+                console.log($('#div1').width());//400
+                console.log($('#div1').height());//400
+
+                console.log($('#div1').offset());//.offset()方法,不传参数，允许我们检索一个元素相对于文档（document）的当前位置
+                console.log($('#div1').position());//.position(),不传参数,是相对于相对于已经定位过得父级元素的位移
+                console.log($('#div1').offsetParent());//.offsetParent(),不传参数，取得离指定元素最近的含有定位信息的祖先元素。含有定位信息的元素指的是，CSS 的 position 属性是 relative, absolute, 或 fixed 的元素。
+
+//                alert($(window).scrollTop());
+//                $(window).scrollTop(400);
+            })
+        })
+    </script>
+</body>
+</html>

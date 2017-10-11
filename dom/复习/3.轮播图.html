@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            border: 0px;
+        }
+        #container{
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+            position: relative;
+            /*margin-top: 120px;*/
+        }
+        #imgs img{
+            display: none;
+        }
+        #imgs .selected{
+            display: block;
+        }
+        #number{
+            height: 25px;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        #number div,#left,#right{
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            color: #FFFFFF;
+            background: #000000;
+            cursor: pointer;
+            float: left;
+            margin-left: 5px;
+        }
+        #direction{
+            height: 25px;
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        #number .selected{
+            background: #ff00ff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="imgs">
+            <img src="../img/1.jpg" alt="" class="selected"/>
+            <img src="../img/2.jpg" alt=""/>
+            <img src="../img/3.jpg" alt=""/>
+            <img src="../img/4.jpg" alt=""/>
+        </div>
+        <div id="number">
+            <div class="selected">1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div id="direction">
+            <div id="left">&lt;</div>
+            <div id="right">&gt;</div>
+        </div>
+    </div>
+    <script>
+        var oContainer=document.getElementById("container");
+        var oImgs=document.getElementById("imgs");
+        var aImg=oImgs.getElementsByTagName("img");
+        var oNumber=document.getElementById("number");
+        var aDiv=oNumber.getElementsByTagName("div");
+        var oLeft=document.getElementById("left");
+        var oRight=document.getElementById("right");
+        var nowIndex=0;
+        var timer;
+        for(var i=0;i<aDiv.length;i++){
+            aDiv[i].index=i;
+             aDiv[i].onmouseover=function(){
+                nowIndex=this.index;
+                changeImg();
+            };
+        }
+        oLeft.onclick=oRight.onclick= function () {
+            if(this==oLeft){
+                nowIndex--;
+                if(nowIndex==-1){
+                    nowIndex=aDiv.length-1;
+                }
+            }else{
+                nowIndex++;
+                if(nowIndex==aDiv.length){
+                    nowIndex=0;
+                }
+            }
+            changeImg();
+//            return false;
+        };
+        oLeft.onselectstart=oRight.onselectstart=function(){
+            return false;
+        };
+        play();
+        function play(){
+            timer=setInterval(function(){
+                oRight.onclick();
+            },1000)
+        }
+        oContainer.onmouseover=function(){
+            clearInterval(timer);
+        };
+        oContainer.onmouseout=function(){
+            play();
+        };
+        function changeImg(){
+            for(var i=0;i<aDiv.length;i++){
+                aDiv[i].className="";
+                aImg[i].className="";
+            }
+            aDiv[nowIndex].className="selected";
+            aImg[nowIndex].className="selected";
+        }
+    </script>
+</body>
+</html>

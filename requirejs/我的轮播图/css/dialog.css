@@ -1,0 +1,73 @@
+.dialog-container{
+    width: 520px;
+    height: 280px;
+    position: relative;
+}
+.dialog-img img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0px;
+    bottom: 0px;
+    border: 0px;
+    display: none;
+}
+.dialog-img  .selected{
+    display: block;
+}
+.dialog-icon{
+    width: 100px;
+    height: 20px;
+    float: left;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+.dialog-icon li{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    background: #000000;
+    color: #ffffff;
+    list-style: none;
+    float: left;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.dialog-icon .selected{
+    background: #ff00ff;
+}
+.circle{
+    border-radius: 50%;
+}
+.dialog-left,.dialog-right{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    position: absolute;
+    background: #000000;
+    color: #ffffff;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.dialog-left.bottom{
+    left: 10px;
+    bottom: 10px;
+}
+.dialog-right.bottom{
+    left: 35px;
+    bottom: 10px;
+}
+.dialog-left.center{
+    top: 50%;
+    margin-top: -10px;
+    left: 0;
+}
+.dialog-right.center{
+    top: 50%;
+    margin-top: -10px;
+    right: 0;
+}
+

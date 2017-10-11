@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            border: 0px;
+            padding: 0px;
+        }
+        li{
+            list-style: none;
+        }
+        img{
+            border: 0px;
+        }
+        #container{
+            width: 900px;
+            height: 100%;
+            margin: 50px auto;
+            position: relative;
+            border-bottom: 5px solid black;
+        }
+        #imgs img{
+            display: none;
+        }
+        #imgs .selected{
+            display: block;
+            width: 900px;
+        }
+        #nav{
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+        }
+        #nav li,#direction div{
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: inherit;
+            color: white;
+            background:black;
+            float: left;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        #direction{
+            position: absolute;
+            left: 10px;
+            bottom: 5px;
+        }
+        #nav .selected{
+            background: #808080;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="imgs">
+            <img src="IMG_8934.PNG" alt="" class="selected"/>
+            <img src="IMG_8932.PNG" alt=""/>
+            <img src="IMG_8935.PNG" alt=""/>
+            <img src="IMG_8941.PNG" alt=""/>
+            <img src="IMG_8942.PNG" alt=""/>
+            <img src="IMG_8939.PNG" alt=""/>
+            <img src="IMG_8945.PNG" alt=""/>
+            <img src="IMG_8946.PNG" alt=""/>
+            <img src="IMG_8947.PNG" alt=""/>
+            <img src="IMG_8948.PNG" alt=""/>
+            <img src="IMG_8949.PNG" alt=""/>
+            <img src="IMG_8950.PNG" alt=""/>
+            <img src="IMG_8951.PNG" alt=""/>
+            <img src="IMG_8952.PNG" alt=""/>
+            <img src="IMG_8953.PNG" alt=""/>
+            <img src="IMG_8955.PNG" alt=""/>
+        </div>
+        <div id="nav">
+            <li class="selected">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+            <li>13</li>
+            <li>14</li>
+            <li>15</li>
+            <li>16</li>
+        </div>
+        <div id="direction">
+            <div id="left">&lt;</div>
+            <div id="right">&gt;</div>
+        </div>
+    </div>
+    <script>
+        var oContainer=document.getElementById("container");
+        var oImgs=document.getElementById("imgs");
+        var aImg=oImgs.getElementsByTagName("img");
+        var oNav=document.getElementById("nav");
+        var aLi=oNav.getElementsByTagName("li");
+        var oLeft=document.getElementById("left");
+        var oRight=document.getElementById("right");
+        var nowIndex=0;
+        var timer;
+        function changeImg(){
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].className="";
+                aImg[i].className="";
+            }
+            aLi[nowIndex].className="selected";
+            aImg[nowIndex].className="selected";
+        }
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index=i;
+            aLi[i].onclick= function () {
+                nowIndex=this.index;
+                changeImg();
+            };
+        }
+        oLeft.onclick=oRight.onclick= function () {
+            if(this==oLeft){
+                nowIndex--;
+                if(nowIndex==-1){
+                    nowIndex=aLi.length-1;
+                }
+            }else{
+                nowIndex++;
+                if(nowIndex==aLi.length){
+                    nowIndex=0;
+                }
+            }
+            changeImg();
+        };
+        play();
+        function play(){
+            timer=setInterval(function () {
+                oRight.onclick();
+            },1600);
+        }
+        oContainer.onmouseover=function(){
+            clearInterval(timer);
+        }
+        oContainer.onmouseout= function () {
+            play();
+        }
+    </script>
+</body>
+</html>

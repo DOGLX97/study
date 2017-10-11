@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <p>ppppp</p>
+    <h1 id="h1">hhhh</h1>
+    <u1 id="ull">
+        <li id="lil">001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+    </u1>
+    <script>
+        var oUl=document.getElementById("ull");
+        var oH1=document.getElementById("h1");
+        console.log(next(oH1));//h1的兄弟节点ull
+        console.log(first(oUl).id);//oUl第一个孩子的id:lil
+
+        console.log(oUl.firstChild);
+        console.log(oUl.firstElementChild);
+        console.log(oUl.lastChild);//#text
+        console.log(oUl.lastElementChild);//<li>004</li>
+
+        console.log(oH1.previousSibling);
+        console.log(oH1.previousElementSibling);//<p>ppppp</p>
+        console.log(oH1.nextSibling);
+        console.log(oH1.nextElementSibling);//sibling兄弟
+
+        // 找到该元素的兄弟（元素节点）
+        function next(elem){
+            do{
+                elem=elem.nextSibling;
+            }while(elem&&elem.nodeType!=1);
+            return elem;
+        }
+        // 找到该元素的第一个孩子（元素节点）
+        function first(elem){
+            elem=elem.firstChild;
+            return elem.nodeType==1?elem:next(elem);
+        }
+
+
+
+    </script>
+</body>
+</html>

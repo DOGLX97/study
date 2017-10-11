@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #small,#big{
+            float: left;
+        }
+        #small{
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+        #big{
+            width: 400px;
+            height:400px;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+        #drag{
+            width: 200px;
+            height: 200px;
+            background: #cccccc;
+            opacity: 0.5;
+            filter:alpha(opacity=50);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        #big img{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #mask{
+            width: 100%;
+            height: 100%;
+            background: #ff00ff;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="small">
+        <img src="1.jpg" alt=""/>
+        <div id="drag"></div>
+        <div id="mask"></div>
+    </div>
+    <div id="big">
+        <img src="2.jpg" alt=""/>
+    </div>
+    <script>
+        (function () {
+            var oSmall=document.getElementById("small");
+            var oMask=document.getElementById("mask");
+            var oDrag=document.getElementById("drag");
+            var oBig=document.getElementById("big");
+            var oBigImg=oBig.getElementsByTagName("img")[0];
+            oMask.onmouseover=function(){
+                oDrag.style.display="block";
+                oBig.style.display="block";
+            };
+            oMask.onmouseout=function(){
+                oDrag.style.display="none";
+                oBig.style.display="none";
+            };
+            oMask.onmousemove=function(e){
+                e=e||window.event;
+                var left= e.clientX-oDrag.offsetWidth/2;
+                var top= e.clientY-oDrag.offsetHeight/2;
+                if(left<=0){
+                    left=0;
+                }
+                if(top<=0){
+                    top=0;
+                }
+                var maxX=oSmall.offsetWidth-oDrag.offsetWidth;
+                if(left>=oSmall.offsetWidth-oDrag.offsetWidth){
+                    left=oSmall.offsetWidth-oDrag.offsetWidth;
+                }
+                var maxY=oSmall.offsetHeight-oDrag.offsetHeight;
+                if(top>=oSmall.offsetHeight-oDrag.offsetHeight){
+                    top=oSmall.offsetHeight-oDrag.offsetHeight;
+                }
+                oDrag.style.left=left+"px";
+                oDrag.style.top=top+"px";
+                //改变大图位置
+                var scaleX=left/maxX;
+                var scaleY=top/maxY;
+                oBigImg.style.left=-scaleX*(oBigImg.offsetWidth-oBig.offsetWidth)+"px";
+                oBigImg.style.top=-scaleY*(oBigImg.offsetHeight-oBig.offsetHeight)+"px";
+            };
+        })();
+    </script>
+</body>
+</html>

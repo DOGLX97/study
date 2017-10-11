@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    document.write("<h1>hello world!</h1>")
+//    document.write("<h1>hello world!</h1>")
+//    document.write("<h1>hello world!</h1>")
+//基本数据类型：number string boolean undefined null
+// NaN：not a number
+//    var a=5;
+//    var b=0.5;
+//    var c=true;
+//    var d="girlsgeneration";
+//    var age=20;
+//    var f;
+//    console.log(typeof a);//number
+//    console.log(typeof b);//number
+//    console.log(typeof c);//boolean
+//    console.log(typeof d);//string
+//    console.log(typeof age);//number
+//    console.log(typeof f);//undefined
+//    console.log(10-"a")//NaN
+//    console.log(typeof (10-"a"));//number
+//    console.log(true+true);//2
+// false=0, true=1
+//functions:document.write(),console.log(),
+//          alert(),window.prompt("请输入"),
+//          parseInt(),
+//if else,?:;,
+//    var conditon=true;
+//    if(conditon){
+//        console.log("1");
+//    }else{
+//        console.log("0");
+//    }                      //1
+//
+//    conditon="some string";
+//    if(conditon){
+//        console.log(" 1");
+//    }else{
+//        console.log("0");
+//    }                      // 1
+//
+//    var val=conditon?"1":"0";
+//    console.log(val);     //1
+//
+//   window.prompt() and switch语句
+//     var condition=window.prompt("请输入");
+//     console.log(condition);
+//     console.log(typeof condition);
+//     switch(condition){
+//         case "1":
+//             console.log("one");
+//             break;
+//         case "2":
+//             console.log("two");
+//             break;
+//         case "3":
+//             console.log("three");
+//             break;
+//         case "4":
+//             console.log("four");
+//             break;
+//         case "5":
+//             console.log("five");
+//             break;
+//         default :
+//             alert("默认值0");
+//     }
+//       var condition=window.prompt("请输入");
+//       if(condition>1){
+//           console.log("condition>1");
+//       }else{
+//           console.log("condition<1");
+//       }
+// parseInt()
+//    var condition=window.prompt();
+//    console.log(condition);
+//    console.log(typeof condition);//string
+//    condition=parseInt(condition);
+//    console.log(condition);
+//    console.log(typeof condition);//number
+//    condition=parseFloat(condition);
+//    console.log(condition);
+//    console.log(typeof condition);//number
+//for循环，break，continue
+//    for(var i=10;i>0;i--){
+//        if(i==5){
+//            break;
+//        }
+//        console.log(i);
+//    }                               //10 9 8 7 6
+//    for(var j=10;j>0;j--){
+//        if(j==5){
+//            continue;
+//        }
+//        console.log(j);
+//    }                               //10 9 8 7 6 4 3 2 1
+//
+//while,do while
+//    var condition=prompt();
+//    while(condition>10&&condition<20){
+//        condition++;
+//        console.log(condition);
+//    }
+//    do{
+//        condition++;
+//        console.log(condition);
+//    }while(condition>10);
+//       //当不输入时，do while 执行后控制台会输出1
+//functions的声明和调用
+//    function fn1(){
+//        console.log("fn1");
+//    }
+//    fn1();                   //fn1
+//函数直接量的声明和调用
+//    var fn2=function fn2() {
+//        console.log("fn2")
+//    };
+//    fn2();                     //fn2
+//    console.log(fn2);          //function fn2(){...}
+//isNaN(area)判断是不是个数
+//    var wide=prompt("请输入三角形的底边宽度");
+//    var high=prompt("请输入三角形的高");
+//    var area=wide*high/2;
+//    if(isNaN(area)){
+//        console.log("请输入有效的数字");
+//    }else{
+//        alert(area);
+//    }
+//函数中的形参与实参
+//    function add(x,y){
+//        return x+y;      //函数返回值，return返回处理结果，不需要返回的结果就不return
+//    }
+//    console.log(add(2,3));
+//数组的定义与输出
+//    var arr=[100,200,300];
+//    for(var i=0;i<3;i++){
+//        console.log(arr[i]);
+//    }                          //100 200 300
+//
+//     var arr=[11,22,33,44,55];
+//    for(var i=0;i<arr.length;i++){
+//        console.log(arr[i]);
+//    }                           //11 22 33 44 55
+//对象的定义与输出
+    var obj=new Object();
+    obj.name="fudanyang";
+    obj.age=20;
+    obj.sex=false;
+    obj.school="nongda";
+    obj.eat=function(){
+//        console.log("eat");
+        alert("eat")
+    };
+    console.log(obj);
+    console.log(obj.name);//fundanyang
+    console.log(obj.eat());//无论是控制台输出还是弹出框 eat之后都会有一个undefined
+//    var father={
+//        name:"dog",
+//        age:18,
+//        sex:false,
+//        school:"nongda",
+//        hobby:"eat"
+//    };
+//    var student={
+//        name:"fudanyang",
+//        age:18,
+//        sex:false,
+//        school:"nongda",
+//        dad:father,
+//        hobby:"basketball",
+//        code:function(){
+//            console.log("coding");
+//        }
+//    };
+//    console.log(student["age"]);  //18
+//    console.log(student["name"]);//fudanyang
+//    console.log(father["name"]);//dog
+//    console.log(father["age"]);//18
+//    console.log(father['sex']);//false
+//    console.log(father['school']);//nongda
+//    console.log(father);//Object{...}
+//    console.log(student);//Object{...}
+////for in
+//    var arr=[1,2,3,4,5];
+//    for(var p in arr){
+//        console.log(p+":"+arr[p]);
+//    }       //0:1 1:2 2:3 3:4 4:5
+//    var obj1={
+//        name:"doggy",
+//        age:18,
+//        sex:false
+//    };
+//    for(var p in obj1){
+//        console.log(p+":"+obj1[p]);
+//    }           //name:doggy age:18 sex:false 默认均换行显示
+////函数形参也可以是对象object
+//    function fn1(obj){
+//        console.log(obj);
+//    }
+//    fn1(obj1);     //Object{name:"doggy",age:18,sex:false}
+//
+//
+//
+//    //视频补充
+//    function add(){
+//        console.log(arguments[0]);//100
+//        console.log(arguments[1]);//200
+//        console.log(arguments[2]);//undefined
+//    }
+//    add(100,200);
+//
+</script>
+<body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form>
+    你喜欢的运动？<br/>
+    <input type="checkbox" name="item"/>篮球
+    <input type="checkbox" name="item"/>足球
+    <input type="checkbox" name="item"/>羽毛球
+    <input type="checkbox" name="item"/>排球 <br/>
+
+    <input type="button" id="checkAll" value="全 选"/>
+    <input type="button" id="checkNo" value="全不选"/>
+    <input type="button" id="checkRev" value="反 选"/>
+
+</form>
+<script src="../../jquery-1.9.1.min.js"></script>
+<script>
+    $(function(){
+        $("#checkAll").on("click", function () {
+            $("[name=item]").prop("checked",true);
+        });
+        $("#checkNo").on("click", function () {
+            $('[name=item]').prop('checked',false);
+        });
+        $("#checkRev").on('click', function () {
+            $('[name=item]').each(function () {
+                this.checked=!this.checked;//原生写法更快
+//                $(this).prop('checked',!$(this).prop('checked'));
+            })
+        })
+    })
+</script>
+</body>
+</html>

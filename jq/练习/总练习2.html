@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>总练习2表单</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+        select{
+            width: 80px;
+            height: 150px;
+        }
+        option{
+            background: #cccccc;
+        }
+    </style>
+</head>
+<body>
+<h1>文本域高度变化</h1>
+    <div>
+        <button  id="changeBig">放大</button>
+        <button id="changeSmall">缩小</button>
+        <br/>
+        <textarea name="" id="text" cols="30" rows="8"></textarea>
+    </div>
+<h1>文本域内容滚动</h1>
+    <div>
+        <button id="up">up</button>
+        <button id="down">down</button>
+        <br/>
+        <textarea name="" id="content" cols="30" rows="8">
+            可以通过 cols 和 rows 属性来规
+            定 textarea 的尺寸，不过更好的办法是使用 CSS 的 height 和 width 属性可以通过
+            cols 和 rows 属性来规定 textarea 的尺寸，不过更好的办法是使用 CSS 的 height 和
+            width 属性可以通过 cols 和 rows 属性来规定 textarea 的尺
+            寸，不过更好的办法是使用 CSS 的 height 和 width 属性可以通过 cols 和 rows 属
+            性来规定 textarea 的尺寸，不过更好
+            的办法是使用 CSS 的 height 和 width 属性
+        </textarea>
+    </div>
+<h1>添加li标签</h1>
+    <div>
+        <button id="add">add</button>
+        <ul id="nav">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+<h1>select下拉菜单左右添加</h1>
+    <div>
+        <select name="" id="selectLeft" multiple="multiple">
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+            <option value="">4</option>
+            <option value="">5</option>
+            <option value="">6</option>
+        </select>
+        <select name="" id="selectRight" multiple="multiple">
+            <option value="">7</option>
+            <option value="">8</option>
+        </select>
+        <br/>
+        <button id="addLeft">添加到左边</button>
+        <button id="addRight">添加到右边</button>
+        <button id="allAddLeft">全部添加到左边</button>
+        <button id="addAllRight">全部添加到右边</button>
+    </div>
+
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#changeBig").on("click", function () {
+                $("#text").animate({
+                    rows:15
+                },1000,"linear");
+            });
+            $("#changeSmall").on("click", function () {
+                $("#text").animate({
+                    rows:8
+                },1000,"linear");
+            });
+
+        })
+        $(function () {
+            var $content=$("#content");
+            $("#up").on("click", function () {
+                if(!$content.is(":animated")){
+                    $content.animate({
+                        scrollTop:"-=20"
+                    },1000,"linear");
+                }
+            })
+            $("#down").on("click", function () {
+                if(!$content.is(":animated")){
+                    $content.animate({
+                        scrollTop:"+=20"
+                    },1000,"linear");
+                }
+            })
+        })
+        $(function () {
+            var iLiNum=3;
+            $("#add").on("click", function () {
+                iLiNum++;
+                $("#nav").append("<li>"+iLiNum+"</li>");
+            })
+        })
+        $(function () {
+            var $selectLeft=$("#selectLeft");
+            var $selectRight=$("#selectRight");
+            $selectLeft.on("dblclick","option", function () {
+                $selectRight.append(this);
+            });
+            $selectRight.on("dblclick","option", function () {
+                $selectLeft.append(this);
+            });
+            $("#addLeft").on("click", function () {
+                $("#selectRight option:selected").appendTo($selectLeft);
+            });
+            $("#addRight").on("click", function () {
+                $("#selectLeft option:selected").appendTo($selectRight);
+            });
+            $("#allAddLeft").on("click", function () {
+                $("#selectRight option").appendTo($selectLeft);
+            });
+            $("#addAllRight").on("click", function () {
+                $("#selectLeft option").appendTo($selectRight);
+            });
+        })
+    </script>
+</body>
+</html>

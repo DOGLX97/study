@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #clock{
+            width: 400px;
+            height: 400px;
+            margin: 100px auto;
+            border: 3px solid #000000;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            position: relative;
+            background: #cccccc;
+        }
+        #clock li{
+            width: 4px;
+            height: 6px;
+            background: #000000;
+            position: absolute;
+            left: 199px;
+            top: 0;
+            -webkit-transform-origin: 0 200px;
+            -moz-transform-origin: 0 200px;
+            -ms-transform-origin: 0 200px;
+            -o-transform-origin: 0 200px;
+            transform-origin: 0 200px;
+            list-style: none;
+        }
+        #clock li:nth-child(5n+1){
+            height: 12px;
+        }
+        #hour{
+            width: 6px;
+            height: 60px;
+            position: absolute;
+            left: 197px;
+            top: 140px;
+            background: #000000;
+            -webkit-transform-origin: bottom;
+            -moz-transform-origin: bottom;
+            -ms-transform-origin: bottom;
+            -o-transform-origin: bottom;
+            transform-origin: bottom;
+        }
+        #minute{
+            width: 4px;
+            height: 100px;
+            background: #000000;
+            position: absolute;
+            left: 198px;
+            top: 100px;
+            -webkit-transform-origin: bottom;
+            -moz-transform-origin: bottom;
+            -ms-transform-origin: bottom;
+            -o-transform-origin: bottom;
+            transform-origin: bottom;
+        }
+        #second{
+            width: 2px;
+            height: 140px;
+            background: #000000;
+            position: absolute;
+            left: 199px;
+            top: 60px;
+            -webkit-transform-origin: bottom;
+            -moz-transform-origin: bottom;
+            -ms-transform-origin: bottom;
+            -o-transform-origin: bottom;
+            transform-origin: bottom;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <ul id="ul1"></ul>
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <script>
+        var oClock=document.getElementById("clock");
+        var oUl1=document.getElementById("ul1");
+        var oHour=document.getElementById("hour");
+        var oMinute=document.getElementById("minute");
+        var oSecond=document.getElementById("second");
+        var aLi="";
+        for(var i=0;i<60;i++){
+            aLi+="<li style='transform: rotate("+i*6+"deg)'></li>";
+        }
+        oUl1.innerHTML=aLi;
+        run();
+        setInterval(run,1000);
+        function run(){
+            var now=new Date();
+            var hour=now.getHours()*30+now.getMinutes()/60*30;
+            var minute=now.getMinutes()*6+now.getSeconds()/60*6;
+            var second=now.getSeconds()*6;
+            oHour.style.transform="rotate("+hour+"deg)";
+            oMinute.style.transform="rotate("+minute+"deg)";
+            oSecond.style.transform="rotate("+second+"deg)";
+        }
+    </script>
+</body>
+</html>

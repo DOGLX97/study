@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        li{
+            list-style: none;
+        }
+        #container{
+            width: 400px;
+            height: 300px;
+            border: 1px solid #000000;
+            margin: 100px auto;
+        }
+        #nav{
+            height: 30px;
+            border-bottom: 1px solid black;
+        }
+        #nav li{
+            width: 120px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background: #808080;
+            float: left;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        #nav .selected{
+            background: #000000;
+            color: #FFFFFF;
+        }
+        #text div{
+            display: none;
+        }
+        #text .selected{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="nav">
+            <li class="selected">HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ul>
+        <div id="text">
+            <div class="selected">111</div>
+            <div>222</div>
+            <div>333</div>
+        </div>
+    </div>
+    <script>
+        var oNav=document.getElementById("nav");
+        var aLi=oNav.getElementsByTagName("li");
+        var oText=document.getElementById("text");
+        var aDiv=oText.getElementsByTagName("div");
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index=i;//给每个li对象自定义属性，保存住当时的i的值
+            aLi[i].onclick=function(){              //li ，div索引（下标）一一对应关系
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].className="";
+                    aDiv[i].className="";
+                }
+                this.className="selected";
+                aDiv[this.index].className="selected";
+                //            console.log(i);    //3  先循环给对象绑定事件，点击时才执行方法，此时i已经是3了
+                //            console.log(aDiv[i]);
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+ <!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="div1" class="aa bb cc">
+        <div class="aa">div2</div>
+    </div>
+    <script>
+        document.getElementById("id");
+        document.getElementsByTagName("div");
+        //兼容性问题
+        document.getElementsByName("username");
+        document.getElementsByClassName("aa");
+        document.querySelector("#div1 .aa");//只返回一个对象
+        document.querySelectorAll(".aa");//返回数组
+        var oDiv1=document.querySelector("#div1");
+//        oDiv1.className+=" cc";
+        oDiv1.classList;//返回一个对象
+        console.log(oDiv1.classList.add("cc"));
+        oDiv1.classList.remove("bb");
+        oDiv1.classList.toggle("aa");//有删除，没有加上
+        oDiv1.classList.length
+    </script>
+</body>
+</html>

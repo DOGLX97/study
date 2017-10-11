@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button id="add">add</button>
+
+    <ul id="ul1">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+    </ul>
+
+    <script src="../jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+            $("#add").on("click",function(){
+               $("#ul1").append("<li>003</li>");
+            });
+            $("#ul1").on("click","li",function(){
+               alert($(this).html());
+            });
+        });
+    </script>
+</body>
+</html>

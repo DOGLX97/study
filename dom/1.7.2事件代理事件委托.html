@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>利用事件冒泡把子元素的事件委托给父元素绑定</title>
+</head>
+<body>
+    <ul id="nav">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+        <li>005</li>
+        <li>006</li>
+        <li>007</li>
+        <li>008</li>
+        <li>009</li>
+        <li>010</li>
+    </ul>
+    <script>
+        (function(){
+            var oNav=document.getElementById("nav");
+//            var aLi=oNav.getElementsByTagName("li");
+//            for(var i=0;i<aLi.length;i++){
+//                aLi[i].onclick= function () {
+//                    console.log(this.innerHTML);
+//                };
+//            }
+            oNav.onclick= function (e) {
+                var target= e.target||window.event.srcElement;//解决兼容性问题
+                console.log(target.innerHTML);
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var plusminus= 1, i,sum=0;
+    function PI(n){
+        for(i=1;i<=n;i++){
+            sum=sum+plusminus/(2*i-1);
+            plusminus*=-1;
+        }
+        document.write(4*sum);
+    }
+    var x=parseInt(prompt());
+    PI(x);
+</script>
+</body>
+</html>

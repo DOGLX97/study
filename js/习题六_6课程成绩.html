@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--设计一个程序，它（使用一个数组）接收用户输入的7门课程的成绩，
+然后在页面上显示其总成绩和平均分，并列出小于60的成绩-->
+<script>
+    var scores=new Array(7),sum=0,nb=0,i;
+    for(i=0;i<scores.length;i++){
+        scores[i]=parseFloat(prompt("请输入第"+(i+1)+"科成绩","0"));
+        sum+=scores[i];
+    }
+    document.write("总成绩:"+sum+"<br>");
+    document.write("平均分:"+Math.round(sum/scores.length)+"<br>");
+    document.write("以下为不合格成绩"+"<br>")
+    for(var i=0;i<scores.length;i++){
+        if(scores[i]<60){
+            nb++;
+            document.write("第"+(i+1)+"科:"+scores[i]+"<br>");
+        }
+    }
+    document.write("一共"+nb+"科不合格");
+
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--5.编制一个将两个字符串交叉合并的函数Merge(s1,s2)
+例如Merge("123","abc"）的返回结果是"1a2b3c"，如果两个字符串的长度不同，
+那么就将多余部分直接合并到结果字符串的末尾，
+如Merge("123456",''abc''）的返回结果是”1a2b3c456”。-->
+<script>
+//    var str1=alert("请输入第一个字符串");
+//    var str2=alert("请输入第二个字符串");
+//    var arrStr1=new Array;
+//    arrStr1=prompt("请输入第一个字符串");
+//    for(var i=0;i<arrStr1.length;i++){
+//        document.write(arrStr1[i]+"&nbsp;");
+//    }
+//    var arrStr2=new Array;
+//    arrStr2=prompt("请输入第二个字符串");
+//    for(var i=0;i<arrStr2.length;i++){
+//        document.write(arrStr2[1]+"&nbsp;");
+//    }
+    function linkStr(x,y){
+        var arrStr1,arrStr2;
+        arrStr1=x;
+        arrStr2=y;
+        if(arrStr1.length>arrStr2.length){
+            var i;
+            for(i=0;i<arrStr2.length;i++){
+                document.write(arrStr1[i]+arrStr2[i]);
+            }
+            for(i=arrStr2.length+1;i<arrStr1.length;i++){
+                document.write(arrStr1[i]);
+            }
+        }else if(arrStr1.length<arrStr2.length){
+            var i;
+            for(i=0;i<arrStr1.length;i++){
+                document.write(arrStr1[i]+arrStr2[i]);
+            }
+            for(i=arrStr1.length;i<arrStr2.length;i++){
+                document.write(arrStr2[i]);
+            }
+        }else{
+            var i;
+            for(i=0;i<arrStr1.length;i++){
+                document.write(arrStr1[i]+arrStr2[i]);
+            }
+        }
+    }
+    var str1=prompt("请输入第一个字符串");
+    var str2=prompt("请输入第二个字符串");
+    linkStr(str1,str2);
+
+</script>
+</body>
+</html>

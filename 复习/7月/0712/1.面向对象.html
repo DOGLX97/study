@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Cat(name){
+        this.name=name;
+    }
+    Cat.prototype.eat= function () {
+        alert(this.name+" is eating!");
+    }
+    var cat1=new Cat("mimi");
+    var cat2=new Cat("lala");
+//    cat1.eat();
+    cat2.eat();
+
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+    }
+    Person.prototype.sayHello= function () {
+        document.write(this.name+","+this.age);
+    };
+    var p1=new Person('limyoona',27);
+    p1.sayHello();
+
+    function Snake(length){
+        this.length=length;
+        this.color="#f0f";
+        this.speed='4';
+    }
+    Snake.prototype.move= function () {
+        //......
+    };
+    Snake.prototype.eat= function () {
+        //...
+    };
+    Snake.prototype.grow= function () {
+        //...
+    };
+</script>
+</body>
+</html>

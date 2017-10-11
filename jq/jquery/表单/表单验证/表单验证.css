@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+label{
+    width: 70px;
+    display: inline-block;
+}
+form{
+    border: 1px solid #000000;
+    width: 600px;
+    height: 100px;
+    text-align: left;
+    line-height: 200%;
+    margin: 200px auto;
+    padding: 10px;
+}
+.state{
+    display: inline-block;
+    width: 200px;
+    display: none;
+}
+img{
+    vertical-align: middle;
+}
+
+

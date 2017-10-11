@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>容器display:flex;div1宽度固定;div2 flex-grow:1;</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            display: -webkit-flex;
+            display: flex;
+            /*不用加width：100%*/
+        }
+        #div1{
+            width: 400px;
+            height: 400px;
+            background: #ff00ff;
+        }
+        #div2{
+            height: 400px;
+            background: #0000ff;
+            -webkit-flex-grow:1;
+            -moz-flex-grow:1;
+            -ms-flex-grow:1;
+            -o-flex-grow:1;
+            flex-grow:1;
+            margin-left: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="div1"></div>
+        <div id="div2"></div>
+    </div>
+</body>
+</html>

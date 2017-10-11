@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <script src="js/jquery-1.11.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>面包屑导航</h2>
+        <div class="breadcrumb">
+            <li><a href="#">ioi</a></li>
+            <li><a href="#">dia</a></li>
+            <li><a href="#">clc</a></li>
+        </div>
+<br/>
+<h2>标签式导航</h2>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#">ioi</a></li>
+        <li><a href="#">dia</a></li>
+        <li><a href="#">clc</a></li>
+    </ul>
+<br/>
+<h2>基本的胶囊式导航</h2>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="#">ioi</a></li>
+        <li><a href="#">dia</a></li>
+        <li><a href="#">clc</a></li>
+    </ul>
+<br/>
+<h2>垂直的胶囊式导航</h2>
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#">ioi</a></li>
+        <li><a href="#">dia</a></li>
+        <li><a href="#">clc</a></li>
+    </ul>
+<br/>
+<h2>两端对齐的导航元素,标签式，胶囊式</h2>
+    <ul class="nav nav-pills nav-justified">
+        <li class="active"><a href="#">ioi</a></li>
+        <li><a href="#">dia</a></li>
+        <li><a href="#">clc</a></li>
+    </ul>
+<br/>
+    <ul class="nav nav-tabs nav-justified">
+        <li class="active"><a href="#">ioi</a></li>
+        <li class="disabled"><a href="#">dia</a></li>
+        <li><a href="#">clc</a></li>
+    </ul>
+<br/>
+<!--disabled 禁用 只会改变a标签的外观，不会改变功能，需要用自定义的js来禁用链接-->
+<h2>带有下拉菜单的标签式导航,需要引入bootstrap.js</h2>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#">ioi</a></li>
+        <li class="disabled"><a href="#">dia</a></li>
+        <li><a href="#">clc</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                gugudan <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">ioi</a></li>
+                <li><a href="#">dia</a></li>
+                <li><a href="#">clc</a></li>
+                <li class="divider"></li>
+                <li><a href="#">gugudan</a></li>
+            </ul>
+        </li>
+    </ul>
+<br/>
+<h2>带有下拉菜单的胶囊式导航，需要引入bootstrap.js</h2>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="#">ioi</a></li>
+        <li class="disabled"><a href="#">dia</a></li>
+        <li><a href="#">clc</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                gugudan <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">ioi</a></li>
+                <li><a href="#">dia</a></li>
+                <li><a href="#">clc</a></li>
+                <li class="divider"></li>
+                <li><a href="#">gugudan</a></li>
+            </ul>
+        </li>
+    </ul>
+<br/>
+<h2>默认的导航栏，响应式基础组件</h2>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">team</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">ioi</a></li>
+                <li><a href="#">dia</a></li>
+                <li><a href="#">clc</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        gugudan<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">ioi</a></li>
+                        <li><a href="#">dia</a></li>
+                        <li><a href="#">clc</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">gugudan</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</body>
+</html>

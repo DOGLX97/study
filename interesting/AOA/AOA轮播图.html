@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AOA</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        li{
+            list-style:none;
+        }
+        img{
+            border:0px;
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            margin: 100px auto;
+            border: 1px solid #000000;
+            position:relative;
+            width: 540px;
+            height: 960px;
+        }
+        #imgs img{
+            display: none;
+        }
+        #imgs .selected{
+            display: block;
+        }
+        #nav{
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+        }
+        #nav li,#direction div{
+            float: left;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: inherit;
+            background: #ff00ff;
+            color: white;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        #direction{
+            position: absolute;
+            left: 5px;
+            bottom: 5px;
+        }
+        #nav .selected{
+            background: #7c736a;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="imgs">
+            <img src="IMG_8854.JPG" alt="" class="selected"/>
+            <img src="IMG_8855.JPG" alt=""/>
+            <img src="IMG_8857.JPG" alt=""/>
+            <img src="IMG_8859.JPG" alt=""/>
+            <img src="IMG_8861.JPG" alt=""/>
+            <img src="IMG_8862.JPG" alt=""/>
+            <img src="IMG_8863.JPG" alt=""/>
+        </div>
+        <div id="nav">
+            <li class="selected">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+        </div>
+        <div id="direction">
+            <div id="left">&lt;</div>
+            <div id="right">&gt;</div>
+        </div>
+    </div>
+    <script>
+        var oContainer=document.getElementById("container");
+        var oNav=document.getElementById("nav");
+        var aLi=oNav.getElementsByTagName("li");
+        var oImgs=document.getElementById("imgs");
+        var aImg=oImgs.getElementsByTagName("img");
+        var oLeft=document.getElementById("left");
+        var oRight=document.getElementById("right");
+        var nowIndex=0;
+        var timer;
+        function changeImg(){
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].className="";
+                aImg[i].className="";
+            }
+            aLi[nowIndex].className="selected";
+            aImg[nowIndex].className="selected";
+        }
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index=i;
+            aLi[i].onclick=function(){
+                    nowIndex=this.index;
+                    changeImg();
+            };
+        }
+        oLeft.onclick=oRight.onclick=function(){
+            if(this==oLeft){
+                nowIndex--;
+                if(nowIndex==-1){
+                    nowIndex=aLi.length-1;
+                }
+            }else{
+                nowIndex++;
+                if(nowIndex==aLi.length){
+                    nowIndex=0;
+                }
+            }
+            changeImg();
+        };
+        play();
+        function play(){
+            timer=setInterval(function(){oRight.onclick();},1000);
+        }
+        oContainer.onmouseover=function(){
+            clearInterval(timer);
+        };
+        oContainer.onmouseout=function(){
+            play();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button id="btn">click</button>
+    <div id="div1">
+        <p class="p1">111</p>
+        <p class="p1">222</p>
+        <p class="p2">333</p>
+        <p class="p3">444</p>
+    </div>
+    <ul id="ul1">
+        <li>s</li>
+        <li>n</li>
+        <li>s</li>
+        <li class="d">d</li>
+        <li></li>
+    </ul>
+    <p title="hh">hhhhhhh</p>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#btn").on("click", function () {
+                alert("666");
+            });
+            $(".p1").on("click", function () {
+//                alert(this.innerHTML);//原生写法
+                alert($(this).html());
+            });
+
+
+//            $("#div1 .p2").on("click", function () {
+//                alert($(this).html());
+//            });
+//            $("#div1 .p3").on("click", function () {
+//                alert($(this).html());
+//            });
+            /**
+             *性能比上面的好，$div1只获取一次
+             */
+            var $div1=$("#div1");
+            $(".p2",$div1).on("click", function () {
+                alert($(this).html());
+            });
+            $(".p3",$div1).on("click", function () {
+                alert($(this).html());
+            });
+
+//            $("#ul1 li:even").css("background","red");
+//            $("#ul1 li:odd").css("background","red");
+//            $('#ul1 li:eq(2)').css("background",'red');
+//            $('#ul1 li:first').css("background","red");
+//            $('#ul1 li:last').css("background","red");
+//            $('#ul1 li:gt(1)').css("background","red");
+//            $("#ul1 li:lt(1)").css("background","red");
+//            $("#ul1 li:not(.d)").css("background","red");
+//            $("#ul1 li:contains(s)").css("background","red");
+//            $("#ul1:has(.d)").css("background","red");//选中的是符合条件的ul1
+            $("#ul1 li:empty").css("background","red");
+            $("[title=hh]").css("background","red");
+        })
+
+
+
+    </script>
+</body>
+</html>

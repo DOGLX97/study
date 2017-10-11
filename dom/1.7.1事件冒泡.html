@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 400px;
+            height: 400px;
+            background: #000000;
+        }
+        #div2{
+            width: 300px;
+            height: 300px;
+            background: #ff00ff;
+        }
+        #div3{
+            width: 200px;
+            height: 200px;
+            background: #23cfa7;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <div id="div3"></div>
+        </div>
+    </div>
+    <script>
+        var oDiv1=document.getElementById("div1");
+        var oDiv2=document.getElementById("div2");
+        var oDiv3=document.getElementById("div3");
+        var oBody=document.getElementById("body");
+        var oHtml=document.getElementById("html");
+        /*********************/
+//        oDiv1.onclick= function () {
+//            alert("div1");
+//        };                          //div1
+//        oDiv2.onclick=function(){
+//            alert("div2");
+//        };                          //div2 div1
+//        oDiv3.onclick=function(){
+//            alert("div3");
+//        };                          //div3 div2 div1
+//        oBody.onclick=function(){
+//            alert("body");
+//        };
+//        oHtml.onclick=function(){
+//            alert("html");
+//        };
+        /*********************/
+//        oDiv1.onclick=function(){
+//            alert(1);
+//        };
+//        oDiv1.onclick=function(){
+//            alert(2);
+//        };                           //只弹出2，被覆盖了
+        /***********************/
+//        oDiv1.addEventListener("click",function(e){
+//            alert("div1");
+//            console.log(this);
+//            e.stopPropagation();   //标准浏览器阻止事件冒泡
+//        },false);           //只弹出div1，this指向div1
+//        oDiv2.addEventListener("click",function(e){
+//            alert("div2");
+//            e.stopPropagation();
+//        },false);           //只弹出div2
+//        oDiv3.addEventListener("click",function(e){
+//            alert("div3");
+//            e.stopPropagation();
+//        },false);           //只弹出div3
+        /**************************/
+//        oDiv1.addEventListener("click", function (e) {
+//            alert("div1");
+//        },true);            //div1
+//        oDiv2.addEventListener("click",function(e){
+//            alert("div2");
+//        },true);            //div1 div2
+//        oDiv3.addEventListener("click",function(e){
+//            alert("div3");
+//        },true);            //div1 div2 div3
+        /*****************************/
+//        oDiv1.attachEvent("onclick",function(){
+//            alert(1);
+//            window.event.cancelBubble=true;
+//            alert(this===window);
+//        });
+//        oDiv2.attachEvent("onclick",function(){
+//            alert(2);
+//            window.event.cancelBubble=true;
+//        });
+//        oDiv3.attachEvent("onclick",function(){
+//            alert(3);
+//            window.event.cancelBubble=true;
+//        });
+        /******************************/
+//        oDiv1.attachEvent("onclick",function(){
+//            alert(1);
+//        });
+//        oDiv1.attachEvent("onclick",function () {
+//            alert(2);
+//        })
+        /*****************************************/
+        addEvent(oDiv1,"click", function () {
+            alert(1);
+        });
+        function addEvent(elem,type,handler){
+            if(elem.addEventListener){
+                elem.addEventListener(type,handler);
+            }else if(elem.attachEvent){
+                elem.attachEvent("on"+type,handler);//ie中 this指向window
+            }else{
+                elem["on"+type]=handler;
+            }
+        }                   //封装函数解决兼容性问题
+
+        var obj={
+            name:"limyoona",
+            age:27
+        };
+
+        var p="name";
+        console.log(obj.p);     //undefined
+        console.log(obj[p]);    //limyoona
+
+        for(var p in obj){
+            console.log(obj[p]);//limyoona 27
+        }
+
+    </script>
+</body>
+</html>
+<!--
+    obj.addEventListener(type,function(){},false/true);
+    默认false 事件冒泡
+    true 事件捕获
+
+！！！面试必问：事件发生顺序是先捕获后冒泡
+
+    阻止事件冒泡：
+        标准浏览器e.stopPropagation();
+        非标准浏览器window.event.cancelBubble=true;
+    非标准浏览器:
+        obj.attachEvent("onClick",function(){});
+            //只支持事件冒泡，不支持事件捕获
+	    问题：1.反顺序执行321 2.this指向有问题
+
+	obj.属性
+   	obj["属性"]//变量用["属性"]
+
+   	事件代理/事件委托：利用事件冒泡把子元素的事件委托给父元素绑定
+-->

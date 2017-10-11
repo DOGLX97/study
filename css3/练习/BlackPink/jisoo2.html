@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        li{
+            list-style:none;
+        }
+        img{
+            border:0px;
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            width: 1200px;
+            height: 1200px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+        }
+        #imgs img{
+            width: 1200px;
+            height: 1200px;
+            display: none;
+        }
+        #imgs .selected{
+            display: block;
+        }
+        #nav{
+            position: absolute;
+            right: 210px;
+            bottom: 10px;
+        }
+        #nav li,#direction div{
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            background: black;
+            color: white;
+            text-align: center;
+            line-height: inherit;
+
+        }
+        #direction{
+            position: absolute;
+            left: 210px;
+            bottom: 10px;
+        }
+        #nav .selected{
+            background: #ff00ff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="imgs">
+            <img src="img/IMG_9011.JPG" alt="" class="selected"/>
+            <img src="img/IMG_9012.JPG" alt=""/>
+            <img src="img/IMG_9013.JPG" alt=""/>
+        </div>
+        <div id="nav">
+            <li class="selected">1</li>
+            <li>2</li>
+            <li>3</li>
+        </div>
+        <div id="direction">
+            <div id="left">&lt;</div>
+            <div id="right">&gt;</div>
+        </div>
+    </div>
+    <script>
+        var oContainer=document.getElementById("container");
+        var oImgs=document.getElementById("imgs");
+        var aImg=oImgs.getElementsByTagName("img");
+        var oNav=document.getElementById("nav");
+        var aLi=oNav.getElementsByTagName("li");
+        var oLeft=document.getElementById("left");
+        var oRight=document.getElementById("right");
+        var nowIndex=0;
+        var timer;
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index=i;
+            aLi[i].onclick=function(){
+                nowIndex=this.index;
+                changeImg();
+            };
+        }
+        oLeft.onclick=oRight.onclick=function(){
+            if(this==oLeft){
+                nowIndex--;
+                if(nowIndex==-1){
+                    nowIndex=aLi.length-1;
+                }
+            }else{
+                nowIndex++;
+                if(nowIndex==aLi.length){
+                    nowIndex=0;
+                }
+            }
+            changeImg();
+        };
+        play();
+        oContainer.onmouseover= function () {
+            clearInterval(timer);
+        };
+        oContainer.onmouseout=function(){
+            play();
+        };
+        function play(){
+            timer=setInterval(function () {
+                oRight.onclick();
+            },1000);
+        }
+        function changeImg(){
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].className="";
+                aImg[i].className="";
+            }
+            aLi[nowIndex].className="selected";
+            aImg[nowIndex].className="selected";
+        }
+    </script>
+</body>
+</html>

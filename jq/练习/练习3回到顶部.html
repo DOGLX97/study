@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 2000px;
+        }
+        #back{
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background: #000000;
+            color: #ffffff;
+            cursor: pointer;
+            position: fixed;
+            right: 5px;
+            bottom: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="back">back</div>
+    <script src="../jquery-1.9.1.min.js"></script>
+    <script>
+        //原生写法
+//        var oBack=document.getElementById("back");
+//        oBack.onclick=function(){
+//            var timer=setInterval(function(){
+//                var iScrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+//                if(iScrollTop<=0){
+//                    clearInterval(timer);
+//                }
+//                window.scrollTo(0,iScrollTop-=50);
+//            },100);
+//        };
+
+        //jquery写法
+        $(function(){
+            $("#back").on("click",function(){
+               var timer=setInterval(function(){
+                   var $target;
+                   if(document.documentElement.scrollTop){
+                       $target=$("html");
+                   }else{
+                       $target=$("body");
+                   }
+                   var iScrollTop=$target.scrollTop();
+                   if(iScrollTop<=0){
+                       clearInterval(timer);
+                   }
+                   $target.scrollTop(iScrollTop-=50);
+               },100);
+            });
+        });
+    </script>
+</body>
+</html>

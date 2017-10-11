@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+    <style>
+        body{
+            position: relative;
+            height: 500px;
+        }
+        #container{
+            width: 500px;
+            height: 300px;
+            border: 2px solid #000;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        form{
+            padding: 100px 10px;
+        }
+        input{
+            width: 150px;
+        }
+        label{
+            display: inline-block;
+            width: 80px;
+        }
+        button{
+            margin: 10px 20px 10px 0;
+            width: 100px;
+        }
+        img{
+            vertical-align: bottom;
+        }
+        .usernameWrong,.emailWrong{
+            display: none;
+        }
+        #usernameRight,#emailRight{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <form action="">
+            <label for="username">用户名：</label>
+            <input type="text" id="username"/>
+            <img src="img/reg3.gif" alt="" class="usernameWrong"/>
+            <span class="usernameWrong">请输入至少6位数字</span>
+            <img src="img/reg4.gif" alt="" id="usernameRight"/>
+            <br/>
+
+            <label for="email">邮箱：</label>
+            <input type="text" id="email"/>
+            <img src="img/reg3.gif" alt="" class="emailWrong"/>
+            <span class="emailWrong">请输入正确的邮箱地址</span>
+            <img src="img/reg4.gif" alt="" id="emailRight"/>
+            <br/>
+
+            <button id="submit">提交</button>
+            <button id="reset">重置</button>
+        </form>
+    </div>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            var $usernameWrong=$(".usernameWrong");
+            $("#username").on("keyup", function () {
+                $usernameWrong.show();
+                if(this.value.length>6){
+                    $usernameWrong.hide();
+                    $("#usernameRight").show();
+                }
+            });
+            $("#email").on("keyup",function(){
+                var $emailWrong=$(".emailWrong");
+                $emailWrong.show();
+                var re=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+                if(re.test(this.value)){
+                    $emailWrong.hide();
+                    $("#emailRight").show();
+                }
+            });
+            $("#submit").on("click", function () {
+                var str="";
+                str="用户名："+$("#username").val()+"\n"+"邮箱："+$("#email").val();
+                alert(str);
+            });
+        })
+    </script>
+</body>
+</html>

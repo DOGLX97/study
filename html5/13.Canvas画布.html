@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="200px" height="200px"></canvas>
+    <script>
+        var c=document.getElementById("canvas");//JavaScript 使用 id 来寻找 canvas 元素
+        var cxt=c.getContext("2d");//然后，创建 context 对象
+        cxt.fillStyle="#FF0000";
+        cxt.fillRect(0,0,150,75);//fillStyle 方法将其染成红色，fillRect 方法规定了形状、位置和尺寸
+
+        cxt.moveTo(100,100);//起始点
+        cxt.lineTo(300,300);//终点
+        cxt.stroke();//描边
+    </script>
+</body>
+</html>

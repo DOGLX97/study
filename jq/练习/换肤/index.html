@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>换肤小例子</title>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/skin1.css" id="cssfile"/>
+</head>
+<body>
+    <h1>换肤</h1>
+    <div id="nav">
+        <div id="skin1">skin1</div>
+        <div id="skin2">skin2</div>
+        <div id="skin3">skin3</div>
+    </div>
+    <script src="../jquery-1.9.1.min.js"></script>
+    <script src="../jquery.cookie.js"></script>
+    <script>
+        $(function () {
+            var skin;
+            if($.cookie("cssfile")){
+                skin=$.cookie("cssfile");
+                changeSkin();
+            }
+            $("#nav div").on("click", function () {
+                skin=$(this).attr("id");
+                $.cookie("cssfile",skin,{expires:3});
+                changeSkin();
+            });
+            function changeSkin(){
+                $("#cssfile").attr("href","css/"+skin+".css");
+            }
+        })
+    </script>
+</body>
+</html>

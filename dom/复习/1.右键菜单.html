@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>右键菜单</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        ul{
+            list-style: none;
+        }
+        #menu{
+            border:1px solid #000000;
+            width: 100px;
+            display: none;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        #menu li{
+            width: 100px;
+            height: 30px;
+            border-bottom: 1px solid #808080;
+            text-align: center;
+            line-height: 30px;
+        }
+        #menu li:hover{
+            background: #7c736a;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="menu">
+            <li>0001</li>
+            <li>0002</li>
+            <li>0003</li>
+            <li>0004</li>
+            <li>0005</li>
+        </ul>
+    </div>
+    <script>
+        var oMenu=document.getElementById("menu");
+        var aLi=oMenu.getElementsByTagName("li");
+        document.oncontextmenu=function(e){
+            e=e||window.event;
+            oMenu.style.display="block";
+            oMenu.style.top= e.clientY+"px";
+            oMenu.style.left= e.clientX+"px";
+            return false;
+        };
+        document.onclick=function(){
+            oMenu.style.display="none";
+        };
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].onclick= function () {
+                alert(this.innerHTML);
+            };
+        }
+
+
+    </script>
+</body>
+</html>

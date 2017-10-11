@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #container {
+            width: 720px;
+            height: 410px;
+            margin:120px auto;
+            position: relative;
+        }
+        #imgs img{
+            display: none;
+        }
+        #imgs .selected{
+            display: block;
+        }
+        #nav li,#arrows div{
+            width: 20px;
+            height: 20px;
+            background: #FFFFFF;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+            margin-right: 5px;
+            float: left;
+        }
+        #nav,#arrows{
+            position: absolute;
+            bottom: 10px;
+        }
+        #nav{
+            right: 10px;
+        }
+        #arrows{
+            left: 10px;
+        }
+        #nav .selected{
+            background: #808080;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="imgs">
+            <img src="img/1.jpg" alt="" class="selected"/>
+            <img src="img/2.jpg" alt=""/>
+        </div>
+        <div id="nav">
+            <li class="selected">1</li>
+            <li>2</li>
+        </div>
+        <div id="arrows">
+            <div id="left">&lt;</div>
+            <div id="right">&gt;</div>
+        </div>
+    </div>
+    <script>
+        var oContainer=document.getElementById("container");
+        var oImgs=document.getElementById("imgs");
+        var aImg=oImgs.getElementsByTagName("img");
+        var oNav=document.getElementById("nav");
+        var aLi=oNav.getElementsByTagName("li");
+        var oLeft=document.getElementById("left");
+        var oRight=document.getElementById("right");
+        var nowIndex=0;
+        var timer;
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index=i;
+            aLi[i].onclick=function(){
+                nowIndex=this.index;
+                changeImg();
+            }
+        }
+        oLeft.onclick=oRight.onclick=function(){
+            if(this==oLeft){
+                nowIndex--;
+                if(nowIndex==-1){
+                    nowIndex=aLi.length-1;
+                }
+            }else{
+                nowIndex++;
+                if(nowIndex==aLi.length){
+                    nowIndex=0;
+                }
+            }
+            changeImg();
+        };
+        oLeft.onselectstart=oRight.onselectstart=function(){
+            return false;  //阻止浏览器默认行为
+        };
+        play();
+        oContainer.onmouseover=function(){
+            clearInterval(timer);
+        };
+        oContainer.onmouseout=function(){
+            play();
+        };
+        function play(){
+            timer=setInterval(function(){
+                oRight.onclick();
+            },1000)
+        }
+        function changeImg(){
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].className="";
+                aImg[i].className="";
+            }
+            aLi[nowIndex].className="selected";
+            aImg[nowIndex].className="selected";
+        }
+    </script>
+</body>
+</html>

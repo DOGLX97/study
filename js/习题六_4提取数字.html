@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--4.编制一个从字符串中收集数字字符（"0"',"1"，…"9"）的函数CollectDigits(s)，
+它从字符串s中顺序取出数字，并且合并为一个独立的字符串作为函数的返回值。
+例如函数调用CollectDigits("1abc23def4"）的返回值是字符串"1234"。-->
+<script>
+    function CollectDigits(n){
+        var s = new String(n);//创建String对象，new一个
+        var result="";//result字符串型的
+        var ch;
+        for(var i=0;i<s.length;i++)
+        {
+            ch = s.charAt(i);//charAt() 方法可返回指定位置的字符
+            if (ch>="0" && ch <= "9") result += ch;//字符串连接
+        }
+        return result;
+    }
+    var sStr=prompt("请输入字符串:");
+    alert(CollectDigits(sStr));
+</script>
+</body>
+</html>

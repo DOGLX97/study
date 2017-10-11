@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>少女时代</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        li{
+            list-style:none;
+        }
+        img{
+            border: 0;
+        }
+        a{
+            text-decoration:none;
+        }
+        #container{
+            margin: 100px auto;
+            width: 560px;
+            height: 747px;
+            border: 1px solid black;
+            position: relative;
+        }
+
+        #imgs div{
+            display: none;
+        }
+        #imgs .selection{
+            display: block;
+        }
+        #name .selection{
+            background: #ff00ff;
+        }
+        #name{
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+        }
+        #name div{
+            width: 50px;
+            color: white;
+            background: black;
+            float: left;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        #direction {
+            position: absolute;
+            left: 5px;
+            bottom: 5px;
+        }
+        #direction div{
+            width: 20px;
+            color: white;
+            background: black;
+            float: left;
+            margin-right: 5px;
+            text-align: center;
+            line-height: inherit;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="name">
+            <div class="selection">金泰妍</div>
+            <div>郑秀妍</div>
+            <div>黄美英</div>
+            <div>李顺圭</div>
+            <div>金孝渊</div>
+            <div>权侑莉</div>
+            <div>崔秀英</div>
+            <div>林允儿</div>
+            <div>徐珠贤</div>
+        </div>
+        <div id="direction">
+            <div id="left">&lt;</div>
+            <div id="right">&gt;</div>
+        </div>
+        <div id="imgs">
+            <div class="selection"><img src="IMG_8839.JPG" alt=""/></div>
+            <div><img src="IMG_8840.JPG" alt=""/></div>
+            <div><img src="IMG_8837.JPG" alt=""/></div>
+            <div><img src="IMG_8838.JPG" alt=""/></div>
+            <div><img src="IMG_8844.JPG" alt=""/></div>
+            <div><img src="IMG_8841.JPG" alt=""/></div>
+            <div><img src="IMG_8843.JPG" alt=""/></div>
+            <div><img src="IMG_8842.JPG" alt=""/></div>
+            <div><img src="IMG_8845.JPG" alt=""/></div>
+        </div>
+    </div>
+    <script>
+        var oContainer=document.getElementById("container");
+        var oName=document.getElementById("name");
+        var aDivN=oName.getElementsByTagName("div");
+        var oLeft=document.getElementById("left");
+        var oRight=document.getElementById("right");
+        var oImgs=document.getElementById("imgs");
+        var aDivI=oImgs.getElementsByTagName("div");
+        var nowIndex=0;
+        var timer;
+        function changeImg(){
+            for(var i=0;i<aDivN.length;i++){
+                aDivN[i].className="";
+                aDivI[i].className="";
+            }
+            aDivN[nowIndex].className="selection";
+            aDivI[nowIndex].className="selection";
+        }
+        for(var i=0;i<aDivN.length;i++){
+            aDivN[i].index=i;
+            aDivN[i].onclick=function(){
+                nowIndex=this.index;
+                changeImg();
+            };
+        }
+        oLeft.onclick=oRight.onclick=function(){
+            if(this==oLeft){
+                nowIndex--;
+                if(nowIndex==-1){
+                    nowIndex=aDivN.length-1;
+                }
+            }else{
+                nowIndex++;
+                if(nowIndex==aDivN.length){
+                    nowIndex=0;
+                }
+            }
+            changeImg();
+        };
+        play();
+        function play(){
+            timer=setInterval(function(){oRight.onclick();},1000);
+        }
+        oContainer.onmouseover=function(){
+            clearInterval(timer);
+        };
+        oContainer.onmouseout=function(){
+            play();
+        };
+    </script>
+</body>
+</html>

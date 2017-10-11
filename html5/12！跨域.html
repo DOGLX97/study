@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+跨域：同源策略
+
+跨域四种情况
+www.a.com    www.b.com	域名完全不同
+www.qq.com    news.qq.com  主域和子域
+http：//192.168.1.100：80     http：//192.168.1.100：8080 端口号不一样
+http：//192.168.1.100       https：//192.168.1.100  协议不同
+
+	（XAMPP集成工具用于测试，包括apache mysql filezilla Tomcat
+	apache tomcat 服务器）
+
+jquery中$.get("http://www.b.com/index.html",{name:"zhangsan"});
+
+解决跨域问题
+CDN内容分发网络,前端性能优化：cdn加速
+
+第一种方法：jsonp：json padding（原理src属性不存在跨域问题；利用script标签里的src属性，使用较多）
+第二种方法：iframe是个标签，里面有src属性
+    （用于一个文件嵌入另一个文件；不推荐使用，首先把dom结构会变复杂，其次不利于搜索引擎解析）
+
+第三种方法：服务器代理方式没有跨域问题
+第四种方法：html5提供的方式postMessage(原理iframe标签里的src属性不存在跨域问题)
+-->
+</body>
+</html>

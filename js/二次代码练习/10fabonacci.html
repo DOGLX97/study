@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <!--1.递归函数方法-->
+    <!--<script>-->
+        <!--var iNum=prompt();-->
+        <!--function fabonacci(iNum) {          //记得写形参-->
+            <!--if (iNum < 3) return 1;-->
+            <!--return fabonacci(iNum - 1) + fabonacci(iNum - 2);-->
+        <!--}-->
+        <!--document.write(fabonacci(iNum));-->
+    <!--</script>-->
+
+
+    <!--2.非递归方法-->
+    <script>
+        var iNum=prompt();
+        function fabonacci(iNum){
+            if(iNum<3){
+              return 1;
+            }else{
+                var temp,fa1= 1,fa2=1;          //fa1=1,fa2=1,temp;
+                for(var i=3;i<=iNum;i++){
+                    temp=fa1+fa2;               //temp=fa1+fa2;fa1=fa2;fa2=temp;
+                    fa1=fa2;
+                    fa2=temp;
+                }
+                return fa2;                    //返回fa2的值
+            }
+        }
+        document.write(fabonacci(iNum));
+    </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*<!--2-->*/
+        /*#back{*/
+            /*background: #cccccc;*/
+        /*}*/
+        /**{*/
+            /*margin: 0;*/
+            /*padding: 0;*/
+        /*}*/
+        /*div{*/
+            /*width: 200px;*/
+            /*height: 200px;*/
+        /*}*/
+        /*#div1{*/
+            /*background: black;*/
+            /*/!*display: none;   //dom对象不存在，事件不能被触发*!/*/
+            /*/!*opacity: 0;//dom对象存在，其透明度为零，事件可以被触发*!/*/
+            /*/!*filter:alpha(opacity=0);*!/*/
+            /*/!*visibility:hidden;//dom对象存在，能见度隐藏，事件不可被触发*!/*/
+        /*}*/
+        /*#div2{*/
+            /*background: #ff00ff;*/
+        /*}*/
+    </style>
+</head>
+<body>
+    <!--1-->
+    <!--<a href="2.选项卡.html">history</a>-->
+    <!--2-->
+    <!--<button id="back">back</button>-->
+    <!--<div id="div1">-->
+        <!--<div class="aa">001</div>-->
+        <!--<div class="aa">002</div>-->
+        <!--<div class="aa">003</div>-->
+        <!--<div class="aa">004</div>-->
+    <!--</div>-->
+    <!--<div>1</div>-->
+    <!--<div>2</div>-->
+    <!--<div>3</div>-->
+    <!--<div>4</div>-->
+    <!--<div>5</div>-->
+<!--<script>-->
+    <!-- 1-->
+<!--//     var a=5;-->
+<!--//    function fn(){-->
+<!--//        console.log("i am fn");-->
+<!--//    }-->
+<!--//    console.log(window.a);-->
+<!--//    console.log(window.fn);-->
+<!--//-->
+<!--//    window.document.write("bom");-->
+<!--//    window.alert("1233333333");-->
+<!--//-->
+<!--//    function toTaobao(){-->
+<!--//        if(navigator.userAgent.indexOf("iPhone")!=-1){-->
+<!--//            location.href="http://m.taobao.com";-->
+<!--//        }else{-->
+<!--//            location.href="http://www.taobao.com";-->
+<!--//        }-->
+<!--//    }-->
+<!--//    toTaobao();-->
+
+    <!--&lt;!&ndash;2&ndash;&gt;-->
+<!--//    var oBack=document.getElementById("back");-->
+<!--//    console.log(oBack);-->
+<!--//    //事件-->
+<!--//    //事件三要素：事件源，事件处理方法，事件对象-->
+<!--//    oBack.onclick=function(){-->
+<!--//        history.back();-->
+<!--//    };-->
+<!--//    oBack.onclick();-->
+<!--//    var aDiv=document.getElementsByClassName("aa");//有兼容性问题-->
+<!--//    console.log(aDiv);-->
+<!--//    var aDiv2=document.getElementsByTagName("div");-->
+<!--//    console.log(aDiv2);-->
+<!--//-->
+<!--//    var oDiv1=document.getElementById("div1");-->
+<!--//    var aDiv3=oDiv1.getElementsByTagName("div");-->
+<!--//    console.log(oDiv1);-->
+<!--//    console.log(aDiv3);-->
+
+<!--</script>-->
+
+    <!--<script>-->
+<!--//        &lt;!&ndash; 3. 定时器 &ndash;&gt;-->
+<!--//        var i=0;-->
+<!--//        var timer=setInterval(function(){-->
+<!--//            console.log(i++);-->
+<!--//            if(i>10){-->
+<!--//                clearInterval(timer);-->
+<!--//            }-->
+<!--//        },1000);-->
+<!--//        console.log(typeof timer);//number-->
+<!--//        console.log(typeof null);//object-->
+<!--//        console.log(typeof undefined);//undefined-->
+
+<!--//        var k=0;-->
+<!--//        var timer2=setInterval(function(){-->
+<!--//            document.write(k++);-->
+<!--//            if(i>5){-->
+<!--//                clearInterval(timer2);-->
+<!--//            }-->
+<!--//        },1000);-->
+
+<!--//           var i=10;-->
+<!--//           var timer3=setTimeout(function(){-->
+<!--//               console.log(i++);-->
+<!--//           },2000);  //10-->
+<!--//           console.log(timer3);//1-->
+
+<!--//            setTimeout(function(){-->
+<!--//                console.log(1);-->
+<!--//            },0);-->
+<!--//            console.log(2);-->
+<!--//            console.log(3);-->
+<!--//                                //  2 3 1-->
+
+<!--&lt;!&ndash;//    </script>&ndash;&gt;-->
+    <!--<div id="div1">divdiv</div>-->
+    <!--<img src="../img/1.jpg" alt="" id="pic"/>-->
+    <!--<div></div>-->
+    <!--<script>-->
+        <!--&lt;!&ndash; 4&ndash;&gt;-->
+        <!--var oPic=document.getElementById("pic");-->
+        <!--oPic.onload=function(){-->
+            <!--console.log(oPic.offsetWidth);//520-->
+            <!--console.log(oPic.offsetHeight);//280-->
+        <!--};-->
+    <!--</script>-->
+
+    <!--<div id="div1">-->
+
+    <!--</div>-->
+    <!--<div id="div2"></div>-->
+    <!--<script>-->
+        <!--&lt;!&ndash; 5&ndash;&gt;-->
+        <!--var oDiv1=document.getElementById("div1");-->
+        <!--div1.onclick=function(){-->
+            <!--alert("123333");-->
+        <!--};-->
+    <!--</script>-->
+      <!--&lt;!&ndash;div1>div2 可弹出&ndash;&gt;-->
+      <!--&lt;!&ndash;div1,div2可弹出&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash; this&ndash;&gt;-->
+    <!--<div id="div1">divdivdiv</div>-->
+    <!--<script>-->
+        <!--var a=5;-->
+<!--//        console.log(window.a);//5-->
+<!--//        console.log(this);-->
+        <!--//Window {stop: function, open: function, alert: function, confirm: function, prompt: function…}-->
+
+<!--//        var oDiv=document.getElementById("div1");-->
+<!--//        oDiv.onclick=function(){-->
+<!--//            console.log(this);//<div id="div1">divdivdiv</div>-->
+<!--//        };-->
+
+<!--//        window.setInterval(function(){-->
+<!--//            console.log(this);-->
+<!--//        },1000)   //this当前是Window对象-->
+
+        <!--function fn(){-->
+            <!--console.log(this);  //this 当前是window对象-->
+        <!--}-->
+        <!--fn();-->
+
+    <!--</script>-->
+
+</body>
+</html>

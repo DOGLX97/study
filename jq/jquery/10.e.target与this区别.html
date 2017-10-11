@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+原生
+//e.target是真正的事件源
+//this指向当前对象
+
+
+jq中
+//event.currentTarget在事件冒泡过程中的当前DOM元素。总是等同于this
+//event.target触发事件的DOM元素。
+//this
+
+//target 属性可以是注册事件时的元素，或者它的子元素。
+通常用于比较 event.target 和 this 来确定事件是不是由于冒泡而触发的。
+经常用于事件冒泡时处理事件委托。
+</body>
+</html>

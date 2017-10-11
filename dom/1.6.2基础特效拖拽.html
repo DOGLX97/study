@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: #ff00ff;
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <script>
+        var oDiv1=document.getElementById("div1");
+        oDiv1.onmousedown=function(e){
+            e= e||window.event;
+            var iDisX= e.clientX-oDiv1.offsetLeft;//鼠标在div1的位置
+            var iDisY= e.clientY-oDiv1.offsetTop;
+            document.onmousemove=function(e){
+                e= e||window.event;
+                oDiv1.style.left= e.clientX-iDisX+"px";//鼠标在页面的位置
+                oDiv1.style.top= e.clientY-iDisY+"px";
+            };
+        };
+        document.onmouseup=function(){
+            document.onmousemove=null;
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button id="add">增加</button>
+    <ul id="nav">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+        <li>005</li>
+    </ul>
+    <script>
+        (function() {
+            var oNav=document.getElementById("nav");
+            var oAdd=document.getElementById("add");
+            var aLi=oNav.getElementsByTagName("li");
+//            for(var i=0;i<aLi.length;i++){
+//                aLi[i].onclick=function(){
+//                    console.log(this.innerHTML);
+//                }
+//            }
+            oNav.onclick=function(e){
+                var target= e.target||window.event.srcElement;
+                console.log(target.innerHTML);
+            };       //事件委托/事件代理
+            oAdd.onclick= function () {
+//                var sLi="<li>"+Math.random()+"</li>";
+//                oNav.innerHTML+=sLi;        //增加li标签
+
+                var oLi=document.createElement("li");//创建dom对象
+                oLi.innerHTML=Math.random();
+                oNav.appendChild(oLi);//增加孩子
+            }
+
+
+
+
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--9.利用全局变量和函数，设计模拟幸运数字机游戏。
+设卒运数字为8，每次由计算机随机产生3个1-9之间(包括1和9）的随机数，
+当这3个随机数中有一个数字为8时，就算赢了一次，要求利用函数计算获胜率。-->
+<script>
+    //1.随机产生三个1—9之间的整数（包括1和9）
+    //2.判断是否三个数中有8
+    //3.利用函数计算获胜率
+//   function play() {
+//       var times = 0;
+//       var percentages = 0;
+//       for (var i = 1; i <= 3; i++) {
+//           var iNum = Math.floor(Math.random() * 9) + 1;
+//           if (iNum == 8) {
+//               document.write("win!")
+//               times++;
+//           } else {
+//               percentages++;
+//           }
+//       }
+//       document.write("winningPercentage:" + times/percentages);
+//   }
+//       play();
+    var play_times=0;
+    var wins=0;
+    var win_rate=0;
+    var last_digits,last_win;
+    function play(){
+        var i,digit;//digit数字
+        play_times++;
+        last_digits="";//string型，用于数字拼接
+        last_win=false;
+        for(i=0;i<3;i++)
+        {
+            digit = Math.floor(Math.random()*9)+1;
+            last_digits += digit;//三个随机数字拼接
+            if (digit==8) last_win=true;
+        }
+        if (last_win) wins++;
+        win_rate = Math.floor(100*(wins/play_times));
+    }
+    while(true) {
+        play();
+        if (!confirm(last_digits + "\n" + (last_win ? "赢" : "输") + "\n胜率" + win_rate + "%,继续吗?")) break;
+    }//confirm对话框：确定/取消
+
+</script>
+</body>
+</html>

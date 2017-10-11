@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>折叠菜单1</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 200px;
+            border: 1px solid #000;
+            text-align: center;
+            margin: 100px auto;
+        }
+        #container h3{
+            background: #000000;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+        .submenu{
+            display: none;
+        }
+        .submenu li{
+            cursor: pointer;
+        }
+        .submenu li:hover{
+            background: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <ul id="container">
+        <li class="first-menu">
+            <h3>管理区</h3>
+            <ul class="submenu">
+                <li>001</li>
+                <li>002</li>
+                <li>003</li>
+            </ul>
+        </li>
+        <li class="first-menu">
+            <h3>管理区</h3>
+            <ul class="submenu">
+                <li>001</li>
+                <li>002</li>
+                <li>003</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        var oContainer=document.getElementById("container");
+        var aH3=oContainer.getElementsByTagName("h3");
+        var aSubmenu=oContainer.getElementsByTagName("ul");
+//        var aLi=oContainer.getElementsByTagName("li");
+//        var aFirstMenu=[];
+        //        for(var i= 0;i<aLi.length;i++){
+        //            if(aLi[i].className=="first-menu"){
+        //                aFirstMenu.push(aLi[i]);
+        //            }
+        //        }
+        for(var i=0;i<aH3.length;i++){
+            aH3[i].index=i;
+            aH3[i].bFlag=false;//标识符，false为合并，true为展开
+            aH3[i].onclick= function () {
+                if(this.bFlag){
+                    aSubmenu[this.index].style.display="none";
+                }else{
+                    aSubmenu[this.index].style.display="block";
+                }
+                this.bFlag=!this.bFlag;
+//                this.bFlag = !this.bFlag;
+////                aSubmenu[this.index].className = "xx";
+            };
+            aH3[i].onselectstart=function(){
+                return false;
+            };
+        }
+        //obj.style.display="none"
+        //obj.style.属性 可以赋值 取值只可以取到内联样式的值
+//        外部样式表 link
+//        内部样式表（位于 <head> 标签内部）
+//        内联样式（在 HTML 元素内部）
+    </script>
+</body>
+</html>

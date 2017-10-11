@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        select{
+            height: 160px;
+            width: 100px;
+            margin-right: 50px;
+        }
+        option{
+            background: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <select name="" id="select1" multiple="multiple">
+        <option value="1">选项1</option>
+        <option value="2">选项2</option>
+        <option value="3">选项3</option>
+        <option value="4">选项4</option>
+        <option value="5">选项5</option>
+        <option value="6">选项6</option>
+    </select>
+    <select name="" id="select2" multiple="multiple">
+        <option value="6">选项7</option>
+
+    </select>
+
+    <br/><br/>
+
+    <button id="addRight">添加到右边</button>
+    <button id="addLeft">添加到左边</button>
+    <button id="addAllRight">全部添加到右边</button>
+    <button id="addAllLeft">全部添加到左边</button>
+
+    <script src="../jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+//            $("#select1").on("dblclick",function(e){
+//                $("#select2").append($(e.target));
+//            });
+            $("#select1").on("dblclick"," option",function(){
+//                $(this).remove();
+                $("#select2").append($(this));
+            });
+            $("#select2").on("dblclick","option",function(){
+//                $(this).remove();
+                $("#select1").append($(this));
+            });
+            $("#addAllRight").on("click",function(){
+               $("#select1 option").trigger("dblclick");
+            });
+            $("#addAllLeft").on("click",function(){
+               $("#select2 option").trigger("dblclick");
+            });
+            $("#addRight").on("click",function(){
+                $("#select1 option:selected").appendTo($("#select2"))
+            });
+            $("#addLeft").on("click",function(){
+                $("#select1").append($("#select2 option:selected"));
+            });
+
+        });
+    </script>
+</body>
+</html>

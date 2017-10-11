@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="div1">
+        <h1>1111</h1>
+        <h2 class="aa bb">2222</h2>
+        <h3 class="aa">3333</h3>
+    </div>
+<script>
+    var str=' 123566swfgreg13 ';
+//判断字符串是不是数字组成
+//    var reg=/\D/g;
+//    console.log(!reg.test(str)); //false
+//检测手机号
+//    var reg=/^0?(13|15)\d{9}$]/;
+//    console.log(reg.test(str));
+    var oDiv1=document.getElementById("div1");
+    function getByClass(className,context){
+        context=context||document;
+        var resolut=[];
+        var arr=context.getElementsByTagName("*");
+        var reg=new RegExp("\\b"+className+"\\b");
+        for(var i=0;i<arr.length;i++){
+            if(reg.exec(arr[i].className)){
+                resolut.push(arr[i]);
+            }
+        }
+        return resolut;
+    }
+    console.log(getByClass("aa",oDiv1));
+
+
+
+</script>
+</body>
+</html>

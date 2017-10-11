@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>打气球</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background:#ccc;
+            position: relative;
+        }
+        .balloon{
+            width: 160px;
+            height: 160px;
+            background-color: #fff;
+            border-radius:160px 160px 64px 160px;
+            transform:rotate(45deg);
+            box-shadow:0px 0px 50px 10px #fba1a1 inset;
+            position: absolute;
+        }
+        .balloon::after{
+            content:"";
+            display: inline-block;
+            border: 5px solid transparent;
+            border-bottom-color: #3b3c3c;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            transform: rotate(-45deg);
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="balloon"></div>-->
+
+    <script>
+        var NUM=10;
+        var BS=226.27;
+        var wW=window.innerWidth;//浏览器宽度
+        var wH=window.innerHeight;//浏览器高度
+        var aBalloon=[];
+        init();
+//        初始化气球
+//              1.创建气球
+//              2.气球定位
+        function init(){
+            for(var i=0;i<NUM;i++){
+                var randomX=~~(wW*Math.random())-BS;
+                randomX=Math.max(0,randomX);
+                var oBalloon=document.createElement("div");
+                oBalloon.className="balloon";
+                document.body.appendChild(oBalloon);
+                aBalloon.push(oBalloon);
+                aBalloon[i].style.top=wH-160+"px";
+                aBalloon[i].style.left=randomX+"px";
+                aBalloon[i].speed=~~(Math.random()*8)+1;
+            }
+        }
+        move();
+//        气球运动
+//              1.向上运动
+        var timer;
+        timer=setInterval(move,1000/60);
+        function move(){
+            for(var i= 0,len=aBalloon.length;i<len;i++){
+                aBalloon[i].style.top=aBalloon[i].offsetTop-aBalloon[i].speed+"px";
+            }
+        }
+    </script>
+</body>
+</html>

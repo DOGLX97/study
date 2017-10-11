@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>白豫彬轮播图</title>
+    <style>
+        body{
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+        body{
+            position: relative;
+        }
+        #container{
+            width: 350px;
+            height: 437.5px;
+            position: absolute;
+            left: 30px;
+            top: 30px;
+        }
+        #container img{
+            width: 350px;
+            position: absolute;
+        }
+        #left,#right{
+            position: absolute;
+            bottom: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 20px;
+            cursor:pointer;
+        }
+        #left{
+            left: 0;
+        }
+        #right{
+            right: 0;
+        }
+        #container-img img{
+            display: none;
+        }
+        #container-img .selected{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="container-img">
+
+        </div>
+        <div id="left">&lt;</div>
+        <div id="right">&gt;</div>
+    </div>
+
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        <!-- 图片预加载-->
+        var oContainerImg=document.getElementById("container-img");
+        var count=0;
+        var imgNum=4;
+        for(var i=0;i<imgNum;i++){
+            var oImg=new Image;
+            oImg.onload= function () {
+                count++;
+                if(count==imgNum){
+                    onloadSuccess();
+                }
+            };
+            oImg.src=(i+1)+".jpeg";
+            oContainerImg.appendChild(oImg);
+        }
+        function onloadSuccess(){
+            var nowIndex=0;
+            var $aImg=$("#container-img img");
+            $aImg.eq(0).addClass("selected");
+            $("#left").on("click", function () {
+                nowIndex--;
+                if(nowIndex==-1){
+                    nowIndex=$aImg.length-1;
+                }
+                $aImg.eq(nowIndex).addClass("selected").siblings().removeClass("selected");
+            });
+            $("#right").on("click",function(){
+                nowIndex++;
+                if(nowIndex==$aImg.length){
+                    nowIndex=0;
+                }
+                $aImg.eq(nowIndex).addClass("selected").siblings().removeClass("selected");
+            });
+            var timer;
+            play();
+            function play(){
+                timer=setInterval(function () {
+                    $("#right").trigger("click");
+                },1000);
+            }
+            $("#container").hover(function () {
+                clearInterval(timer);
+            }, function () {
+                play();
+            })
+        }
+    </script>
+</body>
+</html>

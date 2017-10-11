@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转照片墙</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            position: relative;
+        }
+        #container{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: url("img/bg.jpg") repeat;
+        }
+        .img{
+            position: absolute;
+            width: 125px;
+            height: 125px;
+            top: -100px;
+            left: -100px;
+            -webkit-transition: all 1s linear;
+            -moz-transition: all 1s linear;
+            -ms-transition: all 1s linear;
+            -o-transition: all 1s linear;
+            transition: all 1s linear;
+        }
+        span{
+            position: absolute;
+            width: 125px;
+            height: 125px;
+            opacity: 0;
+            filter:alpha(opacity=0);
+            -webkit-transition: all 1s linear;
+            -moz-transition: all 1s linear;
+            -ms-transition: all 1s linear;
+            -o-transition: all 1s linear;
+            transition: all 1s linear;
+        }
+        #prev,#next{
+            top: 50%;
+            margin-top: -30px;
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            background: #cccccc;
+            background-position: center;
+            width: 60px;
+            height: 60px;
+        }
+        #prev{
+            background: url("img/prev.png") no-repeat ;
+            border-radius: 0 8px 8px 0;
+            left: 0;
+        }
+        #next{
+            background: url("img/next.png") no-repeat;
+            border-radius: 8px 0 0 8px;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <div id="prev"></div>
+    <div id="next"></div>
+    <script>
+        var oContainer=document.getElementById("container");
+        var row= 4, col=6;
+        var count=0;
+        for(var i=0;i<row*col;i++){
+            var oThumb=new Image();
+            oThumb.src="img/thumbs/"+(i+1)+".jpg";
+            oThumb.onload= function () {
+                count++;
+                if(count>=row*col*2){
+                    successful();
+                }
+            };
+            var oBig=new Image();
+            oBig.src="img/"+(i+1)+".jpg";
+            oBig.onload= function () {
+                count++;
+                if(count>=row*col*2){
+                    successful();
+                }
+            }
+        }
+        var index=0;
+        function successful(){
+            for(var i=0;i<row;i++){
+                for(var j=0;j<col;j++){
+                    index++;
+                    var oDiv=document.createElement("div");
+                    oDiv.className="img";
+                    oDiv.style.backgroundImage="url(img/thumbs/"+index+".jpg)";
+                    oContainer.appendChild(oDiv);
+                    oDiv.pos={
+                        row:i,
+                        col:j
+                    };
+                    oDiv.index=index;
+                    oDiv.style.transitionDelay=(24-index)*100+"ms";
+                    oDiv.style.left=(oContainer.offsetWidth-oDiv.offsetWidth*col)/(col+1)*(oDiv.pos.col+1)+oDiv.offsetWidth*oDiv.pos.col+"px";
+                    oDiv.style.top=(oContainer.offsetHeight-oDiv.offsetHeight*row)/(row+1)*(oDiv.pos.row+1)+oDiv.offsetHeight*oDiv.pos.row+"px";
+                    oDiv.style.transform="rotate("+(Math.random()*40-20)+"deg)";
+                    var oSpan=document.createElement("span");
+                    oDiv.appendChild(oSpan);
+                    oSpan.style.backgroundImage="img/"+index+".jpg";
+                }
+            }
+        }
+        var aImg=document.getElementsByClassName("img");
+        var nowIndex=0;
+        var bFlag=true;
+        var oPrev=document.getElementById("prev");
+        var oNext=document.getElementById("next");
+        oContainer.onclick= function (e) {
+            if(this===e.target){
+                return false;
+            }
+            if(bFlag){
+                for(var i=0;i<aImg.length;i++){
+                    aImg[i].style.transform="rotate(0deg)";
+                    aImg[i].style.left=(oContainer.offsetWidth-aImg[i].offsetWidth*col)/2+aImg[i].offsetWidth*aImg[i].pos.col+"px";
+                    aImg[i].style.top=(oContainer.offsetHeight-aImg[i].offsetHeight*row)/2+aImg[i].offsetHeight*aImg[i].pos.row+"px";
+                    var aSpan=aImg[i].getElementsByTagName("span")[0];
+                    var url;
+                    url= e.target.parentNode.index;
+                    aSpan.style.opacity="1";
+                    aSpan.style.backgroundImage="url(img/"+url+".jpg)";
+                    aSpan.style.backgroundPosition=-aImg[i].offsetWidth*aImg[i].pos.col+"px"+" "+(-aImg[i].offsetHeight*aImg[i].pos.row)+"px";
+                    aSpan.style.transitionDelay="0ms";
+                    nowIndex=url;
+                }
+                oPrev.style.display=oNext.style.display="block";
+            }else{
+               for(var i=0;i<aImg.length;i++){
+                   var oSpan=aImg[i].getElementsByTagName("span")[0];
+                   oSpan.style.opacity=0;
+                   aImg[i].style.transform="rotate("+(Math.random()*40-20)+"deg)";
+                   aImg[i].style.left=(oContainer.offsetWidth-aImg[i].offsetWidth*col)/(col+1)*(aImg[i].pos.col+1)+aImg[i].offsetWidth*aImg[i].pos.col+"px";
+                   aImg[i].style.top=(oContainer.offsetHeight-aImg[i].offsetHeight*row)/(row+1)*(aImg[i].pos.row+1)+aImg[i].offsetHeight*aImg[i].pos.row+"px";
+               }
+                oPrev.style.display=oNext.style.display="none";
+            }
+            bFlag=!bFlag;
+        };
+        oPrev.onclick=oNext.onclick= function () {
+            if(this==oNext){
+                nowIndex++;
+                if(nowIndex==col*row+1){
+                    nowIndex=1;
+                }
+            }else{
+                nowIndex--;
+                if(nowIndex==0){
+                    nowIndex=col*row;
+                }
+            }
+            var arr=[];
+            for(var i=0;i<col*row;i++){
+                arr.push(i);
+            }
+            arr.sort(function (a, b) {
+                return Math.random()-0.5;
+            });
+//            console.log(arr);
+            for(var i=0;i<arr.length;i++){
+                var oSpan = aImg[arr[i]].getElementsByTagName("span")[0];
+                oSpan.style.backgroundImage="url(img/"+nowIndex+".jpg)";
+                oSpan.style.transitionDelay = (i + 1) * 50 + "ms";
+            }
+        }
+
+    </script>
+</body>
+</html>

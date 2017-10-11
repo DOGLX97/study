@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div2">
+    <div id="div1">
+        <p>ppp</p>
+        <h1 id="h11">hhh</h1>
+        <p>sss</p>
+    </div>
+    <script>
+        var oH11=document.getElementById("h11");
+        //封装获取所有当前元素的元素节点方法
+        /**
+         * @param elem 当前元素
+         * @return {Array} 返回当前元素的兄弟节点
+         * **/
+        function siblings(elem){
+            var aSib=[];
+            var oParent=elem.parentNode;
+            console.log(oParent);
+            console.log(typeof oParent);
+            var aChild=oParent.children;
+            console.log(aChild);
+            console.log(typeof aChild);
+            for(var i=0;i<aChild.length;i++){
+                if(aChild[i]!=elem){                //不能用this，this指向window
+                    aSib.push(aChild[i]);
+                }
+            }
+            return aSib;
+        }
+//        console.log(siblings(oH11));
+
+        function Siblings(elem){
+            var elements=elem.parentNode.children;
+            var arr=[];
+            for(var i=0;i<elements.length;i++){
+                if(elements[i]!=elem){
+                    arr.push(elements[i]);
+                }
+            }
+            return arr;
+        }
+//        console.log(Siblings(oH11));
+
+
+        //删除自己本身
+        function remove(elem){
+            elem.parentNode.removeChild(elem);
+        }
+        //        remove(oH11);
+        var  oSpan=document.createElement("span");
+        oSpan.innerHTML="spanspan";
+        //自己后面插入新元素
+        function after(elem,newNode){
+            if(elem.nextSibling){
+                elem.parentNode.insertBefore(newNode,elem.nextSibling);
+            }else{
+                elem.parentNode.appendChild(newNode);//非标准浏览器elem后面没有节点（获取不了文本节点）
+            }
+        }
+        after(oH11,oSpan);
+        //dom操作：元素查找，元素遍历，元素操纵
+    </script>
+</div>
+</body>
+</html>
