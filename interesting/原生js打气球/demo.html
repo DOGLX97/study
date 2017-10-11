@@ -37,7 +37,7 @@
     <!--<div class="balloon"></div>-->
 
     <script>
-        var NUM=10;
+        var NUM=15;
         var BS=226.27;
         var wW=window.innerWidth;//浏览器宽度
         var wH=window.innerHeight;//浏览器高度
@@ -65,8 +65,19 @@
         var timer;
         timer=setInterval(move,1000/60);
         function move(){
-            for(var i= 0,len=aBalloon.length;i<len;i++){
+            for(let i= 0,len=aBalloon.length;i<len;i++){
                 aBalloon[i].style.top=aBalloon[i].offsetTop-aBalloon[i].speed+"px";
+                aBalloon[i].onclick=function(){
+                    let clock=setInterval(function () {
+                        aBalloon[i].style.width= aBalloon[i].offsetWidth-5+"px";
+                        aBalloon[i].style.height= aBalloon[i].offsetHeight-5+"px";
+                        if(aBalloon[i].offsetWidth<=50){
+                            clearInterval(clock);
+                            aBalloon[i].parentNode.removeChild(aBalloon[i]);
+                        }
+                    },1000/60);
+
+                };
             }
         }
     </script>
