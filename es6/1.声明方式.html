@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <ul id="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        //var :variable
+//        var a=5;
+//        console.log(a);
+//        a=5;
+//        console.log(a);
+//        var a=5;
+//        function foo(){
+//            console.log(a);//undefined
+//            var a=6;
+//        }
+//        foo();
+//        console.log('1'+a);//function a(){}
+//        var a=5;
+//        function a(){
+//            console.log('2'+a);
+//        }
+//        a=6;
+//        console.log('3'+a);//6
+//        a();//a被覆盖
+        //函数定义两种方式
+//        a();
+//        function a(){
+//            console.log(1);
+//        }
+
+        //或
+//        var b=function(){
+//            console.log(2);
+//        };
+//        b();
+
+//        if(true){
+//            var a=5;
+//        }
+//        console.log(a);//5
+
+//        if(false){
+//            var b=5;
+//        }
+//        console.log(b);//undefined
+//        var a=5;
+//        function foo(){
+//            console.log(a);//undefined
+//            if(false){
+//                var a=6;
+//            }
+//        }
+//        foo();
+
+//        for(var i=1;i<3;i++){
+//            console.log(i);//1 2
+//        }
+//        console.log(i);//3
+
+//        console.log(a);//ReferenceError引用错误
+//        let a=5;
+//        let a=5;
+//        let a=6;
+//        console.log(a);//SyntaxError语法错误
+//        var a=5;
+//        if(a==5){
+//            throw new Error('a已经等于5啦');
+//        }
+//        var a=5;
+//        function foo(){
+//            console.log(a);//ReferenceError:a is not defined
+//            let a=6;
+//        }
+//        foo();
+
+//        let a=5;
+//        function foo(){
+//            console.log(a);//5
+//            if(false){
+//                let a =6;
+//            }
+//        }
+//        foo();
+
+//        for( let i=0;i<3;i++){
+//            console.log(i);//0 1 2
+//        }
+//        console.log(i);//ReferenceError: i is not defined
+
+//        for(let i=0;i<3;i++){
+//            console.log(i);//0 1 2
+//        }
+//        let i=6;
+//        console.log(i);//6
+
+//        function foo(arg){
+//            console.log(arg);//5
+//            {
+//                let arg=6;
+//                console.log(arg);//6
+//            }
+//        }
+//        foo(5);
+
+//        const a=5;
+//        a=6;
+//        console.log(a);
+//        //TypeError: Assignment to constant variable.类型错误:赋值给常量变量
+//        const obj={
+//            name:'zhangsan',
+//            age:'20'
+//        };
+//        console.log(obj);
+//        obj.name="lisi" ;
+//        obj={
+//            name:'lisi'
+//        };
+        //TypeError: Assignment to constant variable.类型错误:赋值给常量变量
+//        console.log(obj);
+//        const obj={
+//            name:'zhangsan',
+//            age:'20'
+//        };
+//        Object.freeze(obj);
+//        obj.name='lisi';
+//        console.log(obj);//未改变名字，还是zhangsan
+//        const arr=[1,2,3];
+//        console.log(arr);//[1,2,3]
+//        arr.push(4);
+//        console.log(arr);//[1,2,3,4]
+
+//        var arr=[];
+//        for(let i=0;i<3;i++){
+//            arr[i]=function(){
+//                console.log(i);
+//            }
+//        }
+//        arr[0]();//0
+//        arr[1]();//1
+//        arr[2]();//2
+
+        var oUl1=document.getElementById('ul1');
+        var aLi=oUl1.getElementsByTagName('li');
+//        自定义属性
+//        for(var i=0;i<aLi.length;i++){
+//            aLi[i].index=i;
+//            aLi[i].onclick=function(){
+//                console.log(this.index);
+//            }
+//        }
+//        let
+//        for(let i=0;i<aLi.length;i++){
+//            aLi[i].onclick= function () {
+//                console.log(i);
+//            }
+//        }
+//        闭包
+//        外部函数内定义内部函数，内部函数应用外部函数的局部变量，变量不被释放
+        for(var i=0;i<aLi.length;i++){
+            (function (idx) {
+                aLi[idx].onclick=function(){
+                    console.log(idx);
+                }
+            })(i);
+        }
+    </script>
+</body>
+</html>
