@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+
+//        let str=new String('abc');
+//        let arg='hello';
+//        let str='asdaf'+'sadas'+arg+'sad<h1>1111</h1>df'+'safdafd';
+//        document.write(str);
+//        let a=5;
+//        let b=6;
+//        let str1=`asfasfasasddad${arg}afa<h1>5+6=${a+b}</h1>`;
+//        document.write(str1);
+
+        let str='啊hello world';
+//        console.log(str.indexOf('啊hel0'));//-1
+//        console.log(str.includes('x'));//false
+//        console.log(str.startsWith('ooo'));//false
+//        console.log(str.endsWith('world'));//true
+        function sw(str,target){
+            if(str.indexOf(target)==0){
+                return true;
+            }
+            return false;
+        }
+        console.log(sw(str,'啊hel'));//true
+
+        function ew(str,target){
+            if(str.lastIndexOf(target)==str.length-target.length){
+                return true;
+            }
+            return false;
+        }
+        console.log(ew(str,'world1'));//false
+
+        let str2='xy';
+        console.log(str2.padStart(8,'abc'));//abcabcxy
+        console.log(str2.padStart(5,'abc'));//abcxy
+
+        console.log(str2.padEnd(8,'abc'));//xyabcabc
+        console.log(str2.padEnd(5,'abc'));//xyabc
+
+        console.log(str2.repeat(5));//xyxyxyxyxy
+        console.log(str2.repeat(3));//xyxyxy
+
+
+
+    </script>
+</body>
+</html>

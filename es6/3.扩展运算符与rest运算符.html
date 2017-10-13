@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+//        function foo(...arg){
+////            console.log(arguments[0],arguments[1]);
+//            console.log(arg);//[1,2,3,4,5]
+//        }
+//        foo(1,2,3,4,5)
+
+//        let arr1=[1,2];
+//        let arr2=[3, ...arr1,4];
+//        console.log(arr2);//[3,1,2,4]
+
+//        let arr1=[1,2,3,4];
+//        let arr2=[...arr1];
+//        console.log(arr1);
+//        arr1.push(5);
+//        console.log(arr1);
+//        console.log(arr2);
+
+//        let arr1=[1,2];
+//        let arr2=[3,4];
+//        let arr3=arr1.concat(arr2);
+//        let arr4= [...arr1,...arr2];
+//        console.log(arr3);
+//        console.log(arr4);
+
+//        function foo(...arg){
+//            console.log(arg);
+//        }
+        let obj1={
+            name:'zhangsan',
+            age:18
+        };
+        let obj2={
+            name:'lisi',
+            age:18
+        };
+////        foo(obj1,obj2);
+
+        let obj3= {...obj1,...obj2};
+        console.log(obj3);
+        console.log(Object.assign(obj1,obj2));
+
+//        let aDiv=document.getElementsByTagName('div');
+//        console.log(aDiv.constructor);//function HTMLCollection() { [native code] }
+//
+//        let [div1,div2,div3]=[...aDiv];
+//        console.log(div1,div2,div3);
+//
+//        let arr=[1,2,3];
+//        console.log(arr.constructor);//function Array() { [native code] }
+//
+////        let obj1={
+////            name:'zhangsan',
+////            age:18
+////        };
+////        let {name,age}=obj1;
+////        console.log(name,age);//zhangsan 18
+//
+//        //rest运算符,必须放在最后一位
+//        function foo(a,b,...arg){
+//            console.log(a,b,arg);//1 2 [3,4,5,6]
+//        }
+//        foo(1,2,3,4,5,6);
+
+
+    </script>
+</body>
+</html>
