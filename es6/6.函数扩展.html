@@ -5,6 +5,177 @@
     <title></title>
 </head>
 <body>
+    <div id="div1">div1</div>
+<script>
+//    function add(x,y='abc'){
+//        return `${x}+${y}`;
+//    }
+//    console.log(add('hello',''));
 
+//    function foo([a,b,c,d,e]){
+//        console.log(a,b,c,d,e);//1 2 3 4 5
+//    }
+//    foo([1,2,3,4,5]);
+
+//    function foo({name,age}){
+//        console.log(name,age);
+//    }
+//    let obj={
+//        name:'zhangsan',
+//        age:18
+//    };
+//    foo(obj);
+
+//    function add(x,y=0){
+//        return x+y;
+//    }
+//    console.log(add(5,6));//11
+//    console.log(add.length);//1 返回的是函数没有指定参数默认值的个数
+//    console.log(add.name);//add
+
+//    function foo(a,b,...arg){
+//        console.log(arg);//[3,4,5,6]
+//    }
+//    foo(1,2,3,4,5,6);
+
+//    a=5;
+//    console.log(a);//5
+//
+//    function foo(){
+//        console.log(this);//this指向Window
+//    }
+//    foo();
+
+//    function People(name,age){
+//        this.name=name;
+//        this.age=age;
+//    }
+//    let p1=new People('lisi',18);
+//    console.log(p1);//People {name: "lisi", age: 18}
+
+//    function foo(a,a,c){
+//        console.log(a,a,c);//2 2 3
+//    }
+//    foo(1,2,3);
+
+//    let a=5;
+//    let obj={
+//        a:6
+//    };
+//    with(obj){
+//        console.log(a);//6
+//    }
+
+//es5严格模式’use strict’
+//1.全局变量必须显式声明
+//2.禁止this关键字指向全局对象构造函数必须new
+//3.对象不能有重名的属性
+//4.函数不能有重名的参数
+//5.禁止使用with语句，不推荐使用with语句
+//6.禁止使用arguments.callee()
+//es6严格模式
+//1.可以定义在函数内部
+//2.不能有初始值，不能解构，不能使用扩展运算符
+//    function foo(num){
+//        'use strict';
+//        if(num==1){
+//            return 1;
+//        }
+//        return num*arguments.callee(num-1);//严格模式下禁止使用arguments.callee()
+//    }
+//    console.log(foo(5));
+
+//    function add(x,y){
+//        'use strict';
+//        return x+y;
+//    }
+//    console.log(add(5,6));//11
+
+//    function foo([a,b,c,d,e]){
+//        'use strict';
+//        console.log(a,b,c,d,e);//不能解构SyntaxError
+//    }
+//    foo([1,2,3,4,5]);
+
+//    function foo(...arg){
+//        'use strict';
+//        console.log(arg);//不能使用扩展运算符SyntaxError
+//    }
+//    foo([1,2,3,4,5]);
+
+//    function foo(x,y=0){
+//        'use strict';
+//        console.log(x,y);//不能有初始值SyntaxError
+//    }
+//    foo(3);
+
+
+
+    //箭头函数
+//    function add(x,y){
+//        return x+y;
+//    }
+//    console.log(add(1,2));//3
+
+//    let add= (x,y) => x+y;
+//    console.log(add(5,6));//11
+//    let add2=(x,y)=>{return x+y};
+//    console.log(add2(5,6));//11
+//    let x=x=>x;
+//    console.log(x(4));//4
+
+//箭头函数中
+
+//1.不允许使用arguments对象，可以用rest参数代替；
+//    let obj={
+//        name:'zhangsan',
+//        age:18
+//    };
+//    let foo=({name:name1,age:age1})=>{console.log(name1,age1)};
+//    foo(obj);
+
+//    let foo= (...arg)=>console.log(arg);
+//    foo(1,2,3);
+
+//2.不可以当作构造函数，也就是说，
+// 不可以使用new命令，否则会抛出一个错误；
+//    let People=(name,age)=>{
+//        this.name=name;
+//        this.age=age;
+//    }
+//    let p1=new People('lisi',18);//TypeError: People is not a constructor
+
+//3.箭头函数体内的this对象，
+// 就是定义时所在的对象，而不是使用时所在的对象。
+    let oDiv1=document.querySelector('#div1');
+    oDiv1.addEventListener('click', function () {
+        console.log(this);
+        setTimeout(()=>{
+            console.log(this);
+        },2000);
+    });
+
+    let a=5;
+    let b=6;
+    console.log(window.a);//undefined
+    console.log(window.b);//undefined
+    var c=5;
+    var d=6;
+    console.log(window.c);//5
+    console.log(window.d);//6
+
+    let obj={
+        a:6,
+        foo:function(){
+            console.log(this);//this->obj;
+        },
+        foo2:()=>{
+            console.log(this.a);//this->window
+        }
+    }
+    obj.foo();
+    obj.foo2();
+
+</script>
 </body>
 </html>
