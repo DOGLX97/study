@@ -13,6 +13,8 @@
         }
         .box{
             position: absolute;
+            left: -50px;
+            top: -50px;
             border: 5px solid #CCCCCC;
             margin: 5px;
         }
@@ -23,48 +25,67 @@
 </head>
 <body>
     <div id="container">
-        <div class="box"><img src="img/1.jpeg" alt=""/></div>
-        <div class="box"><img src="img/2.jpeg" alt=""/></div>
-        <div class="box"><img src="img/3.jpeg" alt=""/></div>
-        <div class="box"><img src="img/4.jpeg" alt=""/></div>
-        <div class="box"><img src="img/5.jpeg" alt=""/></div>
-        <div class="box"><img src="img/6.jpeg" alt=""/></div>
-        <div class="box"><img src="img/7.jpeg" alt=""/></div>
-        <div class="box"><img src="img/8.jpeg" alt=""/></div>
-        <div class="box"><img src="img/9.jpeg" alt=""/></div>
-        <div class="box"><img src="img/10.jpeg" alt=""/></div>
-        <div class="box"><img src="img/11.jpeg" alt=""/></div>
-        <div class="box"><img src="img/12.jpeg" alt=""/></div>
-        <div class="box"><img src="img/13.jpeg" alt=""/></div>
-        <div class="box"><img src="img/14.jpeg" alt=""/></div>
-        <div class="box"><img src="img/15.jpeg" alt=""/></div>
-        <div class="box"><img src="img/16.jpeg" alt=""/></div>
-        <div class="box"><img src="img/17.jpeg" alt=""/></div>
-        <div class="box"><img src="img/18.jpeg" alt=""/></div>
-        <div class="box"><img src="img/19.jpeg" alt=""/></div>
-        <div class="box"><img src="img/20.jpeg" alt=""/></div>
-        <div class="box"><img src="img/21.jpeg" alt=""/></div>
-        <div class="box"><img src="img/22.jpeg" alt=""/></div>
-        <div class="box"><img src="img/23.jpeg" alt=""/></div>
-        <div class="box"><img src="img/24.jpeg" alt=""/></div>
-        <div class="box"><img src="img/25.jpeg" alt=""/></div>
-        <div class="box"><img src="img/26.jpeg" alt=""/></div>
-        <div class="box"><img src="img/27.jpeg" alt=""/></div>
-        <div class="box"><img src="img/28.jpeg" alt=""/></div>
-        <div class="box"><img src="img/29.jpeg" alt=""/></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
     </div>
     <script src="jquery-1.11.2.js"></script>
     <script>
+        //图片预处理
+        let aBox=document.getElementsByClassName('box');
+        let imgNum=29;
+        let imgCount=0;
+        let aImg=[];
+        for(let i=0;i<imgNum;i++){
+            let oImg=new Image();
+            oImg.onload=()=>{
+                imgCount++;
+                aImg.push(oImg);
+                if(imgCount>=imgNum){
+                    for(let i=0;i<aImg.length;i++){
+                        aBox[i].appendChild(aImg[i]);
+                    }
+                }
+            };
+            oImg.src='img/'+(i+1)+'.jpeg';
+        }
+        //初始化
         function init(){
             var $box=$(".box");
             //窗口宽度
             var windowWidth=$(window).width();
-            console.log(windowWidth);
+//            console.log(windowWidth);
             //图片宽度
             var imgWidth=$box.eq(0).outerWidth(true);
             //列数
             var colNum=Math.floor(windowWidth/imgWidth);
-            console.log(colNum);
+//            console.log(colNum);
             //新建空数组
             var colSumHeight=[];
             for (var i=0;i<colNum;i++) {
@@ -72,7 +93,7 @@
             }
             //求缝隙
             var gap=(windowWidth-imgWidth*colNum)/2;
-            console.log(gap);
+//            console.log(gap);
             //对每一个盒子定位
             $box.each(function () {
                 var $this=$(this);
@@ -88,13 +109,17 @@
                 // 设置各个box的css属性
                 $this.css({
                     left: imgWidth*idx+gap,
-                    top: minSumHeight
+                    top: minSumHeight,
+//                    transitionDelay: idx*0.1+'s',
+//                    transitionTimingFunction:'linear'
                 });
                 // 更新solSumHeight
                 colSumHeight[idx] = colSumHeight[idx] + $this.outerHeight(true);
             })
         }
-        init();
+        $(window).on("load", function(){
+            init();
+        });
         // 设置窗口改变时也能重新加载
         $(window).on("resize", function(){
             init();
