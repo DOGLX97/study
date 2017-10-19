@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let s1=new Set(['a','b','c','d',1]);
+        // console.log(s1);//Set(5) {"a", "b", "c", "d", 1}
+        // let s2=new Set(['a','a','b']);
+        // console.log(s2);//Set(2) {"a", "b"}
+
+        //数组去重Set方法
+        // let arr=[1,2,3,4,1,2,3];
+        // let s2=new Set(arr);
+        // console.log(s2);//Set(4) {1, 2, 3, 4}
+
+        //数组去重常规方法
+        // let arr2=[1,2,3,4,1,2,3];
+        // let arr3=[];
+        // for(let item of arr2){
+        //     if(!arr3.includes(item)){
+        //         arr3.push(item);
+        //     }
+        // }
+        // console.log(arr3);//[1, 2, 3, 4]
+        
+
+        // let s1=new Set(['a','b',1]);
+        // console.log(s1.size);//3
+        // console.log(s1.has(1));//true
+        // s1.add('c');
+        // console.log(s1);//Set(4) {"a", "b", 1, "c"}
+        // s1.delete('a');
+        // console.log(s1);//Set(3) {"b", 1, "c"}
+        // s1.clear();
+        // console.log(s1);//Set(0) {}
+
+        // let s2=new Set(['a','b','c',1]);
+        // for(let [index,item] of s2.entries()){
+        //     console.log(`${index}:${item}`);//a:a b:b c:c 1:1
+        // }
+
+        let ws=new WeakSet();
+        let obj={
+            name:'zhangsan',
+        };
+        let obj1=obj;
+        let obj2={
+            name:'zhangsan',
+        };
+        ws.add(obj);
+        ws.add(obj1);
+        ws.add(obj2);
+        console.log(ws);
+
+
+
+
+
+
+
+
+
+// ①Set类似于数组，但是成员的值都是唯一的，没有重复的值。
+//函数接受数组或类数组作为参数。new Set();
+// ②add(value)：添加某个值，返回Set结构本身。
+// delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。
+// has(value)：返回一个布尔值，表示该值是否为Set的成员。
+// clear()：清除所有成员，没有返回值
+// ③遍历：keys() values() entires() forEach() for…of
+// ④长度：.size()
+// ⑤WeakSet:成员只能是对象，而不能是其他类型的值。add()增加值
+
+    
+    
+    </script>
+</body>
+</html>
