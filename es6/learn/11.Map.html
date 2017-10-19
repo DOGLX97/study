@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// Map
+// ①类似于对象，也是键值对的集合，但是“键”的范围不限于字
+// 符串，各种类型的值（包括对象）都可以当作键。new Map()
+// ②.size属性返回Map 结构的成员总数
+// ③.set(key, value)
+// ④.get(key)
+// ⑤.has(key)
+// ⑥. delete(key)
+// ⑦. clear()
+// ⑧遍历
+// ⑨WeakMap：只接受对象作为键名（null除外），不接受其他类型的值作为键名。
+        var m1=new Map();
+        //'1'=>'a'
+        m1.set('1','a');
+        m1.set('2','b');
+        console.log(m1);//Map(2) {"1" => "a", "2" => "b"}
+        let obj={
+            name:'zs',
+        };
+        //obj=>{age:18}
+        m1.set(obj,{age:18});
+        console.log(m1);//Map(3) {"1" => "a", "2" => "b", {…} => {…}}
+        console.log(m1.get(obj));//{age: 18}
+
+        let wm=new WeakMap();
+        wm.set({name:'lisi'},'a');
+        console.log(wm);//WeakMap {{…} => "a"}
+
+    </script>
+</body>
+</html>
