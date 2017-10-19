@@ -12,15 +12,107 @@
                 
     <script src="jquery-1.9.1.min.js"></script>
     <script>
-        let $product=$('product');
-        $.get('product-data.json',function(res){
-            console.log(res);
-            let list=res.productData;
-            for(let item of list){
-                let $li=$(`<li>${item.name}</li>`);
-                $product.append($li);
-            }
-        },'json');
+        // let $product=$('product');
+        // $.get('product-data.json',function(res){
+        //     console.log(res);
+        //     let list=res.productData;
+        //     for(let item of list){
+        //         let $li=$(`<li>${item.name}</li>`);
+        //         $product.append($li);
+        //     }
+        // },'json');
+
+        //ajax原理
+        //1.创建对象
+        //  var xmlhttp;
+        //  if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        //  xmlhttp = new XMLHttpRequest();
+        //  } else {// code for IE6, IE5
+        //  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        //  }
+        //2、向服务器发送请求
+        //  xmlhttp.open("GET", "test1.txt", true);
+        //  xmlhttp.send();
+        //3、服务器响应
+        //  xmlhttp.onreadystatechange = function () {
+        //  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        //  document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+        //  }
+        //  }
+        //  xmlDoc = xmlhttp.responseXML;
+        //  txt = "";
+        //  x = xmlDoc.getElementsByTagName("ARTIST");
+        //  for (i = 0; i < x.length; i++) {
+        //  txt = txt + x[i].childNodes[0].nodeValue + "<br />";
+        //  }
+        //  document.getElementById("myDiv").innerHTML = txt;
+        
+
+        // let flag1=1;
+        // let flag2=1;
+        // let flag3=1;
+        // $.get(url1,function(res){
+        //     flag1=2;
+        // });
+        // $.get(url2,function(){
+        //     flag2=2;
+        // });
+        // $.get(url3,function(){
+        //     flag3=2;
+        // });
+        // setInterval(function(){
+        //     if(flag1==2&&flag2==2&&flag3==2){
+        //         //...
+        //     }
+        // },500);
+
+        // let p1=new Promise((resolve,reject)=>{
+        //     $.get('product-data.json',function(res){
+        //         if(res.productData.length>0){
+        //             resolve(res.productData);
+        //         }else{
+        //             reject();
+        //         }
+        //     },'json');
+        // });
+        // p1.then((data)=>{
+        //     console.log('success');
+        //     console.log(data);
+        // }).catch(()=>{
+        //     console.log('failed');
+        // });
+
+        let p1=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log('p1');
+                resolve();
+            },1000);
+        });
+        let p2=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log('p2');
+                resolve();
+            },2000);
+        });
+        let p3=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log('p3');
+                resolve();
+            },3000);
+        });
+
+        // Promise.all([p1,p2,p3]).then(()=>{
+        //     console.log('success');
+        // }).catch(()=>{
+        //     console.log('failed');
+        // });
+        Promise.race([p1,p2,p3]).then(()=>{
+            console.log('success');
+        }).catch(()=>{
+            console.log('failed');
+        });
+
+
     </script>
 </body>
 </html>
