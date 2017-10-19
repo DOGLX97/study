@@ -7,6 +7,135 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        // let obj1={
+        //     name:'zhangsan',
+        //     age:18,
+        // };
+        // console.log(obj1);
+
+        // let name='zhangsan';
+        // let age=18;
+        // let obj2={
+        //     name,
+        //     age,
+        // }
+        // console.log(obj2);
+
+        // let ls='lisi';
+        // let n='name';
+        // let age=20;
+        // let obj3={
+        //     age,
+        //     [n]:'lisi',
+        // };
+        // console.log(obj3);
+
+        // function fn(s1){
+        //     var setting={
+        //         selector:s1,
+        //     };
+        // }
+
+        // let name='zhangsan';
+        // let obj4={
+        //     name,
+        //     // coding:function(){
+        //     //     console.log('coding');
+        //     // }
+        //     coding(){
+        //         console.log('coding');
+        //     }
+        // };
+        // console.log(obj4.name);
+        // obj4.coding();
+
+
+        // console.log(4==='4');//false
+        
+        // console.log(+0===-0);//true
+
+        // console.log(NaN===NaN);//false
+
+        // console.log(Object.is(4,'4'));//false
+
+        // console.log(Object.is(+0,-0));//false
+
+        // console.log(Object.is(NaN,NaN));//true
+
+
+        // let obj5={
+        //     name:'zs',
+        //     age:18,
+        // };
+
+        // let obj6={
+        //     name:'zs',
+        //     age:18
+        // };
+        // let obj7=obj5;
+        // console.log(obj5==obj6);//false
+        // console.log(Object.is(obj5,obj6));//false
+        // console.log(Object.is(obj5,obj7));//true
+
+
+        // let obj8={
+        //     name:'zs',
+        //     age:18,
+        // };
+        // let obj9={
+        //     school:'nongda',
+        // };
+        // let obj10={
+        //     sex:'nan',
+        //     brother:{
+        //         name:'xx',
+        //     }
+        // };
+
+        // Object.assign(obj8,obj9,obj10);//浅克隆，复制内存地址
+        // console.log(obj8);
+        // obj10.brother.name='yy';
+        // console.log(obj8);
+        // console.log(obj9);
+        // console.log(obj10);
+
+        let obj11={
+            sex:'nan',
+            brother:{
+                name:'xx',
+            }
+        };
+        console.log('sex' in obj11);//true,判断对象是否包含某个属性
+
+        let arr=[,,];
+        console.log(0 in arr);//fasle,判断数组位置是否有值
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
 </body>
 </html>
