@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="502a1bc4-05e6-4f79-a477-50e2cb216cf5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/es6/learn/8.对象扩展.html" afterPath="$PROJECT_DIR$/es6/learn/8.对象扩展.html" />
-    </list>
+    <list default="true" id="502a1bc4-05e6-4f79-a477-50e2cb216cf5" name="Default" comment="" />
     <ignored path="study.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let name=Symbol();
+        let obj={
+            name:'lisi',
+            age:18,
+        };
+        obj[name]='zhangsan';
+        // console.log(obj[name]);//zhangsan
+        for(let p in  obj){
+            console.log(obj[p]);//lisi 18
+        }
+
+
+// es6引入基本数据类型Symbol
+// 新的基本数据类型Symbol，表示独一无二的值。可以保证不会与其他属性名产生冲突。
+// let name = Symbol();
+// obj[name] = ‘XX';
+// 该属性不会出现在for...in、for...of循环中
+    </script>
+</body>
+</html>
