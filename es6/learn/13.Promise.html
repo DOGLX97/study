@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="product"></ul>
+    
+                
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        let $product=$('product');
+        $.get('product-data.json',function(res){
+            console.log(res);
+            let list=res.productData;
+            for(let item of list){
+                let $li=$(`<li>${item.name}</li>`);
+                $product.append($li);
+            }
+        },'json');
+    </script>
+</body>
+</html>
