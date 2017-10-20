@@ -4,3 +4,6 @@ let b=5;
 let c=5;
 let d=5;
 let e=5;
+let f=5;
+let g=5;
+let h=5;
