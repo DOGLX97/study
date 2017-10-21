@@ -1,6 +1,52 @@
+
+$color:#ff0;
+$w:200px;
+$wid:width;
+$hei:height;
 #div1{
-    width:200px;
+    width:$w;
+    background: $color;
 }
 #div2{
-    width:200px;
+    width:$w;
+    border: {
+        right: 0;
+        left: 0;
+        bottom:{
+            color: $color;
+        }
+    }
+    .aa{
+        width: $w;
+        &:hover{
+            width: 300px;
+        }
+        border: {
+            bottom: {
+                color: $color;
+            }
+        }
+    }
 }
+#div3{
+    #{$wid}:$w;
+    #{$hei}:200px;
+}
+@mixin xx{
+    #{$wid}:$w;
+    #{$hei}:200px;
+}
+@mixin yy($color:#f0f){
+    color:$color;
+}
+#div4{
+    @include xx;
+    @include yy($color:#0ff);
+    .aa{
+        width:200px;
+    }
+}
+#div5{
+    @extend#div4;
+}
+@import 'base/common';
