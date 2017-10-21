@@ -51,6 +51,61 @@ $hei:height;
 }
 @import 'base/common';
 #div6{
-    width:50+50px;
+    width:50px+50;
+    height: 100px-50;
+    font-size: (100px/50);
+}
+$hello:'hello';
+$col:rgba(255,0,0,.5);
+#div7{
+    font-size: str-length($hello)+'px';
+    width: str-index($hello,'llo');
+    color: transparentize($col,0.2);
+}
+$list:10px 20px 30px 40px;
+#div8{
+    width:length($list)px;
+    height:index(10px 20px,20px)px;
+    font-size: nth(10px 20px,2);
+}
+$map:(light:#fff,dark:#000);
+#div9{
+    color: map-get($map, light);
+}
+$background:background;
+$i:1;
+#div10{
+    #{$background}:$col;
+    .col-md-#{$i}{
+        color: red;
+    }
+}
+/*red:#{$color} */
+/*! mandatory comments*/
+/*function*/
+@function foo($bg){
+    @if($bg==1){
+        @return #f00;
+    }@else if($bg==2){
+        @return #f0f;
+    }@else{
+        @return #00f;
+    }
+}
+#div11{
+    color: foo(2);
 }
 
+$column:5;
+@for $i from 1 through $column{
+    .col-md-#{$i}{
+        width: 10px;
+        height: percentage($i/10);
+    }
+}
+$icons:error success warning;
+@each $icon in $icons{
+    .col-#{$icon}{
+        background-image:url('img/'+$icon+".jpg"); 
+    }
+}
