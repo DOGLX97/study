@@ -113,4 +113,32 @@ a {
   background-image: url("img/warning.jpg");
 }
 
+.col-xs-6 {
+  width: 6%;
+}
+
+.col-xs-5 {
+  width: 5%;
+}
+
+.col-xs-4 {
+  width: 4%;
+}
+
+.col-xs-3 {
+  width: 3%;
+}
+
+.col-xs-2 {
+  width: 2%;
+}
+
+.col-xs-1 {
+  width: 1%;
+}
+
+#div12 {
+  color: #ccc;
+}
+
 /*# sourceMappingURL=index.css.map */

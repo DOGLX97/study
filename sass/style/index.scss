@@ -1,4 +1,4 @@
-
+@charset "utf-8";
 $color:#ff0;
 $w:200px;
 $wid:width;
@@ -108,4 +108,32 @@ $icons:error success warning;
     .col-#{$icon}{
         background-image:url('img/'+$icon+".jpg"); 
     }
+}
+// $j:6;
+// @while $j>0 {
+//     .col-xs-#{$j}{
+//         width: percentage($j/100);
+//     }
+//     $j:$j-1; 
+// }
+//$j-1 error ; -1 != - 1 
+$j:6;
+@while $j>0 {
+    .col-xs-#{$j}{
+        width: percentage($j/100);
+    }
+    $j:$j - 1;
+}
+
+$map2:(yellow:#ff0,red:#f00);
+// 声明变量用$
+@function get-color($col){
+    @if not map-has-key($map2,$col){
+        @warn 'no #{$col}';
+        @return #ccc; 
+    }
+    @return map-get($map2,$col);
+}
+#div12{
+    color:get-color(blue);
 }
