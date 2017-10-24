@@ -17,7 +17,34 @@
 //    eval("alert(1);");//eval()解析字符串，不安全的
 //    JSON,parse("alert(1);");//解析不了，安全
 //    在线JSON校验格式化工具
+
+    let obj={
+        name:'zhangsan',
+        age:18,
+    }
+    let json=JSON.stringify(obj);
+    console.log(json);//{"name":"zhangsan","age":18}
+    console.log(JSON.parse(json));//{name: "zhangsan", age: 18}
+
+    // JSON 完成深拷贝
+
+    let obj2={
+        name:'lisi',
+        age:20,
+        father:{
+            name:'lier'
+        }
+    }
+    let json2=JSON.stringify(obj2);
+    console.log(json2);//{"name":"lisi","age":20,"father":{"name":"lier"}}
+    let obj3=JSON.parse(json2);
+    console.log(obj3);//{name: "lisi", age: 20, father: {…}}
+    obj2.father={
+        name:'lisan'
+    }
+    console.log(obj3);//{name: "lisi", age: 20, father: {…}}
 </script>
+
 <!--xml格式前后台传输数据大，效率低-->
 <!--<user>-->
     <!--<username>zhangsan</username>-->

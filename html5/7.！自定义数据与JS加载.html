@@ -9,18 +9,18 @@
     <div id="div1" data-aa-bb="333"></div>
     <script src="jquery-1.9.1.min.js"></script>
     <script>
-        <!-- 原生-->
+        // <!-- 原生-->
         var oDiv1=document.getElementById("div1");
         oDiv1.aa="111";//jq prop()
         oDiv1.setAttribute("bb","222");//jq attr()
         console.log(oDiv1.getAttribute("bb"));//222
     </script>
     <script>
-        <!-- jquery-->
+        // <!-- jquery-->
         console.log($("#div1").data("aaBb"));//333
     </script>
     <script>
-        <!-- html5-->
+        // <!-- html5-->
         console.log(oDiv1.dataset.aaBb);//333
     </script>
     <!--js文件加载方式：js是单线程的，同一时间只能执行一个任务；浏览器是多线程的-->
