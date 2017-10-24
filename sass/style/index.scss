@@ -137,3 +137,22 @@ $map2:(yellow:#ff0,red:#f00);
 #div12{
     color:get-color(blue);
 }
+
+$z: 5;
+@while $z>0{
+    .col-lg-#{$z}{
+        width: 100px;
+    }
+    $z : $z - 1;
+}
+
+$map3: (height:100px,width:200px);
+@function getPx($px){
+    @if not map-has-key($map3,$px){
+        @return 300px;
+    }
+    @return map-get($map3,$px);
+}
+#div13{
+    width:getPx(width);
+}
