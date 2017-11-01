@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .aa{
+            width: 200px;
+            height: 200px;
+            background: #f00;
+        }
+        .bb{
+            width: 200px;
+            height: 200px;
+            background: #f0f;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <img :src="imgSrc" :alt="imgAlt">
+        <div :class="clsname"></div>
+        <div :class="{bb:isBb}"></div>
+        <div :class="{aa:isAa,bb:isBb}"></div>
+        <div :style="obj">v-bind</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                imgSrc:"https://cn.vuejs.org/images/logo.png",
+                imgAlt:"加载失败",
+                clsname:"aa",
+                isBb:true,
+                isAa:true,
+                obj:{
+                    width:"200px",
+                    "background":"#ccc"
+                }
+            }
+        });
+    </script>
+</body>
+</html>

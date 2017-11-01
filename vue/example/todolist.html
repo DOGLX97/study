@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #list{
+            margin: 100px auto;
+            width: 400px;
+        }
+        h1{
+            text-align: center;
+            border-bottom:2px solid #ccc;
+        }
+        ul{
+            list-style:none;
+        }
+        li{
+            background: #ccc;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 10px;
+            margin: 10px 0;
+        }
+        .price{
+            float: right;
+        }
+        .bgRed{
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div id="list">
+        <h1 v-text="title"></h1>
+        <input type="text" placeholder="请输入产品名称" v-model="addObj.name">
+        <input type="text" placeholder="请输入产品价格" v-model="addObj.sale">
+        <button @click="add()">add</button>
+        <ul>
+            <li v-for="item in products" @click="changeBg(item)" :class="{bgRed:item.isClick}">
+                <input type="checkbox" @click.stop="back(item)" v-model="item.isDel">
+                <span>{{item.name}}</span>
+                <span class="price">{{item.sale}}</span>
+            </li>
+        </ul>
+        <div>
+            总价：
+            <span>{{total}}</span>
+        </div>
+        <button @click="del()">删除产品</button>     
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el:'#list',
+            data:{
+                title:'todolist',
+                products:[{
+                    name:'产品1',
+                    sale:123,
+                    isClick:false,
+                    isDel:false
+                },{
+                    name:'产品2',
+                    sale:12,
+                    isClick:false,
+                    isDel:false                                                         
+                },{
+                    name:'产品3',
+                    sale:33,
+                    isClick:false,
+                    isDel:false                                        
+                },{
+                    name:'产品4',
+                    sale:234,
+                    isClick:false,
+                    isDel:false                                        
+                },{
+                    name:'产品5',
+                    sale:543,
+                    isClick:false ,
+                    isDel:false                                       
+                }],
+                total:0,
+                addObj:{
+                    isClick:false,
+                    isDel:false                    
+                },
+                backArr:[],
+            },
+            methods:{
+                changeBg(item){
+                    item.isClick=!item.isClick;
+                    if(item.isClick==true){
+                        this.total+=parseInt(item.sale);                                                
+                    }else{
+                        this.total-=parseInt(item.sale);                                                                        
+                    }
+                },
+                add(){
+                    if(!this.addObj.name==""){
+                        this.products.push(this.addObj); 
+                        this.addObj={
+                            isClick:false,
+                        }                   
+                    }
+                },
+                back(item){
+                    this.backArr.push(item);
+                },
+                del(){
+                    
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <form>
+            <label>用户名
+                <input type="text" placeholder="请输入用户名" v-model="username">
+            </label>
+            <div v-text="username"></div>
+
+            性别是
+            <input type="radio" value="男" v-model="sex">男
+            <input type="radio" value="女" v-model="sex">女
+            <div v-text="sex"></div>
+
+            爱好是
+            <input type="checkbox" value="篮球" v-model="hobby">篮球
+            <input type="checkbox" value="足球" v-model="hobby">足球
+            <input type="checkbox" value="排球" v-model="hobby">排球    
+            <div v-text="hobby"></div> 
+            
+            学校是
+            <select v-model="school">
+                <option value="nongda" >nongda</option>
+                <option value="linda" >linda</option>                
+                <option value="heida" >heida</option>                
+            </select>
+            <div v-text="school"></div>
+
+            解释
+            <textarea name="" id="" cols="30" rows="10" v-model="text"></textarea>
+            <div v-text="text"></div>
+        </form>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                username:"",
+                sex:"",
+                hobby:[],
+                school:"nongda",
+                text:""
+            }
+        });
+    </script>
+</body>
+</html>

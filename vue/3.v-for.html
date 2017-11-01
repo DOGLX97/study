@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in sortArr">{{item}}</li>
+        </ul>
+        <ul>
+            <li v-for="(item,index) in sortArr">
+                {{item}}--{{index}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="item in sortUsers">
+                {{item.name}}--{{item.age}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(val,key,index) in obj">
+                {{val}}--{{key}}--{{index}}    
+            </li> 
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                arr:[1,20,5,12,7],
+                users:[{
+                    name:"zhangsan",
+                    age:18
+                },{
+                    name:'lisi',
+                    age:20
+                },{
+                    name:'wangwu',
+                    age:30
+                }],
+                obj:{
+                    name:'zhangsan',
+                    age:18,
+                    school:"nongda"
+                }
+            },
+            computed:{
+                sortArr(){
+                    return this.arr.sort(function(a,b){
+                        return a-b;
+                    })
+                },
+                sortUsers(){
+                    return this.users.sort(function(a,b){
+                        return a.age-b.age;
+                    })
+                }
+            }
+        });
+    </script>   
+</body>
+</html>
