@@ -115,7 +115,17 @@
                     this.backArr.push(item);
                 },
                 del(){
-                    
+                    for(let i=0;i<this.backArr.length;i++){
+                        // console.log(this.backArr[i].name);
+                        for(let j=0;j<this.products.length;j++){
+                            // console.log(this.products[j].name);
+                            if(this.backArr[i].name==this.products[j].name){
+                                // console.log(j);
+                                this.products.splice(j,1);
+                                // console.log(this.products[j].name);
+                            }
+                        }
+                    }
                 }
             }
         });
