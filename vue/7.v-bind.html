@@ -16,6 +16,13 @@
             height: 200px;
             background: #f0f;
         }
+        .size{
+            width: 200px;
+            height: 200px;
+        }
+        .red{
+            background: #f00;
+        }
     </style>
 </head>
 <body>
@@ -25,6 +32,7 @@
         <div :class="{bb:isBb}"></div>
         <div :class="{aa:isAa,bb:isBb}"></div>
         <div :style="obj">v-bind</div>
+        <div :class="{red:isRed}" class="size"></div>
     </div>
     <script src="vue.js"></script>
     <script>
@@ -39,7 +47,8 @@
                 obj:{
                     width:"200px",
                     "background":"#ccc"
-                }
+                },
+                isRed:false
             }
         });
     </script>
