@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <demo msg="name,age">
+            <div slot="title">TITLE {{name}}</div>
+            <div slot="content">CONTENT {{age}}</div>            
+        </demo>
+        <demo2></demo2>
+    </div>
+    <script src="vue.js"></script>
+    <script type="text/x-template" id="temp">
+        <div>
+            <div>
+                <slot name="title">
+                        title
+                </slot>
+            </div> 
+            <h1>template</h1>   
+            <div>
+                <slot name="content">
+                        content
+                </slot>
+            </div>
+        </div>
+    </script>
+    <script>
+        // 全局组件
+        Vue.component('demo2',{
+            template:'<div> <h1>demo2</h1> <h2>demo2</h2> </div>'
+        });
+        // 局部组件
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                name:"zhangsan",
+                age:18
+            },
+            components:{
+                demo:{
+                    template:'#temp',
+                    prop:["msg"],
+                }
+            },
+        });   
+    </script>
+</body>
+</html>

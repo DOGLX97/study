@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .dialog{
+            width: 500px;
+            height: 300px;  
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            background: #ccc;
+        }
+        .dialog-title{
+            height: 45px;
+            line-height: 45px;
+            background: #f0f;
+            text-align: center;
+        }
+        .dialog-content{
+            width: 400px;
+            text-align: center;
+            margin: 80px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="isShow=!isShow">click</button>
+        <dia msg='name' v-show="isShow">
+            <div slot="title">
+                <h1>login {{name}}</h1>
+            </div>
+        </dia>
+    </div>
+    <script src="vue.js"></script>
+    <script type="text/x-template" id="dialog">
+        <div class='dialog'>
+            <div class="dialog-title">
+                <slot name="title">
+                    <h1>login</h1>                
+                </slot>
+            </div>
+            <div class="dialog-content">
+                <slot name="content">
+                    用户名：<input type="text"><br/>
+                    密码: <input type="password"><br/>
+                    <input type="submit">
+                </slot>
+            </div>
+        </div>
+    </script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                name:"user",
+                isShow:false
+            },
+            components:{
+                dia:{
+                    template:'#dialog',
+                    props:['msg'],
+                }
+            }
+        });
+    </script>
+</body>
+</html>
