@@ -19,8 +19,12 @@
         $name=$_POST['uname'];
         $pwd=$_POST['pwd'];
 
-        $pwd1=md5($pwd);
-        echo $pwd1;
+        $pwd1=md5($pwd)+time();
+        $pwd2=md5($pwd2);
+        echo $pwd1."<br>";
+        echo $pwd2;
+//        echo "<br>";
+//        echo time();
         //827ccb0eea8a706c4c34a16891f84e7b
         //81dc9bdb52d04dc20036dbd8313ed055
         //无论输入多少位，都是定长
