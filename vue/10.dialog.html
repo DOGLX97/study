@@ -33,7 +33,7 @@
 <body>
     <div id="app">
         <button @click="isShow=!isShow">click</button>
-        <dia msg='name' v-show="isShow">
+        <dia :msg='name' v-show="isShow">
             <div slot="title">
                 <h1>login {{name}}</h1>
             </div>
