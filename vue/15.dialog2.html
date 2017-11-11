@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .dialog-mask{
+            position:absolute;
+            left:0;
+            top:0;
+            right:0;
+            bottom:0;
+            background:#ccc;
+        }
+        .dialog-box{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            width: 500px;
+            height: 400px;
+            border:1px solid #000;
+        }
+        .dialog-box-title{
+            height: 30px;
+            line-height: 30px;
+            background:#000;
+            color:#fff;
+            padding:0 10px;
+        }
+        .close{
+            float: right;
+            cursor:pointer;
+        }
+        .dialog-box-content{
+            padding:100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="isLogin=true">登录</button>
+        <button @click="isRegister=true">注册</button>
+        <dialog-temp v-show="isLogin" @close="isLogin=false">
+            <span slot="header">登录</span>
+            <form action="" slot="content-form">
+                <label>用户名：<input type="text" name="username"></label> <br>
+                <label>密码: <input type="password" name="userpwd"></label> <br>
+                <input type="submit" name="sub">
+            </form>
+        </dialog-temp>
+        <dialog-temp v-show="isRegister" @close="isRegister=false">
+            <span slot="title-header">注册</span>
+            <form action="" slot="content-form">
+                <label>用户名：<input type="text" name="username"></label> <br>
+                <label>密码: <input type="password" name="userpwd"></label> <br>
+                <label>邮箱: <input type="email" name="username"></label> <br>
+                <input type="submit" name="sub">
+            </form>
+        </dialog-temp>
+    </div>
+    <template id="temp">
+        <div class="dialog-mask">
+            <div class="dialog-box">
+                <div class="dialog-box-title">
+                    <slot name="title-header">
+                        <span class="login">默认值</span>    
+                    </slot>
+                    <span class="close" @click="$emit('close')">[X]</span>                    
+                </div>    
+                <div class="dialog-box-content">
+                    <slot name="content-form">
+                        <form action="" slot="content-form">
+                            <input type="submit" name="sub">
+                        </form>
+                    </slot>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                isLogin:false,
+                isRegister:false
+            },
+            components:{
+                'dialog-temp':{
+                    template:"#temp"
+                }
+            }
+        });
+    </script>
+</body>
+</html>

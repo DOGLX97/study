@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{firstName}}+{{lastName}}={{fullName}}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        // new Vue({
+        //     el:"#app",
+        //     data:{
+        //         firstName:"foo",
+        //         lastName:"bar"
+        //     },
+        //     computed:{
+        //         fullName:function(){
+        //             return this.firstName+" "+this.lastName;
+        //         }
+        //     }
+        // });
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                firstName:"foo",
+                lastName:"bar",
+                fullName:""
+            },
+            watch:{
+                firstName:function(val){
+                    // console.log(val);
+                    this.fullName=val+""+this.lastName;
+                },
+                lastName:function(val){
+                    // console.log(val);
+                    this.fullName=this.firstName+""+this.lastName;                    
+                }
+            }
+        });
+    </script>
+</body>
+</html>

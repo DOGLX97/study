@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="add">add</button>
+        <div>{{num}}</div>
+        <button @click="destroy">destory</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                num:0,
+                timer:null
+            },
+            methods:{
+                add(){
+                    this.num++;
+                },
+                destroy(){
+                    vm.$destroy();
+                }
+            },
+            beforeCreate(){
+                console.log('beforeCreate');
+            },
+            created(){
+                console.log('created');
+            },
+            beforeMount(){
+                console.log('beforeMount');                
+            },
+            mounted(){
+                console.log('mounted');   
+// 箭头函数中1.不允许使用arguments对象，可以用rest参数代替；
+// 2.不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误；
+// 3.箭头函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+                this.timer=setInterval(()=>{
+                    console.log(this);
+                    this.num++;
+                },1000);                             
+            },
+            beforeUpdate(){
+                console.log('beforeUpdate');
+            },
+            updated(){
+                console.log('updated');
+            },
+            beforeDestroy(){
+                console.log('beforeDestroy');
+                clearInterval(this.timer);
+            },
+            destroyed(){
+                console.log('destroyed');
+            }
+        });
+    </script>
+</body>
+</html>

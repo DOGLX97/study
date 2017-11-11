@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <component1 :msg1="message"></component1>
+    </div>
+    <template id="temp1">
+        <div>
+            <h1>component1</h1>
+            <div>{{msg1}}</div>
+            <component2 :msg2="msg1"></component2>
+        </div>
+    </template>
+    <template id="temp2">
+        <div>
+            <h1>component1</h1>
+            <div>{{msg2}}</div>
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                message:"success"
+            },
+            components:{
+                component1:{
+                    template:"#temp1",
+                    props:['msg1'],
+                    components:{
+                        component2:{
+                            template:"#temp2",
+                            props:['msg2']
+                        }
+                    }
+                }
+            } 
+        });
+    </script>
+</body>
+</html>
