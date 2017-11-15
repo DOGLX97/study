@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="react-15.3.1/build/react.js"></script>
+    <script src="react-15.3.1/build/react-dom.js"></script>
+    <script src="react-15.3.1/browser.js"></script>
+    <script type="text/babel">
+        var Component=React.createClass({
+            getInitialState(){
+                console.log("getInitialState");
+                return {
+                    count:0
+                }
+            },
+            clickHandler(){
+                // this.setState({
+                //     count:this.state.count+1
+                // });
+                ReactDOM.unmountComponentAtNode(document.getElementById('app'));
+            },
+            getDefaultProps(){
+                console.log("getDefaultProps");
+            },
+            componentWillMount(){
+                console.log("componentWillMount");
+            },
+            componentDidMount(){
+                console.log("componentDidMount");
+                this.timer=setInterval(function(){
+                    this.setState({
+                        count:this.state.count+1
+                    })
+                }.bind(this),1000);
+            },
+            componentWillReceiveProps(){
+                console.log("componentWillReceiveProps");                
+            },
+            shouldComponentUpdate(){
+                console.log("shouldComponentUpdate");    
+                if(this.state.count>5){
+                    return false;
+                }
+                return true;            
+            },
+            componentWillUpdate(){
+                console.log("componentWillUpdate");                                
+            },
+            componentDidUpdate(){
+                console.log("componentDidUpdate");                                                
+            },
+            componentWillUnmount(){
+                console.log("componentWillUnmount");
+                clearInterval(this.timer);
+            },
+            render(){
+                console.log("render");
+                return (
+                    <div>
+                        <button onClick={this.clickHandler}>del</button>
+                        <p>{this.state.count}</p>
+                    </div>
+                )
+            }
+        });
+        ReactDOM.render(
+            <Component/>,
+            document.getElementById("app")
+        );
+    </script>
+</body>
+</html>

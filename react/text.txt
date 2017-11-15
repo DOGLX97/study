@@ -1,0 +1,9 @@
+1.一个简单的区分方法是，this.props 表示那些一旦定义，就不再改变的特性，
+  而 this.state 是会随着用户互动而产生变化的特性。
+2.mixins: [ React.addons.LinkedStateMixin ] 双向数据流 
+  或者value+onChange
+3.有时需要从组件获取真实 DOM 的节点，这时就要用到 ref 属性,
+  由于 this.refs.[refName] 属性获取的是真实 DOM ，
+  所以必须等到虚拟 DOM 插入文档以后，才能使用这个属性
+  console.log(ReactDOM.findDOMNode(this.refs.SubComponent));控制台输出组件的dom节点
+4.ReactDOM.unmountComponentAtNode(document.getElementById('app'));销毁组件

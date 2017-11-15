@@ -8,22 +8,27 @@
 </head>
 <body>
     <div id="app"></div>
-    <script src="react-15.3.1/build/react-with-addons.js"></script>
+    <script src="react-15.3.1/build/react.js"></script>
     <script src="react-15.3.1/build/react-dom.js"></script>
     <script src="react-15.3.1/browser.js"></script>
     <script type="text/babel">
         var Binding=React.createClass({
-            mixins:[React.addons.LinkedStateMixin],
+            changeHandler(e){
+                // console.log(e);
+                this.setState({
+                    username:e.nativeEvent.target.value
+                });
+            },
             getInitialState(){
                 return {
-                    msg:""
+                    username:""
                 }
             },
             render(){
                 return (
                     <div>
-                        <input type="text" valueLink={this.linkState('msg')}/>
-                        <h1>{this.state.msg}</h1>
+                        <input type="text" value={this.state.username} onChange={this.changeHandler}/>   
+                        <h1>{this.state.username}</h1>  
                     </div>
                 );
             }
