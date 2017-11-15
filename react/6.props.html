@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <div id="app2"></div>    
+    <script src="react-15.3.1/build/react.js"></script>
+    <script src="react-15.3.1/build/react-dom.js"></script>
+    <script src="react-15.3.1/browser.js"></script>
+    <script type="text/babel">
+        var Messagebox=React.createClass({
+            render:function(){
+                var str="MessageboxInfo";
+                var arr=[1,2,3];
+                return (
+                    <div>
+                        <div>Messagebox</div>
+                        <SubMessagebox msg={str} arr={arr}/>
+                    </div>
+                );
+            },
+        });
+        var SubMessagebox=React.createClass({
+            getDefaultProps(){
+                return {
+                    arr:[]
+                }
+            },
+            render(){
+                var arr1=[];
+                this.props.arr.forEach(function(val,index,arr){
+                    arr1.push(<div key={index}>{val}</div>);
+                });
+                return (
+                    <div>
+                        SubMessagebox
+                        <p>{this.props.msg}</p>
+                        <div>{arr1}</div>
+                    </div>
+                );
+            }
+        });
+        ReactDOM.render(
+            <Messagebox/>,
+            document.getElementById("app")
+        );
+    </script>
+</body>
+</html>
