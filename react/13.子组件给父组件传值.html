@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="react-15.3.1/build/react.js"></script>
+    <script src="react-15.3.1/build/react-dom.js"></script>
+    <script src="react-15.3.1/browser.js"></script>
+    <script type="text/babel">
+        var SubComponentbox=React.createClass({
+            getDefaultProps:function(){
+                return {
+                    companys:[],
+                };
+            },
+            counterHandler:function(e){
+                this.props.counter(e);
+            },
+            render:function(){
+                var items=[];
+                this.props.companys.forEach((element,index) => {
+                    items.push(<label key={index}>{element}<input type="checkbox" onChange={this.counterHandler}/></label>);
+                });
+                return (
+                    <div>{items}</div>
+                );
+            }
+        });
+        var Componentbox=React.createClass({
+            getInitialState:function(){
+                return {
+                    count:0
+                };
+            },
+            counter:function(e){
+                this.setState({
+                    count:e.target.checked?this.state.count+1:this.state.count-1,
+                });
+            },
+            render:function(){
+                var companys=["百度","阿里","腾讯"];
+                return (
+                    <div>
+                        <h1>已选择的公司个数:{this.state.count}</h1>
+                        <SubComponentbox companys={companys} counter={this.counter}/>
+                    </div>
+                );
+            }
+        });
+        ReactDOM.render(
+            <Componentbox/>,
+            document.getElementById("app")
+        );
+    </script>
+</body>
+</html>

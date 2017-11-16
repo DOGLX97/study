@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="react-15.3.1/build/react.js"></script>
+    <script src="react-15.3.1/build/react-dom.js"></script>
+    <script src="react-15.3.1/browser.js"></script>
+    <script type="text/babel">
+        var SubComponentbox=React.createClass({
+            getDefaultProps:function(){
+                return {
+                    date:"",
+                    arr:[]
+                };
+            },
+            render:function(){
+                var msg=[];
+                this.props.arr.forEach((element,index) => {
+                    msg.push(<div key={index}>{element}</div>);//加引号不会解析，按字符串输出
+                });
+                return (
+                    <div>
+                        <div>{this.props.data}</div>
+                        {msg}                    
+                    </div>
+                );
+            },
+        });
+        var Componentbox=React.createClass({
+            render:function(){
+                var str="text";
+                var arr=["a","b","c"];
+                return (
+                    <SubComponentbox data={str} arr={arr}/>
+                );
+            },
+        });
+        ReactDOM.render(
+            <Componentbox/>,
+            document.getElementById("app")
+        );
+    </script>
+</body>
+</html>
