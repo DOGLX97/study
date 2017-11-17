@@ -2,3 +2,27 @@
     margin: 0;
     padding: 0;
 }
+html,body,#photowall{
+    height: 100%;
+    width: 100%;
+}
+.stage{
+    height: 100%;
+    width: 100%;
+    background: #ccc;
+}
+.imgComponent{
+    width: 320px;
+    height: 360px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #fff;
+    text-align: center;
+}
+.imgComponent img{
+    margin-top:40px; 
+}
+.imgComponent h2{
+    margin-top: 20px;
+}
