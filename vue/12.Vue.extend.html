@@ -13,7 +13,7 @@
         //在Vue.extend()中data必须是一个函数
         let authorExtend=Vue.extend({
             template:"<p><a :href='authorHref'>{{authorName}}</a></p>",
-            data:function(){
+            data(){
                 return {
                     authorName:"zhangsan",
                     authorHref:"http://www.baidu.com"

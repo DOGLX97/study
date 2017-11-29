@@ -22,7 +22,8 @@
             },
             methods:{
                 change(){
-                    // this.list[0]='aaa';//无效                    
+                    // this.list[0]='aaa';//无效        
+                    //通过Vue.set()改变data中的值 
                     Vue.set(this.list,0,'aaa');
                 }
             }
