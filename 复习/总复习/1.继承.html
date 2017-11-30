@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function A(name){
+            this.name=name;
+        }
+        // 原型是用来继承的，每次new实例化对象的时候，对象就有原型下面的所有东西
+        A.prototype.showName=function(){      //方法复用就好，定义在原型下面
+            console.log(this.name);
+        }
+        function B(name){
+            A.call(this);      //解决属性是引用类型所产生的问题
+        }
+        B.prototype=new A();
+        B.prototype.constructor=B;
+        let obj=new B();
+        obj.name='zhangsan';
+        //先去构造函数中去找，再去原型中去找，再去父类中去找，一直向上找，直到找到Object，最后无返回undefined
+        obj.showName();           
+    </script>
+</body>
+</html>

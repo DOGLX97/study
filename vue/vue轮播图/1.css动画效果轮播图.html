@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #app{
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .swipe li{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .swipe img{
+            width: 600px;
+            height: 400px;
+        }
+        .tabs{
+            position: absolute;
+            bottom: 10px;
+            right:10px;
+        }
+        .tabs li{
+            width: 20px;
+            height: 20px;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            float: left;
+            margin-right:5px; 
+            cursor: pointer;
+        }
+        .tabs .selected{
+            background: orange;
+        }
+        .fade-enter{
+            opacity: 0;
+        }
+        .fade-enter-active{
+            transition:all 1s ease-in;
+        }
+        .fade-enter-to{
+        }
+        .fade-leave{
+            opacity: 1;            
+        }
+        .fade-leave-active{
+            transition:all 1s ease-in;
+        }
+        .fade-leave-to{
+
+        }
+    </style>
+</head>
+<body>
+    <div id="app" @mouseover="stop" @mouseout="start">
+        <transition-group class="swipe" name="fade" tag="ul">
+            <li v-for="(img,index) in imgArr" :key="img" v-show="index==nowIndex">
+                <img :src="img" alt="">
+            </li>
+        </transition-group>
+        <ul class="tabs">
+            <li v-for="(item,index) in imgArr.length" :key="index" :class="{selected:index==nowIndex}" @mouseover="changeImg(index)">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                imgArr:[
+                    "http://h.hiphotos.baidu.com/zhidao/pic/item/9f510fb30f2442a7ce4501eed943ad4bd1130235.jpg",
+                    "http://f5.topitme.com/5/69/e8/11288531518f2e8695o.jpg",
+                    "http://imgstore.cdn.sogou.com/app/a/100540002/835119.jpg"
+                ],
+                nowIndex:0,
+                timer:null
+            },
+            methods:{
+                changeImg(index){
+                    this.nowIndex=index;
+                },
+                stop(){
+                    clearInterval(this.timer);
+                },
+                start(){
+                    this.play();
+                },
+                play(){
+                    this.timer=setInterval(()=>{
+                        this.nowIndex++;
+                        if(this.nowIndex==3){
+                            this.nowIndex=0;
+                        }
+                    },1000);
+                }
+            },
+            mounted(){
+                this.play();
+            }
+        });
+    </script>
+</body>
+</html>
