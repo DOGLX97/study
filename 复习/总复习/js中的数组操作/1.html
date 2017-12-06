@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //typeof instanceof
+        let arr1=[1,2,3];
+        console.log(typeof arr1);//object
+        console.log(arr1 instanceof Array);//true
+        console.log(arr1 instanceof Object);//true
+        //判断是不是数组
+        console.log(arr1.constructor);//ƒ Array() { [native code] }
+        console.log(arr1 instanceof Array);//true
+        console.log(Array.isArray(arr1));//true
+        //数组转化成字符串
+        console.log(arr1.join(","));//1,2,3        
+        console.log(arr1.toString());//1,2,3
+        //数组元素的添加，删除
+        let arr2=[];
+        arr2.push('a');//数组末尾添加元素
+        arr2.push('b');
+        console.log(arr2);//['a','b']
+        arr2.pop();//不需要参数，数组末尾删除一个元素
+        console.log(arr2);//['a']
+
+        arr2.unshift("c");//在数组前面添加一个元素
+        console.log(arr2);//['c','a']
+        arr2.shift();//不需要参数，在数组最前面删除一个元素
+        console.log(arr2);//['a']
+        //数组反转
+        let arr3=['hello','world'];
+        console.log(arr3.reverse());//['world','hello']
+        //数组排序
+        let arr4=[100,20,15,30,90,40,160,10];
+        arr4.sort();
+        console.log(arr4);//[10, 100, 15, 160, 20, 30, 40, 90]
+        arr4.sort(function(a,b){
+            return a-b;
+        })
+        console.log(arr4);//[10, 15, 20, 30, 40, 90, 100, 160]
+        arr4.sort(function(a,b){
+            return b-a;
+        })
+        console.log(arr4);//[160, 100, 90, 40, 30, 20, 15, 10]
+        //数组合并
+        let arr5=['hello'];
+        let arr6=['angela','lindvall'];
+        let arr7=arr5.concat(arr6);//返回一个新数组
+        console.log(arr7);//["hello", "angela", "lindvall"]
+        //返回数组中指定索引的元素
+        let arr8=['l','i','n','d','v','a','l','l'];
+        console.log(arr8.slice(4));//["v", "a", "l", "l"]
+        console.log(arr8.slice(0,2));//["l", "i"]
+        console.log(arr8.slice(-2));//["l", "l"]
+        console.log(arr8.slice(4,0));//[]
+        console.log(arr8);// ["l", "i", "n", "d", "v", "a", "l", "l"]
+        //删除，替换数组中的元素
+        let arr9=['l','i','m','a'];
+        console.log(arr9.splice(2));// ["m", "a"]
+        console.log(arr9);//["l", "i"]
+        console.log(arr9.splice(1,0,'ma'));//[]
+        console.log(arr9);//["l", "ma", "i"]
+        console.log(arr9.splice(1,1));//["ma"]
+        console.log(arr9);//["l", "i"]
+        //indexOf/lastIndexOf
+        let arr10=['1','2','3','4','5','4','3'];
+        console.log(arr10.indexOf('5'));//4
+        console.log(arr10.indexOf('6'));//-1    
+        console.log(arr10.indexOf('3'));//2
+        console.log(arr10.lastIndexOf('3'));//6
+        console.log(arr10.lastIndexOf('6'));//-1
+        //数组清空
+        let arr11=[1,2,[1,2,3]];
+        arr11.length=0;//无法清空伪数组
+        console.log(arr11);//[] 
+
+        let arr12=[1,2,[1,2,3]];   
+        arr12.splice(0);//伪数组没有这个方法
+        console.log(arr12);//[]
+
+        let arr13=[1,2,[1,2,3]];
+        arr13=[];//可以清空伪数组，推荐
+        console.log(arr13);//[]
+        
+        //数组遍历es6
+        let arr14=['esther','lindvall','lima'];
+        let bool=arr14.every(function(element,index,arr){
+            console.log(element);
+            console.log(index);
+            console.log(arr);
+            return true;   //要有return true 才会进行下一个元素         
+        });
+        console.log(bool);//全是return true，bool才会是true
+
+        let newArr=arr14.filter(function(element,index,arr){
+            console.log(element);
+            console.log(index);
+            console.log(arr);
+            return true;
+        });
+        console.log(newArr);//把return true 的元素放入新数组中
+
+        let aa=arr14.forEach(function(element,index,arr){
+            console.log(element);
+            console.log(index);
+            console.log(arr);
+        });
+        console.log(aa);//undefined,forEach和for循环一样没有返回值
+
+        let newArr2=arr14.map(function(element,index,arr){
+            if(index==2){
+                element+=' beautiful';//对元素进一步处理，返回新结果放入新数组中
+                return element;
+            }
+            return element;
+        });
+        console.log(arr14);//["esther", "lindvall", "lima"] 原数组没有改变
+        console.log(newArr2);//["esther", "lindvall", "lima beautiful"]
+
+        let bool2=arr14.some(function(element,index,arr){
+            if(element=='lima'){
+                return true;//有一个return true ，bool2就是true，就像有一个杀手成功，就是胜利
+            }
+            return false;
+        });
+        console.log(arr14);//["esther", "lindvall", "lima"]
+        console.log(bool2);//true  
+    
+    </script>
+</body>
+</html>
