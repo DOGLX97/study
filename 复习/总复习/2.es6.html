@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        let oUl1=document.getElementById("ul1");
+        let aLi=oUl1.getElementsByTagName("li");
+        //自定义属性
+        // for(var i=0;i<aLi.length;i++){
+        //     aLi[i].index=i;
+        //     aLi[i].onclick=function(){
+        //         console.log(this.index);
+        //     }
+        // }
+
+        //let
+        // for(let i=0;i<aLi.length;i++){
+        //     aLi[i].onclick=function(){
+        //         console.log(i);
+        //     }            
+        // }
+
+        //闭包
+        for(var i=0;i<aLi.length;i++){
+            (function(idx){
+                aLi[idx].onclick=function(){
+                    console.log(idx);
+                }
+            })(i);
+        }
+
+        //变量的解构赋值
+        let arr=['angela','lindvall',['19','79']];
+        let [lastname,firstname]=arr;
+        console.log(lastname);//angela
+        console.log(firstname);//lindvall
+        let [a,l,[c]]=arr;
+        console.log(a,l,c);//angela lindvall 19
+
+        let obj={
+            name:'lima',
+            birthday:'1981'
+        };
+        let {name,birthday}=obj;
+        console.log(name);//lima
+        console.log(birthday);//1981
+        let {name : n,birthday : b}=obj;
+        console.log(n,b);//lima 18
+
+        let str="ale ssandraambrosio";
+        let [q,w,e,r,t,y,u]=str;
+        console.log(q,w,e,r,t,y,u);
+    
+        let {0:first,[arr.length-1]:last}=arr;
+        console.log(first,last);//angela ["19", "79"]
+
+        //两个数组交换
+        //1.
+        let g='karlie';
+        let h='kloss';
+        // let temp;
+        // temp=g;
+        // g=h;
+        // h=temp;
+        // console.log(g,h);//kloss karlie
+        //2.
+        [g,h]=[h,g];
+        console.log(g,h);//kloss karlie
+        
+        
+        //解构应用于json
+        let json='{"name":"karlie","name2":"kloss"}';
+        let obj2=JSON.parse(json);
+        console.log(obj2);//{name: "karlie", name2: "kloss"}
+        let {name:name1,name2}=obj2;
+        console.log(name1,name2);
+
+        //导致解构歧义才会使用圆括号
+        let kk;
+        ({kk}={kk:'kk'});
+        console.log(kk);
+
+
+        
+
+    
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
