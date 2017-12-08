@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Promise异步编程的解决方案
+
+        // setTimeout(function(){
+        //     console.log(1);
+        // },1000);
+        // let p=new Promise(function(resolve,reject){
+        //     console.log(2);
+        //     resolve('json');
+        // });
+        // p.then(function(data){
+        //     console.log(3);
+        //     console.log('resolve'+data);
+        // }).catch(function(data){
+        //     console.log('reject'+data);
+        // });
+        // console.log(4);
+
+        // 3.es6_Promise.html:15 2
+        // 3.es6_Promise.html:24 4
+        // 3.es6_Promise.html:19 3
+        // 3.es6_Promise.html:20 resolvejson
+        // 3.es6_Promise.html:12 1
+
+
+
+        let p1=new Promise(function(resolve,reject){
+            setTimeout(function(){
+                resolve('p1json');
+                console.log(1);
+            },1000);
+        });
+        let p2=new Promise(function(resolve,reject){
+            setTimeout(function(){
+                reject('p2json');
+                console.log(2);
+            },500);
+        });
+        let p3=new Promise(function(resolve,reject){
+            setTimeout(function(){
+                reject('p3json');
+                console.log(3);
+            },2000);
+        });
+        // Promise.all([p1,p2,p3]).then(function(data){
+        //     console.log(data);
+        // }).catch(function(data){
+        //     console.log(data);
+        // });
+        Promise.race([p1,p2,p3]).then(function(data){
+            console.log(data);
+        }).catch(function(data){
+            console.log(data)
+        });
+    </script>
+</body>
+</html>
