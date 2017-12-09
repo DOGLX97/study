@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let proxy=new Proxy({
+            name:'lindvall'
+        },{
+            //获得值之前做的事情
+            get:(target,key,property)=>{
+                console.log('get');
+                return target[key];
+            },
+            //改变值的时候做的事，一定要有return，否则值不会被改变
+            set:(target,key ,value,receiver)=>{
+                console.log(`setting ${key}=${value}`)
+                return target[key]=value;
+            }
+        });
+        // proxy=1;
+        console.log(proxy);//Proxy {name: "lindvall"}
+
+
+        let target=(name)=>{
+            return 'i am '+name;
+        };
+        let handler={
+            //调用方法时候
+            apply(target,ctx,args){
+                console.log('do apply');
+                return Reflect.apply(...arguments);
+            }
+        };
+        let proxy2=new Proxy(target,handler);
+        console.log(proxy2('lima'));
+        //do apply
+        //i am lima
+    </script>
+</body>
+</html>

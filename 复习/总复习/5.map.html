@@ -11,6 +11,7 @@
         //map对象和对象的区别：
         //    map对象的键名可以是任意类型的
         //    对象键名是字符串
+        //WeakMap对象只接受对象作为键名        
         //map对象
         let map=new Map();
         map.set(1,'aa');
@@ -49,6 +50,7 @@
         map.forEach(function(value,index){
             console.log(value,index);//lindvall (4) [1, 2, 3, 4]
         })
+
     </script>
 </body>
 </html>
