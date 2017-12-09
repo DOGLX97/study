@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //map对象和对象的区别：
+        //    map对象的键名可以是任意类型的
+        //    对象键名是字符串
+        //map对象
+        let map=new Map();
+        map.set(1,'aa');
+        map.set(2,'kk');
+        map.set('3','gee');
+        map.set({},'lima');
+        let arr=[1,2,3,4];
+        map.set(arr,'lindvall');
+        console.log(map);
+        //Map(5) {1 => "aa", 2 => "kk", "3" => "gee", {…} => "lima", Array(4) => "lindvall"}
+        console.log(map.get(arr));//lindvall
+        console.log(map.has(1));//true
+        console.log(map.size);//5
+        map.delete('3');
+        console.log(map);
+        //Map(4) {1 => "aa", 2 => "kk", {…} => "lima", Array(4) => "lindvall"}
+        // map.clear();
+        // console.log(map);
+        //Map(0) {}
+
+
+        //每次循环只写了一个输出表示格式是这样的
+        let keys=map.keys();
+        for(key of keys){
+            console.log(key);//(4) [1, 2, 3, 4]
+        }
+        let values=map.values();
+        for(value of values){
+            console.log(value);//lindvall
+        }
+        let entries=map.entries();
+        for(entrie of entries){
+            console.log(entrie);//[Array(4), "lindvall"]
+        }
+
+        map.forEach(function(value,index){
+            console.log(value,index);//lindvall (4) [1, 2, 3, 4]
+        })
+    </script>
+</body>
+</html>

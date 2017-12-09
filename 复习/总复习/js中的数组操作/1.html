@@ -11,6 +11,32 @@
         //数组去重
         let arr15=['aa','kk','kk','lima'];
         console.log([...new Set(arr15)]);//["aa", "kk", "lima"]
+
+
+        //数组去重循环方法
+        let arr16=[];
+        let obj={};
+        for(let i=0;i<arr15.length;i++){
+            // if(arr16.indexOf(arr15[i])==-1){
+            //     arr16.push(arr15[i]);
+            // }
+            // if(arr15.indexOf(arr15[i])==i){
+            //     arr16.push(arr15[i]);
+            // }
+            // if(!obj[arr15[i]]==true){
+            //     arr16.push(arr15[i]);
+            //     obj[arr15[i]]=true;
+            // }
+        }
+        console.log(arr16);// ["aa", "kk", "lima"]
+
+        
+
+
+
+
+
+
         //typeof instanceof
         let arr1=[1,2,3];
         console.log(typeof arr1);//object

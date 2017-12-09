@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //set对象
+        let set=new Set();
+        set.add(1);
+        set.add(1);
+        set.add(1);
+        set.add(2); 
+        set.add(3); 
+        set.delete(1);
+        // set.clear();              
+        // console.log(set.has(3));//true
+        // console.log(set.size);//2
+        let keys=set.keys();
+        for(key of keys){//for of循环 es6数组扩展
+            console.log(key);
+        }
+        let values=set.values();
+        for(value of values){//for of循环 es6数组扩展
+            console.log(value);
+        }
+        let entries=set.entries();
+        for(entrie of entries){//for of循环 es6数组扩展
+            console.log(entrie);
+        }
+
+        set.forEach(function(value,index){
+            console.log(value,index);
+        })
+
+        console.log(set);//Set(2) {2, 3}
+        //set对象转化成数组
+        console.log(Array.from(set));//(2) [2, 3]
+    </script>
+</body>
+</html>
