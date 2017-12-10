@@ -10,19 +10,76 @@ html,body,#photowall{
     height: 100%;
     width: 100%;
     background: #ccc;
+    overflow:hidden;
+    position: relative;
+    perspective: 800px;
 }
 .imgComponent{
     width: 320px;
-    height: 360px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: #fff;
-    text-align: center;
-}
-.imgComponent img{
-    margin-top:40px; 
+	height: 360px;
+	background: #fff;
+	text-align: center;
+	padding-top: 40px;
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: all .5s ease-in-out;
+	cursor: pointer;
+	transform-style: preserve-3d;
 }
 .imgComponent h2{
     margin-top: 20px;
+}
+.imgComponent .desc{
+    width: 320px;
+	height: 360px;
+	background: #fff;
+	transform: rotateY(180deg);
+	position: absolute;
+	top: 0;
+	left: 0;
+	line-height: 360px;
+	backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;	
+    -moz-backface-visibility:hidden; 	
+    -ms-backface-visibility:hidden; 	  
+}
+.controller span{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #000;
+    transform: scale(.7);
+    vertical-align: middle;
+    text-align: center;
+    line-height: 30px;
+    transition: all .5s ease-in-out;
+}
+.controller{
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.controller .is-center{
+    transform: scale(1);
+}
+.controller .is-center::after{
+    content: "\e600";
+	color: #fff;
+	font-family: 'turn-arrow';
+	font-size: 20px;
+}
+.controller .is-inverse{
+    transform: rotateY(180deg);
+}
+@font-face {
+	font-family: 'turn-arrow';
+	src: url('../font/icons/turn-arrow.eot'); /* IE9+ */
+	src: url('../font/icons/turn-arrow.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('../font/icons/turn-arrow.woff') format('woff'), /* chrome、firefox */
+		 url('../font/icons/turn-arrow.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+		 url('../font/icons/turn-arrow.svg#fontname') format('svg'); /* iOS 4.1- */
 }
