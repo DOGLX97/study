@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //n个promise串行执行
+        var sleep = function (time) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    resolve();
+                }, time);
+            })
+        };
+    
+        var start = async function () {
+            //async表示这是一个async函数，await只能用在这个函数里面
+            // 在这里使用起来就像同步代码那样直观
+            console.log('start');
+            //await 表示在这里等待promise返回结果了，再继续执行
+            //await 后面跟着的应该是一个promise对象
+            //（当然，其他返回值也没关系，只是会立即执行，不过那样就没有意义了…）            
+            await sleep(3000);
+            console.log('end');
+        };
+
+        start();
+    </script>
+</body>
+</html>

@@ -28,7 +28,11 @@ var ImgComponent=React.createClass({
         var styleObj={
             left:this.props.info.pos.x,
             top:this.props.info.pos.y,
-            transform:"rotate("  +this.props.info.rotate + "deg)"
+            transform:"rotate("  +this.props.info.rotate + "deg)",
+            '-webkit-transform':"rotate("  +this.props.info.rotate + "deg)",
+            '-moz-transform':"rotate("  +this.props.info.rotate + "deg)",
+            '-ms-transform':"rotate("  +this.props.info.rotate + "deg)",
+            '-otransform':"rotate("  +this.props.info.rotate + "deg)"
         };
         if(this.props.info.isInverse){
             styleObj.transform="rotateY(180deg)";
