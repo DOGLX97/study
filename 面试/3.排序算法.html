@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //稳定性:待排序的记录序列中，对于具有相同关键字的序列的记录，
+        //排序前排序后，相对次序保存不变的这种算法是稳定的
+
+        //冒泡排序实现
+        //基本思想是:两两比较相邻记录的关键字,如果反序则交换
+        //冒泡排序时间复杂度最好的情况为O(n),最坏的情况是O(n^2)
+        function bubbleSort(arr,num){
+            let i;
+            let flag = true;
+            let temp;
+            //设置标志位，明显如果有一趟没有发生交换（flag = false)，说明排序已经完成
+            while (flag)
+            {
+                flag = false;
+                for (i = 1; i < num; i++)
+                {
+                    if (arr[i - 1] > arr[i])
+                    {
+                        temp=arr[i-1];
+                        arr[i-1]=arr[i];
+                        arr[i]=temp;
+                        flag = true;
+                    }
+                }
+                num--;
+            }
+        }
+        let arr=[1,5,6,3,2,4];
+        bubbleSort(arr,arr.length);
+        console.log(arr);
+    </script>
+</body>
+</html>

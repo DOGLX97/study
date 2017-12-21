@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj={a:{b:{c:1}}};
+
+        function find(obj,str){
+            arr=str.split('.');
+            for(let i=0;i<arr.length;i++){
+                if(obj[arr[i]]){
+                    obj=obj[arr[i]];                
+                }else{
+                    return obj[arr[i]];
+                }
+            }
+            return obj;
+        }
+
+        console.log(find(obj,'a.b.c'));//1
+        console.log(find(obj,'a.d.c'));//undefined     
+    </script>
+</body>
+</html>
