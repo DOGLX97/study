@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">  
+            .father {  
+                margin-bottom: 10px;  
+                border-bottom: 1px solid red;  
+            }  
+              
+            .border-1px {  
+                position: relative;  
+            }  
+              
+            .border-1px::after {  
+                content: '  '  ;
+                display: block;  
+                width: 100%;  
+                position: absolute;  
+                left: 0;  
+                bottom: 0;  
+                border-top: 1px solid red;  
+            }  
+              
+            @media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio:1.5) {  
+                .border-1px::after {  
+                    -webkit-transform: scaleY(0.7);  
+                    transform: scaleY(0.7)  
+                }  
+            }  
+            @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio:2) {  
+                .border-1px::after {  
+                    -webkit-transform: scaleY(0.5);  
+                    transform: scaleY(0.5)  
+                }  
+            }  
+        </style>  
+      
+        <body>  
+            <div class="father">  
+                DPR为2，实际上是2px  
+            </div>  
+            <div class="child border-1px">  
+                标准1px  
+            </div>  
+        </body> 
+</html>
