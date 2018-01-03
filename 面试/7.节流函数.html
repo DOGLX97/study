@@ -19,7 +19,7 @@
             var timer=null;
             var previous=null;
             return function(){
-                timer= +new Date();
+                var now= +new Date();
                 if(!previous){
                     previous=now;
                 }
