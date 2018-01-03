@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+        *节流函数方法
+        *@param function fn 延时调用函数
+        *@param number delay 延时时间
+        *@param number least 至少多久执行一次
+        *@return number least 延时执行的方法
+        */
+        var throttle=function(fn,delay,least){
+            var timer=null;
+            var previous=null;
+            return function(){
+                timer= +new Date();
+                if(!previous){
+                    previous=now;
+                }
+                if(now-previous>least){
+                    fn();
+                    previous=now;
+                }else{
+                    clearTimeout(timer);
+                    timer=setTimeout(function(){
+                        fn();
+                    },delay);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
